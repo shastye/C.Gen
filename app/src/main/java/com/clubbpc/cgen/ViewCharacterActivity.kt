@@ -1,11 +1,8 @@
 package com.clubbpc.cgen
 
-import AttackPackage.Physical
-import AttackPackage.Physical.Weapon
 import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
-import Utility.User
 import Utility.Utility.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -18,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.io.Serializable
 
 class ViewCharacterActivity : AppCompatActivity() {
     val auth: FirebaseAuth = Firebase.auth
@@ -219,7 +215,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val str_mod_textView = findViewById<TextView>(R.id.strength_textView_mod_actual)
             if (currentPlayer._statistics.Strength - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Strength).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Strength).toString()
         str_mod_textView.text = temp
 
         val dex_textView = findViewById<TextView>(R.id.dexterity_textView_actual)
@@ -227,7 +223,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val dex_mod_textView = findViewById<TextView>(R.id.dexterity_textView_mod_actual)
             if (currentPlayer._statistics.Dexterity - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Dexterity).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Dexterity).toString()
         dex_mod_textView.text = temp
 
         val const_textView = findViewById<TextView>(R.id.constitution_textView_actual)
@@ -235,7 +231,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val const_mod_textView = findViewById<TextView>(R.id.constitution_textView_mod_actual)
             if (currentPlayer._statistics.Constitution - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Constitution).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Constitution).toString()
         const_mod_textView.text = temp
 
         val intel_textView = findViewById<TextView>(R.id.intelligence_textView_actual)
@@ -243,7 +239,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val intel_mod_textView = findViewById<TextView>(R.id.intelligence_textView_mod_actual)
             if (currentPlayer._statistics.Intelligence - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Intelligence).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Intelligence).toString()
         intel_mod_textView.text = temp
 
         val wis_textView = findViewById<TextView>(R.id.wisdom_textView_actual)
@@ -251,7 +247,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val wis_mod_textView = findViewById<TextView>(R.id.wisdom_textView_mod_actual)
             if (currentPlayer._statistics.Wisdom - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Wisdom).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Wisdom).toString()
         wis_mod_textView.text = temp
 
         val charisma_textView = findViewById<TextView>(R.id.charisma_textView_actual)
@@ -259,7 +255,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val charisma_mod_textView = findViewById<TextView>(R.id.charisma_textView_mod_actual)
             if (currentPlayer._statistics.Charisma - 10 >= 0) { temp = "+" }
             else { temp = "-" }
-        temp += Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Charisma).toString()
+        temp += Character.Base_Stats_Struct.calculate_modifier(currentPlayer._statistics.Charisma).toString()
         charisma_mod_textView.text = temp
 
         val perc_textView = findViewById<TextView>(R.id.perception_textView_actual)

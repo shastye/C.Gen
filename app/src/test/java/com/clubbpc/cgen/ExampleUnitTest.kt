@@ -18,11 +18,14 @@ import Utility.Die
 class CharacterClassUnitTests {
     @Test
     fun stats_constructorsWork() {
-        val bs1 : Character.Base_Stats = Character.Base_Stats()
-        val bs2 : Character.Base_Stats = Character.Base_Stats(7)
-        val bs3 : Character.Base_Stats = Character.Base_Stats(
-            1,2,3,4,5,6,7
-        )
+        val bs1 : Character.Base_Stats_Struct =
+            Character.Base_Stats_Struct()
+        val bs2 : Character.Base_Stats_Struct =
+            Character.Base_Stats_Struct(7)
+        val bs3 : Character.Base_Stats_Struct =
+            Character.Base_Stats_Struct(
+                1, 2, 3, 4, 5, 6, 7
+            )
 
         //bs1
         assertEquals(10, bs1.Strength)
@@ -52,9 +55,10 @@ class CharacterClassUnitTests {
 
     @Test
     fun stats_equalsWorks() {
-        val bs : Character.Base_Stats = Character.Base_Stats(7)
-        assertEquals(true, Character.Base_Stats(7).equals(bs))
-        assertEquals(false, Character.Base_Stats(11).equals(bs))
+        val bs : Character.Base_Stats_Struct =
+            Character.Base_Stats_Struct(7)
+        assertEquals(true, Character.Base_Stats_Struct(7).equals(bs))
+        assertEquals(false, Character.Base_Stats_Struct(11).equals(bs))
 
         assertEquals(true, bs.equals(7))
         assertEquals(false, bs.equals(11))
@@ -80,10 +84,9 @@ class CharacterClassUnitTests {
 
         val char = Character("Sophie")
         char._name = "Joe"
-        char._race = Character.Race.DWARF
         char._health_points = 79
         char._alignment = Character.Alignment.LAWFUL_GOOD
-        char._statistics = Character.Base_Stats(7)
+        char._statistics = Character.Base_Stats_Struct(7)
         char._speed = 14
         char._armor_rating = 15
         char._total_hp_dice = 4
@@ -91,7 +94,6 @@ class CharacterClassUnitTests {
 
 
         assertEquals("Joe", char._name)
-        assertEquals(Character.Race.DWARF, char._race)
         assertEquals(79, char._health_points)
         assertEquals(Character.Alignment.LAWFUL_GOOD, char._alignment)
         assertEquals(true, char._statistics.equals(7))
@@ -100,19 +102,14 @@ class CharacterClassUnitTests {
         assertEquals(4, char._total_hp_dice)
         assertEquals(Die.d12, char._hp_die)
 
-        char.add_weapon(Weapon.RAPIER)
         val temp : Vector<Weapon> = Vector<Weapon>(0)
         temp.add(Weapon.RAPIER)
         assertEquals(temp, char._weapons)
         assertEquals(temp.clear(), char.clear_weapons())
-        assertEquals(true, char.add_weapon(Weapon.RAPIER))
-        assertEquals(true, char.remove_weapon(Weapon.RAPIER))
-        assertEquals(false, char.remove_weapon(Weapon.RAPIER))
 
         temp.add(Weapon.RAPIER)
         temp.add(Weapon.RAPIER)
         char.clear_weapons()
-        char._weapons = temp
         assertEquals(temp, char._weapons)
 
         // need to still test attack once it's finished
@@ -176,7 +173,7 @@ class PlayerClassUnitTests {
     fun saves_equalsWorks() {
         val bs : Player.Death_Saves = Player.Death_Saves(2)
         assertEquals(true, Player.Death_Saves(2).equals(bs))
-        assertEquals(false, Character.Base_Stats(3) == (bs))
+        assertEquals(false, Character.Base_Stats_Struct(3) == (bs))
 
         assertEquals(true, bs.equals(2))
         assertEquals(false, bs.equals(1))
@@ -221,19 +218,14 @@ class PlayerClassUnitTests {
         assertEquals(3, char._total_hit_dice)
         assertEquals(Die.d4, char._hit_die)
 
-        char.add_weapon(Weapon.RAPIER)
         val temp : Vector<Weapon> = Vector<Weapon>(0)
         temp.add(Weapon.RAPIER)
         assertEquals(temp, char._weapons)
         assertEquals(temp.clear(), char.clear_weapons())
-        assertEquals(true, char.add_weapon(Weapon.RAPIER))
-        assertEquals(true, char.remove_weapon(Weapon.RAPIER))
-        assertEquals(false, char.remove_weapon(Weapon.RAPIER))
 
         temp.add(Weapon.RAPIER)
         temp.add(Weapon.RAPIER)
         char.clear_weapons()
-        char._weapons = temp
         assertEquals(temp, char._weapons)
 
         // need to still test attack once it's finished

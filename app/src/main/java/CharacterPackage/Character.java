@@ -13,13 +13,20 @@ import AttackPackage.Physical.Weapon;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.Vector;
 import java.util.Random;
 
 public class Character {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static class Base_Stats {    // struct
+    public enum Base_Stats_Enum {
+        STRENGTH,       DEXTERITY,      CONSTITUTION,
+        INTELLIGENCE,   WISDOM,         CHARISMA,
+        PERCEPTION
+    }
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+    public static class Base_Stats_Struct {    // struct
         public int Strength;
         public int Dexterity;
         public int Constitution;
@@ -30,7 +37,7 @@ public class Character {
 
                     ////////////////////////////////////////////////////////////////////////////////
 
-        public Base_Stats() {
+        public Base_Stats_Struct() {
             Strength = 10;
             Dexterity = 10;
             Constitution = 10;
@@ -39,7 +46,7 @@ public class Character {
             Charisma = 10;
             Perception = 10;
         }
-        public Base_Stats(int _num) {
+        public Base_Stats_Struct(int _num) {
             Strength = _num;
             Dexterity = _num;
             Constitution = _num;
@@ -48,7 +55,7 @@ public class Character {
             Charisma = _num;
             Perception = _num;
         }
-        public Base_Stats(int _str, int _dex, int _con, int _int, int _wis, int _char, int _perc) {
+        public Base_Stats_Struct(int _str, int _dex, int _con, int _int, int _wis, int _char, int _perc) {
             Strength = _str;
             Dexterity = _dex;
             Constitution = _con;
@@ -60,7 +67,7 @@ public class Character {
 
                             ////////////////////////////////////////////////////////////////////////
 
-        public boolean equals (Base_Stats _other) {
+        public boolean equals (Base_Stats_Struct _other) {
             boolean is_same = true;
 
             if (_other != null) {
@@ -125,7 +132,7 @@ public class Character {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public enum Proficiency_Types {
+    public enum Skill {
         ACROBATICS,         ANIMAL_HANDLING,    ARCANA,             ATHLETICS,      DECEPTION,
         HISTORY,            INSIGHT,            INTIMIDATION,       INVESTIGATION,  MEDICINE,
         NATURE,             PERCEPTION,         PERFORMANCE,        PERSUASION,     RELIGION,
@@ -141,31 +148,36 @@ public class Character {
                     ////////////////////////////////////////////////////////////////////////////////
 
     public static class Proficient_In {
-        public Proficiency_Types proficiency;
+        public Skill proficiency;
         public int bonus;
         public String special;
+        public Base_Stats_Enum stat_used;
 
                     ////////////////////////////////////////////////////////////////////////////////
 
         public Proficient_In() {
-            proficiency = Proficiency_Types.ATHLETICS;
+            proficiency = Skill.ATHLETICS;
             bonus = 1;
             special = "";
+            stat_used = Base_Stats_Enum.CHARISMA;
         }
-        public Proficient_In(Proficiency_Types _TYPE) {
+        public Proficient_In(Skill _TYPE) {
             proficiency = _TYPE;
             bonus = 1;
             special = "";
+            stat_used = Base_Stats_Enum.CONSTITUTION;
         }
-        public Proficient_In(Proficiency_Types _TYPE, int _bonus, String _special) {
+        public Proficient_In(Skill _TYPE, int _bonus, String _special) {
             proficiency = _TYPE;
             bonus = _bonus;
             special = _special;
+            stat_used = null;
         }
         public Proficient_In(Proficient_In _prof) {
             proficiency = _prof.proficiency;
             bonus = _prof.bonus;
             special = _prof.special;
+            stat_used = _prof.stat_used;
         }
 
                     ////////////////////////////////////////////////////////////////////////////////
@@ -204,6 +216,30 @@ public class Character {
                     bonus = 6;
                     break;
             }
+        }
+
+        public boolean equals (Proficient_In _other) {
+            boolean is_same = true;
+
+            if (_other != null) {
+                if (this.stat_used != _other.stat_used) {
+                    is_same = false;
+                }
+                else if (this.bonus != _other.bonus) {
+                    is_same = false;
+                }
+                else if (this.proficiency != _other.proficiency) {
+                    is_same = false;
+                }
+                else if (!this.special.equals(_other.special)) {
+                    is_same = false;
+                }
+            }
+            else {
+                return false;
+            }
+
+            return is_same;
         }
 
         @NotNull
@@ -271,7 +307,7 @@ public class Character {
     private int level;
     private int health_points;
     private Alignment alignment;
-    private Base_Stats statistics;
+    private Base_Stats_Struct statistics;
     private int speed;
     private int armor_rating;
     private int total_hp_dice;
@@ -290,7 +326,7 @@ public class Character {
         char_type = Type.PLAYER;
         level = 1;
         alignment = Alignment.CHAOTIC_EVIL;
-        statistics = new Base_Stats(10);
+        statistics = new Base_Stats_Struct(10);
         speed = 5;
         armor_rating = 10;
         total_hp_dice = 0;
@@ -329,7 +365,7 @@ public class Character {
         level = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.LEVEL)));
         health_points = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.HEALTH_POINTS)));
         alignment = Alignment.valueOf(_hash.get(TAG.ALIGNMENT));
-        statistics = new Base_Stats(0);
+        statistics = new Base_Stats_Struct(0);
         statistics.Charisma = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.STATS_CHARISMA)));
         statistics.Constitution = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.STATS_CONSTITUTION)));
         statistics.Dexterity = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.STATS_DEXTERITY)));
@@ -394,10 +430,10 @@ public class Character {
         this.alignment = alignment;
     }
 
-    public Base_Stats get_statistics() {
+    public Base_Stats_Struct get_statistics() {
         return statistics;
     }
-    public void set_statistics(Base_Stats statistics) {
+    public void set_statistics(Base_Stats_Struct statistics) {
         this.statistics = statistics;
     }
 
