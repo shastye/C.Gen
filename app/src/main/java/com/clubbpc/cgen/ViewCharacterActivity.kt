@@ -2,6 +2,7 @@ package com.clubbpc.cgen
 
 import AttackPackage.Physical
 import AttackPackage.Physical.Weapon
+import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
 import Utility.User
@@ -163,27 +164,38 @@ class ViewCharacterActivity : AppCompatActivity() {
 
         val dsF_textView = findViewById<TextView>(R.id.ds_failures_textView_actual)
         dsF_textView.text = currentPlayer._death_saves.failures.toString()
-
         val dsS_textView = findViewById<TextView>(R.id.ds_successes_textView_actual)
         dsS_textView.text = currentPlayer._death_saves.successes.toString()
 
         val str_textView = findViewById<TextView>(R.id.strength_textView_actual)
         str_textView.text = currentPlayer._statistics.Strength.toString()
+        val str_mod_textView = findViewById<TextView>(R.id.strength_textView_mod_actual)
+        str_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Strength).toString()
 
         val dex_textView = findViewById<TextView>(R.id.dexterity_textView_actual)
         dex_textView.text = currentPlayer._statistics.Dexterity.toString()
+        val dex_mod_textView = findViewById<TextView>(R.id.dexterity_textView_mod_actual)
+        dex_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Dexterity).toString()
 
         val const_textView = findViewById<TextView>(R.id.constitution_textView_actual)
         const_textView.text = currentPlayer._statistics.Constitution.toString()
+        val const_mod_textView = findViewById<TextView>(R.id.constitution_textView_mod_actual)
+        const_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Constitution).toString()
 
         val intel_textView = findViewById<TextView>(R.id.intelligence_textView_actual)
         intel_textView.text = currentPlayer._statistics.Intelligence.toString()
+        val intel_mod_textView = findViewById<TextView>(R.id.intelligence_textView_mod_actual)
+        intel_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Intelligence).toString()
 
         val wis_textView = findViewById<TextView>(R.id.wisdom_textView_actual)
         wis_textView.text = currentPlayer._statistics.Wisdom.toString()
+        val wis_mod_textView = findViewById<TextView>(R.id.wisdom_textView_mod_actual)
+        wis_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Wisdom).toString()
 
         val charisma_textView = findViewById<TextView>(R.id.charisma_textView_actual)
         charisma_textView.text = currentPlayer._statistics.Charisma.toString()
+        val charisma_mod_textView = findViewById<TextView>(R.id.charisma_textView_mod_actual)
+        charisma_mod_textView.text = Character.Base_Stats.calculate_modifier(currentPlayer._statistics.Charisma).toString()
 
         val perc_textView = findViewById<TextView>(R.id.perception_textView_actual)
         perc_textView.text = currentPlayer._statistics.Perception.toString()
