@@ -96,6 +96,7 @@ public class Player extends Character {
     private Classes classe;
     private String background;
     private int experience_points;
+    private int inspiration;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,6 +110,7 @@ public class Player extends Character {
         classe = Classes.CLERIC;
         experience_points = 0;
         background = "-=- NONE -=-";
+        inspiration = 0;
     }
     public Player(Character _character) {
         super(_character);
@@ -120,6 +122,7 @@ public class Player extends Character {
         classe = Classes.BARD;
         experience_points = 0;
         background = "-=- NONE -=-";
+        inspiration = 0;
     }
     public Player(Player _player) {
         super(_player);
@@ -131,6 +134,7 @@ public class Player extends Character {
         classe = _player.get_classe();
         experience_points = 0;
         background = _player.get_background();
+        inspiration = _player.get_inspiration();
     }
     public Player(HashMap<String, String> _hash) {
         super(_hash);
@@ -144,6 +148,7 @@ public class Player extends Character {
         classe = Classes.valueOf(_hash.get(TAG.CLASS));
         experience_points = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.EXPERIENCE_POINTS)));
         background = _hash.get(TAG.BACKGROUND);
+        inspiration = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.INSPIRATION)));
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,6 +180,9 @@ public class Player extends Character {
     public String get_background() { return background; }
     public void set_background(String _background) { background = _background; }
 
+    public int get_inspiration() { return inspiration; }
+    public void set_inspiration(int _insp) { inspiration = _insp; }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public boolean equals (Player _other) {
@@ -202,6 +210,9 @@ public class Player extends Character {
             else if (!this.background.equals(_other.get_background())) {
                 is_equal = false;
             }
+            else if (this.inspiration != _other.get_inspiration()) {
+                is_equal = false;
+            }
         }
         else {
             is_equal = false;
@@ -222,6 +233,7 @@ public class Player extends Character {
         temp.put(TAG.CLASS, String.valueOf(this.classe));
         temp.put(TAG.EXPERIENCE_POINTS, String.valueOf(this.experience_points));
         temp.put(TAG.BACKGROUND, this.background);
+        temp.put(TAG.INSPIRATION, String.valueOf(this.inspiration));
 
         return temp;
     }

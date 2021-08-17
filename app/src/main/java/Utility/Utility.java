@@ -62,6 +62,7 @@ public class Utility {
         public static final String HIT_DIE = "hit die";
         public static final String CLASS = "class";
         public static final String BACKGROUND = "background";
+        public static final String INSPIRATION = "inspiration";
 
         // from Attack Class
         public static final String NUMBER_OF_DICE = "number of dice";
