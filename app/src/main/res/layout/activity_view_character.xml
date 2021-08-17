@@ -8,6 +8,8 @@
 
     TODO: (just here)
             HIT DIE/TOTAL HIT DICE (probs under attacks though)
+            WEAPONS
+            ATTACKS
 
 -->
 
@@ -668,7 +670,6 @@
                     android:id="@+id/strength_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -676,14 +677,13 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
 
                 <TextView
                     android:id="@+id/dexterity_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -691,7 +691,7 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -830,7 +830,6 @@
                     android:id="@+id/constitution_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -838,14 +837,13 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView" />
 
                 <TextView
                     android:id="@+id/intelligence_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -853,14 +851,13 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView" />
 
                 <TextView
                     android:id="@+id/wisdom_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -868,7 +865,7 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -967,7 +964,6 @@
                     android:id="@+id/charisma_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
                     android:text="+##"
@@ -975,7 +971,7 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.583"
+                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
