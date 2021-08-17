@@ -13,6 +13,7 @@ import java.util.Map;
 import AttackPackage.Attack;
 import AttackPackage.Magical;
 import AttackPackage.Physical;
+import CharacterPackage.Character;
 
 public class Utility {
     public static final class TAG {
@@ -42,6 +43,7 @@ public class Utility {
         public static final String HEALTH_POINTS_DIE = "hp die";
         public static final String WEAPONS_VECTOR = "weapons";
         public static final String ATTACKS_VECTOR = "attacks";
+        public static final String PROFICIENCIES_VECTOR = "proficiencies";
 
         // from Monster Class
         public static final String TYPE = "type";
@@ -140,20 +142,21 @@ public class Utility {
                     if (stringAttacks[i] != null && !stringAttacks[i].equals("null")) {
                         String[] temp = stringAttacks[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null"))
-                        switch (temp[0]) {
-                            case "Attack":
-                                Attack att = new Attack(stringAttacks[i]);
-                                _array[i] = att;
-                                break;
-                            case "Magical":
-                                Magical mag = new Magical(stringAttacks[i]);
-                                _array[i] = mag;
-                                break;
-                            case "Physical":
-                                Physical phy = new Physical(stringAttacks[i]);
-                                _array[i] = phy;
-                                break;
+                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                            switch (temp[0]) {
+                                case "Attack":
+                                    Attack att = new Attack(stringAttacks[i]);
+                                    _array[i] = att;
+                                    break;
+                                case "Magical":
+                                    Magical mag = new Magical(stringAttacks[i]);
+                                    _array[i] = mag;
+                                    break;
+                                case "Physical":
+                                    Physical phy = new Physical(stringAttacks[i]);
+                                    _array[i] = phy;
+                                    break;
+                            }
                         }
                     }
                 }
@@ -220,6 +223,65 @@ public class Utility {
                         if (!temp[0].equals("")) {
                             Physical.Weapon weapon = Physical.Weapon.valueOf(temp[0]);
                             _array[i] = weapon;
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            return null;
+        }
+
+        return _array;
+    }
+
+    public static Character.Proficient_In[] convertToArrayOfProficiencies(HashMap<String, String> _hashMap) {
+        Character.Proficient_In[] _array = new Character.Proficient_In[12];
+
+        String tempProficiencies = "";
+        if (_hashMap.get(TAG.PROFICIENCIES_VECTOR) != null && !_hashMap.get(TAG.PROFICIENCIES_VECTOR).equals("[]")) {
+            tempProficiencies = _hashMap.get(TAG.PROFICIENCIES_VECTOR);
+
+            String[] stringProficiencies = new String[24];
+            if (tempProficiencies != null) {
+                stringProficiencies = tempProficiencies.split(", ");
+            }
+
+            if (stringProficiencies.length > 1) {
+                for (int i = 0; i < stringProficiencies.length; i++) {
+                    if (stringProficiencies[i] != null && !stringProficiencies[i].equals("null")) {
+                        String[] temp = stringProficiencies[i].split(": ");
+                        tempProficiencies = "";
+
+                        for (int j = 0; j < temp.length; j++) {
+                            if (temp[j] != null && !temp[j].equals("null")) {
+                                if (temp[j].equals("Proficient")) {
+                                    tempProficiencies += temp[j];
+                                    tempProficiencies += ": ";
+                                }
+                            }
+                        }
+
+                        for (int k = 0; k < temp.length; k++) {
+                            if (temp[k] != null && !temp[k].equals("null")) {
+                                if (!temp[k].equals("[") && !temp[k].equals("Proficient")) {
+                                    tempProficiencies += temp[k];
+                                }
+                            }
+                        }
+
+                        stringProficiencies = new String[12];
+                        stringProficiencies[i] = tempProficiencies;
+                    }
+                }
+
+                for (int i = 0; i < stringProficiencies.length; i++) {
+                    if (stringProficiencies[i] != null && !stringProficiencies[i].equals("null")) {
+                        String[] temp = stringProficiencies[i].split(": ");
+
+                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                            Character.Proficient_In _prof = new Character.Proficient_In();
+                            _array[i] = _prof;
                         }
                     }
                 }

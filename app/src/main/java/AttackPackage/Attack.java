@@ -35,8 +35,6 @@ public class Attack {
         tempArray = null;
     }
     public Attack(String _string) {
-        Log.e("_string", _string);
-
         tempArray = _string.split(";");
         name = tempArray[1];
         num_dice = Integer.parseInt(tempArray[2]);

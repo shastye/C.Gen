@@ -2,6 +2,8 @@ package CharacterPackage;
 
 import android.util.Log;
 
+import org.jetbrains.annotations.NotNull;
+
 import Utility.Utility;
 import Utility.Utility.TAG;
 import Utility.Die;
@@ -138,29 +140,29 @@ public class Character {
 
                     ////////////////////////////////////////////////////////////////////////////////
 
-    public class Proficient_In {
+    public static class Proficient_In {
         public Proficiency_Types proficiency;
         public int bonus;
         public String special;
 
                     ////////////////////////////////////////////////////////////////////////////////
 
-        Proficient_In() {
+        public Proficient_In() {
             proficiency = Proficiency_Types.ATHLETICS;
             bonus = 1;
             special = "";
         }
-        Proficient_In(Proficiency_Types _TYPE) {
+        public Proficient_In(Proficiency_Types _TYPE) {
             proficiency = _TYPE;
             bonus = 1;
             special = "";
         }
-        Proficient_In(Proficiency_Types _TYPE, int _bonus, String _special) {
+        public Proficient_In(Proficiency_Types _TYPE, int _bonus, String _special) {
             proficiency = _TYPE;
             bonus = _bonus;
             special = _special;
         }
-        Proficient_In(Proficient_In _prof) {
+        public Proficient_In(Proficient_In _prof) {
             proficiency = _prof.proficiency;
             bonus = _prof.bonus;
             special = _prof.special;
@@ -202,6 +204,13 @@ public class Character {
                     bonus = 6;
                     break;
             }
+        }
+
+        @NotNull
+        @Override
+        public String toString()
+        {
+            return ": Proficient: ;" + this.proficiency + ";" + this.bonus + ";" + this.special + ";";
         }
     }
 
@@ -269,6 +278,7 @@ public class Character {
     private Die hp_die;
     private Weapon[] weapons;
     private Attack[] attacks;
+    private Proficient_In[] proficiencies;
     // TODO: Vector for items carried
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -287,6 +297,7 @@ public class Character {
         hp_die = Die.d4;
         weapons = new Weapon[12];
         attacks = new Attack[12];
+        proficiencies = new Proficient_In[12];
 
         health_points = Equation_HP(hp_die);
     }
@@ -307,6 +318,8 @@ public class Character {
         weapons = _char.get_weapons();
         attacks = new Attack[12];
         attacks = _char.get_attacks();
+        proficiencies = new Proficient_In[12];
+        proficiencies = _char.get_proficiencies();
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -335,10 +348,12 @@ public class Character {
         attacks = new Attack[12];
         attacks = Utility.convertToArrayOfAttack(_hash);
 
+        proficiencies = new Proficient_In[12];
+        proficiencies = Utility.convertToArrayOfProficiencies(_hash);
     }
 
         // TODO: GET MONSTER INFO FROM API if game_mode == DND
-    //       http://www.dnd5eapi.co/
+        //       http://www.dnd5eapi.co/
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -420,6 +435,9 @@ public class Character {
     public void set_attacks(Attack[] _attacks) { this.attacks = _attacks; }
     public void clear_attacks() { attacks = new Attack[attacks.length]; }
 
+    public Proficient_In[] get_proficiencies() { return proficiencies; }
+    public void set_proficiencies(Proficient_In[] _proficiencies) { this.proficiencies = _proficiencies; }
+    public void clear_proficiencies() { proficiencies = new Proficient_In[proficiencies.length]; }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -464,10 +482,13 @@ public class Character {
             else if (this.hp_die != _other.hp_die) {
                 is_same = false;
             }
-            else if (!this.weapons.equals(_other.weapons)) {
+            else if (!Arrays.equals(this.weapons, _other.weapons)) {
                 is_same = false;
             }
-            else if (!this.attacks.equals(_other.attacks)) {
+            else if (!Arrays.equals(this.attacks, _other.attacks)) {
+                is_same = false;
+            }
+            else if (!Arrays.equals(this.proficiencies, _other.proficiencies)) {
                 is_same = false;
             }
         }
@@ -502,6 +523,7 @@ public class Character {
         temp.put(TAG.HEALTH_POINTS_DIE, String.valueOf(this.hp_die));
         temp.put(TAG.WEAPONS_VECTOR, Arrays.toString(this.weapons));
         temp.put(TAG.ATTACKS_VECTOR, Arrays.toString(this.attacks));
+        temp.put(TAG.PROFICIENCIES_VECTOR, Arrays.toString(this.proficiencies));
 
         return temp;
     }
