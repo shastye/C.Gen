@@ -32,8 +32,10 @@ class ViewCharacterActivity : AppCompatActivity() {
 
     private var currentPlayer: Player = Player("")
     private var currentMonster: Monster = Monster("")
+
     private var gameMode: String = ""
     private var charType: String = ""
+    private var charName: String = ""
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,64 +60,59 @@ class ViewCharacterActivity : AppCompatActivity() {
         //////////////////////         Retrieve from database          /////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        var tempHash: HashMap<String, String> = HashMap<String, String>()
-
-        val charName : String = intent.getStringExtra("CHARACTER NAME").toString()
+        charName = intent.getStringExtra("CHARACTER NAME").toString()
         charType = intent.getStringExtra("CHARACTER TYPE").toString()
         gameMode = intent.getStringExtra("CHARACTER GAME").toString()
 
         if (gameMode == "DND") {
             if (charType == "PLAYER") {
-                val document = tempDNDplayers.document(charName).get()
-                tempHash = document.result?.data as HashMap<String, String>
+                tempDNDplayers.document(charName).get()
+                    .addOnCompleteListener{ document ->
+                        currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
+                        setInformation()
+                    }
+                    .addOnFailureListener {
+                        Log.e("FAILURE", "Information not gathered from database - DND Player.")
+                    }
             }
             else {
-                val document = tempDNDmonsters.document(charName).get()
-                tempHash = document.result?.data as HashMap<String, String>
+                tempDNDmonsters.document(charName).get()
+                    .addOnCompleteListener{ document ->
+                        currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
+                        setInformation()
+                    }
+                    .addOnFailureListener {
+                        Log.e("FAILURE", "Information not gathered from database - DND Monster.")
+                    }
             }
         }
         else if (gameMode == "PATHFINDER") {
             if (charType == "PLAYER") {
-                val document = tempPFplayers.document(charName).get()
-                tempHash = document.result?.data as HashMap<String, String>
+                tempPFplayers.document(charName).get()
+                    .addOnCompleteListener{ document ->
+                        currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
+                        setInformation()
+                    }
+                    .addOnFailureListener {
+                        Log.e("FAILURE", "Information not gathered from database - PF Player.")
+                    }
             }
             else {
-                val document = tempDNDmonsters.document(charName).get()
-                tempHash = document.result?.data as HashMap<String, String>
+                tempPFmonsters.document(charName).get()
+                    .addOnCompleteListener{ document ->
+                        currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
+                        setInformation()
+                    }
+                    .addOnFailureListener {
+                        Log.e("FAILURE", "Information not gathered from database - PF Monster.")
+                    }
             }
         }
         else {
             Log.e("INFORMATION LOST", "No information was retrieved for character of name ${charName} in ${gameMode} ${charType}.")
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////         Use Information from database          /////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
 
-        Log.e("TEMPHASH", tempHash.toString())
-
-        if (tempHash.get(TAG.CHARACTER_TYPE) == "PLAYER") {
-            currentPlayer = Player(tempHash)
-
-            if(tempHash == currentPlayer._hashMap) {
-                setInformation(currentPlayer)
-            }
-            else {
-                Log.e(TAG1_f, currentPlayer._hashMap.toString())
-                Log.e(TAG1_f, "Data didn't transfer successfully")
-            }
-        }
-        else {
-            currentMonster = Monster(tempHash)
-
-            if(tempHash == currentMonster._hashMap) {
-                setInformation(currentMonster)
-            }
-            else {
-                Log.e(TAG1_f, currentMonster._hashMap.toString())
-                Log.e(TAG1_f, "Data didn't transfer successfully")
-            }
-        }
     }
 
     override fun onDestroy() {
@@ -151,6 +148,28 @@ class ViewCharacterActivity : AppCompatActivity() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private fun setInformation() {
+        if (charType == "PLAYER") {
+            if (!currentPlayer._name.equals("")) {
+                setInformation(currentPlayer)
+                Log.e("CURRENT PLAYER", charName.toString() + " + " + currentPlayer._name.toString())
+            }
+            else {
+                Log.e(TAG1_f, currentPlayer._hashMap.toString())
+                Log.e(TAG1_f, "Data didn't transfer successfully")
+            }
+        }
+        else {
+            if(!currentMonster._name.equals("")) {
+                setInformation(currentMonster)
+                Log.e("CURRENT PLAYER", charName.toString() + " + " + currentMonster._name.toString())
+            }
+            else {
+                Log.e(TAG1_f, currentMonster._hashMap.toString())
+                Log.e(TAG1_f, "Data didn't transfer successfully")
+            }
+        }
+    }
     private fun setInformation(_player : CharacterPackage.Player) {
         var temp = ""
 
@@ -228,7 +247,6 @@ class ViewCharacterActivity : AppCompatActivity() {
         val perc_textView = findViewById<TextView>(R.id.perception_textView_actual)
         perc_textView.text = currentPlayer._statistics.Perception.toString()
     }
-
     private fun setInformation(_monster : CharacterPackage.Monster) {
         var temp = ""
 
