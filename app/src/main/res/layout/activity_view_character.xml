@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     TODO: (both here and in classes)
-            SAVING THROWS
+
 
     TODO: (just here)
+            SAVING THROWS
             PROFICIENCY BONUS
             SKILLS
             INSPIRATION
@@ -195,12 +196,116 @@
 
             </TableRow>
 
+            <ImageView
+                android:id="@+id/image_divider0"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row4"
+                app:srcCompat="@drawable/temp_divider" />
+
+<!--    ROW 4.5    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row4.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/image_divider0">
+
+                <ImageView
+                    android:id="@+id/insp_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/insp_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Inspiration"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/insp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/insp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/insp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/insp_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/insp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/insp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/insp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/profBonus_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/insp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/profBonus_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Proficiency Bonus"
+                    android:textColor="@color/parchment"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profBonus_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/profBonus_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_divider0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row4.5"
+                app:srcCompat="@drawable/temp_divider" />
+
 <!--    ROW 5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/Row4">
+                android:layout_below="@id/image_divider0.5">
 
                 <ImageView
                     android:id="@+id/xp_frame_imageView"

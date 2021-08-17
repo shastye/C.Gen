@@ -260,6 +260,12 @@ class ViewCharacterActivity : AppCompatActivity() {
 
         val perc_textView = findViewById<TextView>(R.id.perception_textView_actual)
         perc_textView.text = currentPlayer._statistics.Perception.toString()
+
+        val insp_textView = findViewById<TextView>(R.id.insp_textView_actual)
+        insp_textView.text = currentPlayer._inspiration.toString()
+
+        val profBonus_textView = findViewById<TextView>(R.id.profBonus_textView_actual)
+        profBonus_textView.text = currentPlayer._proficiency_bonus.toString()
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         var temp = ""
