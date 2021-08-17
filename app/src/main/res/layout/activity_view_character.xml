@@ -5,9 +5,7 @@
 
     TODO: (just here)
             SAVING THROWS
-            PROFICIENCY BONUS
             SKILLS
-            INSPIRATION
             HIT DIE/TOTAL HIT DICE (probs under attacks though)
             WEAPONS
             ATTACKS
@@ -293,19 +291,12 @@
                     app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/image_divider0.5"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_below="@id/Row4.5"
-                app:srcCompat="@drawable/temp_divider" />
-
-<!--    ROW 5    -->
+            <!--    ROW 5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/image_divider0.5">
+                android:layout_below="@id/Row4.5">
 
                 <ImageView
                     android:id="@+id/xp_frame_imageView"
