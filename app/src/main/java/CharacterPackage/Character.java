@@ -315,6 +315,7 @@ public class Character {
     private Weapon[] weapons;
     private Attack[] attacks;
     private Proficient_In[] proficiencies;
+    private int proficiency_bonus;
     // TODO: Vector for items carried
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,6 +335,7 @@ public class Character {
         weapons = new Weapon[12];
         attacks = new Attack[12];
         proficiencies = new Proficient_In[12];
+        proficiency_bonus = 0;
 
         health_points = Equation_HP(hp_die);
     }
@@ -356,6 +358,7 @@ public class Character {
         attacks = _char.get_attacks();
         proficiencies = new Proficient_In[12];
         proficiencies = _char.get_proficiencies();
+        proficiency_bonus = 0;
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -377,13 +380,12 @@ public class Character {
         armor_rating = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.ARMOR_RATING)));
         total_hp_dice = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.TOTAL_HEALTH_POINTS_DICE)));
         hp_die = Die.valueOf(_hash.get(TAG.HEALTH_POINTS_DIE));
+        proficiency_bonus = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.PROFICIENCY_BONUS)));
 
         weapons = new Weapon[12];
         weapons = Utility.convertToArrayOfWeapon(_hash);
-
         attacks = new Attack[12];
         attacks = Utility.convertToArrayOfAttack(_hash);
-
         proficiencies = new Proficient_In[12];
         proficiencies = Utility.convertToArrayOfProficiencies(_hash);
     }
@@ -475,6 +477,13 @@ public class Character {
     public void set_proficiencies(Proficient_In[] _proficiencies) { this.proficiencies = _proficiencies; }
     public void clear_proficiencies() { proficiencies = new Proficient_In[proficiencies.length]; }
 
+    public int get_proficiency_bonus() {
+        return proficiency_bonus;
+    }
+    public void set_proficiency_bonus(int _bonus) {
+        this.proficiency_bonus = _bonus;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int Equation_HP(Die _die) {
@@ -527,6 +536,9 @@ public class Character {
             else if (!Arrays.equals(this.proficiencies, _other.proficiencies)) {
                 is_same = false;
             }
+            else if (this.proficiency_bonus != _other.proficiency_bonus) {
+                is_same = false;
+            }
         }
         else {
             is_same = false;
@@ -560,6 +572,7 @@ public class Character {
         temp.put(TAG.WEAPONS_VECTOR, Arrays.toString(this.weapons));
         temp.put(TAG.ATTACKS_VECTOR, Arrays.toString(this.attacks));
         temp.put(TAG.PROFICIENCIES_VECTOR, Arrays.toString(this.proficiencies));
+        temp.put(TAG.PROFICIENCY_BONUS, String.valueOf(this.proficiency_bonus));
 
         return temp;
     }

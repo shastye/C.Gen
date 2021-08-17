@@ -44,6 +44,7 @@ public class Utility {
         public static final String WEAPONS_VECTOR = "weapons";
         public static final String ATTACKS_VECTOR = "attacks";
         public static final String PROFICIENCIES_VECTOR = "proficiencies";
+        public static final String PROFICIENCY_BONUS = "proficiency_bonus";
 
         // from Monster Class
         public static final String TYPE = "type";
