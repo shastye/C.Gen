@@ -15,7 +15,7 @@ import java.util.Vector;
 import java.util.Random;
 
 public class Character {
-    ///////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static class Base_Stats {    // struct
         public int Strength;
@@ -26,7 +26,7 @@ public class Character {
         public int Charisma;
         public int Perception;
 
-        ///////////////////////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////////////
 
         public Base_Stats() {
             Strength = 10;
@@ -56,7 +56,7 @@ public class Character {
             Perception = _perc;
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////
+                            ////////////////////////////////////////////////////////////////////////
 
         public boolean equals (Base_Stats _other) {
             boolean is_same = true;
@@ -121,7 +121,91 @@ public class Character {
         }
     }
 
-    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public enum Proficiency_Types {
+        ACROBATICS,         ANIMAL_HANDLING,    ARCANA,             ATHLETICS,      DECEPTION,
+        HISTORY,            INSIGHT,            INTIMIDATION,       INVESTIGATION,  MEDICINE,
+        NATURE,             PERCEPTION,         PERFORMANCE,        PERSUASION,     RELIGION,
+        SLEIGHT_OF_HAND,    STEALTH,            SURVIVAL,           VEHICLE,        GAMES,
+        MUSICAL,            TOOLS,              ARTISAN_TOOLS,      LIGHT_ARMOR,    MEDIUM_ARMOR,
+        SHIELDS,            SIMPLE_WEAPONS,     MARTIAL_WEAPONS,    HAND_CROSSBOWS, LONGSWORDS,
+        RAPIERS,            SHORTSWORDS,        INSTRUMENTS,        ALCHEMIST,      CLUBS,
+        DAGGERS,            DARTS,              JAVELINS,           MACES,          QUARTERSTAFFS,
+        SCIMITAR,           SICKLES,            SLINGS,             SPEARS,         HERBALISM,
+        ALL_ARMOR,          LIGHT_CROSSBOWS,
+    }
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+    public class Proficient_In {
+        public Proficiency_Types proficiency;
+        public int bonus;
+        public String special;
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+        Proficient_In() {
+            proficiency = Proficiency_Types.ATHLETICS;
+            bonus = 1;
+            special = "";
+        }
+        Proficient_In(Proficiency_Types _TYPE) {
+            proficiency = _TYPE;
+            bonus = 1;
+            special = "";
+        }
+        Proficient_In(Proficiency_Types _TYPE, int _bonus, String _special) {
+            proficiency = _TYPE;
+            bonus = _bonus;
+            special = _special;
+        }
+        Proficient_In(Proficient_In _prof) {
+            proficiency = _prof.proficiency;
+            bonus = _prof.bonus;
+            special = _prof.special;
+        }
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+        public void set_bonus(int _characterLevel) {
+            switch (_characterLevel) {
+                case -1:
+                case 0:
+                    bonus = 0;
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    bonus = 2;
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    bonus = 3;
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    bonus = 4;
+                    break;
+                case 14:
+                case 15:
+                case 16:
+                    bonus = 5;
+                    break;
+                default:
+                    bonus = 6;
+                    break;
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public enum Alignment {
         LAWFUL_GOOD,        NEUTRAL_GOOD,       CHAOTIC_GOOD,
@@ -129,7 +213,7 @@ public class Character {
         LAWFUL_EVIL,        NEUTRAL_EVIL,       CHAOTIC_EVIL,
     }
 
-    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public enum Game_Mode {
         DND,        PATHFINDER,
@@ -147,7 +231,7 @@ public class Character {
         return temp;
     }
 
-    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public enum Type {
         PLAYER,     MONSTER,
@@ -165,7 +249,7 @@ public class Character {
         return temp;
     }
 
-    /////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // TODO: Enum for items carried
 
@@ -187,7 +271,7 @@ public class Character {
     private Attack[] attacks;
     // TODO: Vector for items carried
 
-    /////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Character(String _name) {
         template_char = false;
@@ -256,7 +340,7 @@ public class Character {
         // TODO: GET MONSTER INFO FROM API if game_mode == DND
     //       http://www.dnd5eapi.co/
 
-    /////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public boolean is_template_char() {
         return template_char;
@@ -337,7 +421,7 @@ public class Character {
     public void clear_attacks() { attacks = new Attack[attacks.length]; }
 
 
-    /////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int Equation_HP(Die _die) {
         Random rand = new Random();
