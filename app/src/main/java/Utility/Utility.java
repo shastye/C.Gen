@@ -252,16 +252,7 @@ public class Utility {
                 for (int i = 0; i < stringProficiencies.length; i++) {
                     if (stringProficiencies[i] != null && !stringProficiencies[i].equals("null")) {
                         String[] temp = stringProficiencies[i].split(": ");
-                        tempProficiencies = "";
-
-                        for (int j = 0; j < temp.length; j++) {
-                            if (temp[j] != null && !temp[j].equals("null")) {
-                                if (temp[j].equals("Proficient")) {
-                                    tempProficiencies += temp[j];
-                                    tempProficiencies += ": ";
-                                }
-                            }
-                        }
+                        tempProficiencies = "Proficient: ";
 
                         for (int k = 0; k < temp.length; k++) {
                             if (temp[k] != null && !temp[k].equals("null")) {
@@ -281,7 +272,7 @@ public class Utility {
                         String[] temp = stringProficiencies[i].split(": ");
 
                         if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
-                            Character.Proficient_In _prof = new Character.Proficient_In();
+                            Character.Proficient_In _prof = new Character.Proficient_In(temp[1]);
                             _array[i] = _prof;
                         }
                     }

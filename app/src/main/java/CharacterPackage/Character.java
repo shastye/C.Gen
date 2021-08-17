@@ -179,6 +179,14 @@ public class Character {
             special = _prof.special;
             stat_used = _prof.stat_used;
         }
+        public Proficient_In(String _string) {
+            String[] tempArray = _string.split(";");
+
+            proficiency = Skill.valueOf(tempArray[0]);
+            bonus = Integer.parseInt(tempArray[1]);
+            stat_used = Base_Stats_Enum.valueOf(tempArray[2]);
+            special = tempArray[3];
+        }
 
                     ////////////////////////////////////////////////////////////////////////////////
 
@@ -246,7 +254,7 @@ public class Character {
         @Override
         public String toString()
         {
-            return ": Proficient: ;" + this.proficiency + ";" + this.bonus + ";" + this.special + ";";
+            return ": Proficient: ;" + this.proficiency + ";" + this.bonus + ";" + this.stat_used + ";" + this.special + ";";
         }
     }
 
