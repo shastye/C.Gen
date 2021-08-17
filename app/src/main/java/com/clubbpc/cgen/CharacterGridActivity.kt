@@ -154,7 +154,9 @@ class CharacterGridActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
 
                 val myIntent = Intent(this, ViewCharacterActivity::class.java)
-                myIntent.putExtra("VIEW CHARACTER", selectedPlayer._hashMap)
+                myIntent.putExtra("CHARACTER NAME", selectedPlayer._name)
+                myIntent.putExtra("CHARACTER TYPE", selectedPlayer._char_type.toString())
+                myIntent.putExtra("CHARACTER GAME", selectedPlayer._game_mode.toString())
 
                 startActivity(myIntent)
                 finish()
@@ -166,7 +168,9 @@ class CharacterGridActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
 
                 val myIntent = Intent(this, ViewCharacterActivity::class.java)
-                myIntent.putExtra("VIEW CHARACTER", selectedMonster._hashMap)
+                myIntent.putExtra("CHARACTER NAME", selectedMonster._name)
+                myIntent.putExtra("CHARACTER TYPE", selectedMonster._char_type.toString())
+                myIntent.putExtra("CHARACTER GAME", selectedMonster._game_mode.toString())
 
                 startActivity(myIntent)
                 finish()

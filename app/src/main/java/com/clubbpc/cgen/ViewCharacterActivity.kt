@@ -25,6 +25,11 @@ class ViewCharacterActivity : AppCompatActivity() {
     val tempUsers = Firebase.firestore.collection(TAG.USERS_COLLECTION)
     val tempUserDoc = tempUsers.document(auth.currentUser?.email.toString())
 
+    var tempDNDplayers = tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT)
+    var tempPFplayers = tempUserDoc.collection(TAG.PATHFINDER_PLAYERSHEETS_DOCUMENT)
+    var tempDNDmonsters = tempUserDoc.collection(TAG.DND_MONSTERSHEETS_DOCUMENT)
+    var tempPFmonsters = tempUserDoc.collection(TAG.PATHFINDER_MONSTERSHEETS_DOCUMENT)
+
     private var currentPlayer: Player = Player("")
     private var currentMonster: Monster = Monster("")
     private var gameMode: String = ""
@@ -49,14 +54,47 @@ class ViewCharacterActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val tempHash: HashMap<String, String>? = intent.getSerializableExtra("VIEW CHARACTER") as? HashMap<String, String>
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////         Retrieve from database          /////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        var tempHash: HashMap<String, String> = HashMap<String, String>()
+
+        val charName : String = intent.getStringExtra("CHARACTER NAME").toString()
+        charType = intent.getStringExtra("CHARACTER TYPE").toString()
+        gameMode = intent.getStringExtra("CHARACTER GAME").toString()
+
+        if (gameMode == "DND") {
+            if (charType == "PLAYER") {
+                val document = tempDNDplayers.document(charName).get()
+                tempHash = document.result?.data as HashMap<String, String>
+            }
+            else {
+                val document = tempDNDmonsters.document(charName).get()
+                tempHash = document.result?.data as HashMap<String, String>
+            }
+        }
+        else if (gameMode == "PATHFINDER") {
+            if (charType == "PLAYER") {
+                val document = tempPFplayers.document(charName).get()
+                tempHash = document.result?.data as HashMap<String, String>
+            }
+            else {
+                val document = tempDNDmonsters.document(charName).get()
+                tempHash = document.result?.data as HashMap<String, String>
+            }
+        }
+        else {
+            Log.e("INFORMATION LOST", "No information was retrieved for character of name ${charName} in ${gameMode} ${charType}.")
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////         Use Information from database          /////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         Log.e("TEMPHASH", tempHash.toString())
 
-        charType = tempHash?.get(TAG.CHARACTER_TYPE).toString()
-        gameMode = tempHash?.get(TAG.GAME_MODE).toString()
-
-        if (tempHash?.get(TAG.CHARACTER_TYPE) == "PLAYER") {
+        if (tempHash.get(TAG.CHARACTER_TYPE) == "PLAYER") {
             currentPlayer = Player(tempHash)
 
             if(tempHash == currentPlayer._hashMap) {
@@ -78,23 +116,10 @@ class ViewCharacterActivity : AppCompatActivity() {
                 Log.e(TAG1_f, "Data didn't transfer successfully")
             }
         }
-
-        // TODO: DELETE WHEN DONE
-
-        currentPlayer._weapons.set(0, Weapon.RAPIER)
-        currentPlayer._weapons.set(1, Weapon.MACE)
-        currentPlayer._weapons.set(2, Weapon.DAGGER)
-
-        // TODO: DELETE TO HERE
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
-        var tempDNDplayers = tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT)
-        var tempPFplayers = tempUserDoc.collection(TAG.PATHFINDER_PLAYERSHEETS_DOCUMENT)
-        var tempDNDmonsters = tempUserDoc.collection(TAG.DND_MONSTERSHEETS_DOCUMENT)
-        var tempPFmonsters = tempUserDoc.collection(TAG.PATHFINDER_MONSTERSHEETS_DOCUMENT)
 
         if (gameMode == "DND") {
             if (charType == "PLAYER") {
@@ -116,6 +141,9 @@ class ViewCharacterActivity : AppCompatActivity() {
                 tempPFmonsters.document(currentMonster._name).set(currentMonster._hashMap)
                 Log.e("INFORMATION SAVED", currentMonster._hashMap.toString())
             }
+        }
+        else {
+            Log.e("INFORMATION LOST", "No information was saved.")
         }
 
 
