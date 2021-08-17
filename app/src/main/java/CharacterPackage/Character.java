@@ -517,14 +517,38 @@ public class Character {
     public Weapon[] get_weapons() { return weapons; }
     public void set_weapons(Weapon[] _weapons) { this.weapons = _weapons; }
     public void clear_weapons() { weapons = new Weapon[weapons.length]; }
+    public void add_weapon(Weapon _weapon) {
+        for (int i = 0; i < weapons.length; i++) {
+            if (weapons[i] == null) {
+                weapons[i] = _weapon;
+                break;
+            }
+        }
+    }
 
     public Attack[] get_attacks() { return attacks; }
     public void set_attacks(Attack[] _attacks) { this.attacks = _attacks; }
     public void clear_attacks() { attacks = new Attack[attacks.length]; }
+    public void add_attack(Attack _attack) {
+        for (int i = 0; i < attacks.length; i++) {
+            if (attacks[i] == null) {
+                attacks[i] = _attack;
+                break;
+            }
+        }
+    }
 
     public Proficient_In[] get_proficiencies() { return proficiencies; }
     public void set_proficiencies(Proficient_In[] _proficiencies) { this.proficiencies = _proficiencies; }
     public void clear_proficiencies() { proficiencies = new Proficient_In[proficiencies.length]; }
+    public void add_proficiency(Proficient_In _prof) {
+        for (int i = 0; i < proficiencies.length; i++) {
+            if (proficiencies[i] == null) {
+                proficiencies[i] = _prof;
+                break;
+            }
+        }
+    }
 
     public int get_proficiency_bonus() {
         return proficiency_bonus;
@@ -536,6 +560,14 @@ public class Character {
     public Saving_Throw[] get_saving_throws() { return saving_throws; }
     public void set_saving_throws(Saving_Throw[] _throw) { this.saving_throws = _throw; }
     public void clear_saving_throws() { saving_throws = new Saving_Throw[saving_throws.length]; }
+    public void add_saving_throw(Saving_Throw _throw) {
+        for (int i = 0; i < saving_throws.length; i++) {
+            if (saving_throws[i] == null) {
+                saving_throws[i] = _throw;
+                break;
+            }
+        }
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -626,6 +658,7 @@ public class Character {
         temp.put(TAG.ATTACKS_VECTOR, Arrays.toString(this.attacks));
         temp.put(TAG.PROFICIENCIES_VECTOR, Arrays.toString(this.proficiencies));
         temp.put(TAG.PROFICIENCY_BONUS, String.valueOf(this.proficiency_bonus));
+        temp.put(TAG.SAVING_THROWS_VECTOR, Arrays.toString(this.saving_throws));
 
         return temp;
     }
