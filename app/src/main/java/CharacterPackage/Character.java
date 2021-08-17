@@ -115,6 +115,10 @@ public class Character {
 
             return is_same;
         }
+
+        public static int calculate_modifier(int _stat) {
+            return (_stat - 10) / 2;
+        }
     }
 
     ////////////////////////////////////////////////////////////
