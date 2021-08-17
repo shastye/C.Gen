@@ -139,6 +139,7 @@ public class Utility {
                     if (stringAttacks[i] != null && !stringAttacks[i].equals("null")) {
                         String[] temp = stringAttacks[i].split(": ");
 
+                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null"))
                         switch (temp[0]) {
                             case "Attack":
                                 Attack att = new Attack(stringAttacks[i]);
