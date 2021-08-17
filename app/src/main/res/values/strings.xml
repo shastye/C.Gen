@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">C.Gen</string>
+    <string name="title">C.Gen</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email: </string>
+    <string name="password">Password: </string>
+    <string name="finish">Finish</string>
+    <string name="answer_questions">Answer the following questions for ease of use:</string>
+    <string name="player_name">Player name:</string>
+    <string name="default_character_level">Default Character Level: </string>
+    <string name="int_character_level">0</string>
+    <string name="name">Your Name Here</string>
+    <string name="intro_message">Welcome to C.Gen\n\n
+        Home for all of your\nDungeons and Dragons\nCharacter Sheets\n\n
+        Please Sign In:</string>
+    <string name="add_character">Add a character</string>
+    <string name="new_character">New Character Information</string>
+    <string name="game_mode_type">Game Mode: </string>
+    <string name="character_type">Character Type: </string>
+    <string name="character_name">Character Name: </string>
+    <string name="character_race">Character Race: </string>
+    <string name="character_level">Character Level: </string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+
+    <string name="statistics_character">  Player Statistics</string>
+    <string name="background_character">  Background</string>
+    <string name="weapons_character">  Weapons</string>
+    <string name="spells_character">  Spells</string>
+    <string name="dodo">  Player Statistics</string>
+    <string name="start">Get Started</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_sign_out">Sign Out</string>
+
+
+</resources>

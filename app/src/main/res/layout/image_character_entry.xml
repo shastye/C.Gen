@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/screen_background_light_transparent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/gridChild_frame_imageView"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/temp_gridview_item" />
+
+    <TextView
+        android:id="@+id/gridChild_characterName_textView"
+        android:layout_width="110dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:rotation="-12"
+        android:text="Insert Name Here"
+        android:textColor="@color/parchment"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/gridChild_frame_imageView"
+        app:layout_constraintEnd_toEndOf="@+id/gridChild_frame_imageView"
+        app:layout_constraintStart_toStartOf="@+id/gridChild_frame_imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

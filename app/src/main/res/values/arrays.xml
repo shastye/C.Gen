@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="game_types" >
+        <item>DND</item>
+        <item>Pathfinder</item>
+    </string-array>
+
+    <string-array name="character_types" >
+        <item>Player</item>
+        <item>Monster</item>
+    </string-array>
+
+    <string-array name="races">
+        <item>Human</item>
+        <item>Dragonborn</item>
+        <item>Dwarf</item>
+    </string-array>
+</resources>

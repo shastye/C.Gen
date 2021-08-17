@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "3751979139",
+    "project_id": "cgen-database",
+    "storage_bucket": "cgen-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3751979139:android:8806987be4fa83224c93b6",
+        "android_client_info": {
+          "package_name": "com.clubbpc.cgen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3751979139-b5sltducubd3qpav44ion0kh8nrs7mu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb5htndtCKam-jwCaCGoHwExMtrpFG7-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3751979139-b5sltducubd3qpav44ion0kh8nrs7mu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

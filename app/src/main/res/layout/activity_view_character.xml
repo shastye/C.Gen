@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TODO: (both here and in classes)
+            INSPIRATION
+            PROFICIENCY BONUS
+            SAVING THROWS
+            SKILLS
+
+    TODO: (just here)
+            HIT DIE/TOTAL HIT DICE (probs under attacks though)
+
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/characterName_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/accent_red"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/characterStats_scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitle="Player or Monster"
+        app:title="Insert Name">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/back_imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/characterName_toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/characterName_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/characterName_toolbar"
+        app:srcCompat="@android:drawable/ic_media_previous" />
+
+    <ScrollView
+        android:id="@+id/characterStats_scrollView"
+        style="@android:style/Widget.Holo.ScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/parchment"
+        android:fadeScrollbars="true"
+        android:isScrollContainer="true"
+        android:keepScreenOn="true"
+        android:orientation="vertical"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:verticalScrollbarPosition="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterName_toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/player_stats_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:background="@color/accent_red"
+                app:cardBackgroundColor="@color/dark_red"
+                app:cardElevation="@dimen/fab_margin">
+
+                <TextView
+                    android:id="@+id/playerStats_createCharacter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/statistics_character"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:translationX="16dp" />
+            </androidx.cardview.widget.CardView>
+
+<!--    ROW 1    -->
+            <TableRow
+                android:id="@+id/Row1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@id/player_stats_header">
+
+                <TextView
+                    android:id="@+id/class_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class:" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="144dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/class_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rouge" />
+
+            </TableRow>
+
+<!--    ROW 2    -->
+            <TableRow
+                android:id="@+id/Row2"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@id/Row1">
+
+                <TextView
+                    android:id="@+id/background_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Background: " />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/background_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- None -" />
+
+            </TableRow>
+
+<!--    ROW 3    -->
+            <TableRow
+                android:id="@+id/Row3"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@id/Row2">
+
+                <TextView
+                    android:id="@+id/race_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Race: " />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="144dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/race_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wood Elf" />
+
+            </TableRow>
+
+<!--    ROW 4    -->
+            <TableRow
+                android:id="@+id/Row4"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@id/Row3">
+
+                <TextView
+                    android:id="@+id/alignment_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alignment: " />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="112dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/alignment_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chaotic Evil" />
+
+            </TableRow>
+
+<!--    ROW 5    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Row4">
+
+                <ImageView
+                    android:id="@+id/xp_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/level_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/xp_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Experience Points"
+                    android:textColor="@color/parchment"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/xp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/xp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/xp_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/xp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/xp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/level_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/xp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/level_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Level"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/level_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/level_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/level_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/level_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/level_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/level_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/level_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_divider1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row5"
+                app:srcCompat="@drawable/temp_divider" />
+
+<!--    ROW 6    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/image_divider1">
+
+                <ImageView
+                    android:id="@+id/ac_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/speed_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/ac_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Armor Class"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ac_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/ac_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/ac_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ac_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ac_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/ac_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/ac_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/speed_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/mhp_frame_imageView"
+                    app:layout_constraintStart_toEndOf="@id/ac_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/speed_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Speed"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/speed_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/speed_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/speed_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/speed_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/speed_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/speed_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/speed_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/mhp_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/speed_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/totalHealthPoints_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Hit Point Maximum"
+                    android:textColor="@color/parchment"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/maxHealthPoints_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/mhp_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_divider2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row6"
+                app:srcCompat="@drawable/temp_divider" />
+
+<!--    ROW 7    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/image_divider2">
+
+                <ImageView
+                    android:id="@+id/hd_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ds_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/hd_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Hit Point Dice"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/hd_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/hd_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/hd_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hd_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="#d#"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/hd_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/hd_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/hd_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/ds_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/hd_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/ds_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Death Saves"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ds_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/ds_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ds_successes_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Successes: "
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/ds_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/ds_failures_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="Failures: "
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ds_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/ds_frame_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/ds_successes_textView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/ds_successes_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="#"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView_actual"
+                    app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/ds_successes_textView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.375" />
+
+                <TextView
+                    android:id="@+id/ds_failures_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="#"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/ds_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/ds_failures_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/ds_successes_textView"
+                    app:layout_constraintVertical_bias="0.555" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_divider3"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row7"
+                app:srcCompat="@drawable/temp_divider" />
+
+<!--    ROW 8    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/image_divider3">
+
+                <ImageView
+                    android:id="@+id/strength_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/strength_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Strength"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/strength_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
+
+                <ImageView
+                    android:id="@+id/dexterity_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/strength_frame_imageView" />
+
+                <TextView
+                    android:id="@+id/dexterity_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Dexterity"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/dexterity_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 9    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Row8">
+
+                <ImageView
+                    android:id="@+id/constitution_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/constitution_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Constitution"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/constitution_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="###"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/intelligence_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/wisdom_frame_imageView"
+                    app:layout_constraintStart_toEndOf="@id/constitution_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/intelligence_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Intelligence"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/intelligence_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/wisdom_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/intelligence_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/wisdom_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Wisdom"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/wisdom_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 10    -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Row9">
+
+                <ImageView
+                    android:id="@+id/charisma_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/perception_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item" />
+
+                <TextView
+                    android:id="@+id/charisma_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Charisma"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/charisma_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView" />
+
+                <ImageView
+                    android:id="@+id/perception_frame_imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/temp_gridview_item"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/charisma_frame_imageView" />
+
+                <TextView
+                    android:id="@+id/perception_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Perception"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/perception_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/perception_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="@+id/perception_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/image_divider4"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/Row10"
+                app:srcCompat="@drawable/temp_divider" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

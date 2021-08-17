@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_background_constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="@null">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:background="@color/parchment"
+        android:clipToPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:background="@color/accent_red">
+
+            <TextView
+                android:id="@+id/dialog_newCharacter_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="New Character"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="21dp" />
+
+            <TextView
+                android:id="@+id/dialog_information_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Information"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="21dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/dialog_gameType_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_mode_type"
+                android:textAlignment="textEnd"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/dialog_gameMode_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:entries="@array/game_types" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/dialog_characterType_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/character_type"
+                android:textAlignment="textEnd"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/dialog_characterType_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:entries="@array/character_types" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            tools:layout_editor_absoluteY="42dp">
+
+            <TextView
+                android:id="@+id/dialog_characterName_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/character_name"
+                android:textAlignment="textEnd"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/dialog_characterName_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/name"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/dialog_characterRace_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/character_race"
+                android:textAlignment="textEnd"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/dialog_characterRace_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:entries="@array/races" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/dialog_characterLevel_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/character_level"
+                android:textAlignment="textEnd"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/dialog_characterLevel_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/int_character_level"
+                android:ems="10"
+                android:hint="@string/int_character_level"
+                android:inputType="number" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/dialog_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_create_button" />
+
+    <Button
+        android:id="@+id/dialog_create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal|center_vertical|end"
+        android:text="@string/create"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
