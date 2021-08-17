@@ -260,6 +260,65 @@ public class Character {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static class Saving_Throw {
+        public Base_Stats_Enum statistic;
+        public int modifier;
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+        public Saving_Throw() {
+            statistic = Base_Stats_Enum.WISDOM;
+            modifier = 0;
+        }
+        public Saving_Throw(Base_Stats_Enum _stat) {
+            statistic = _stat;
+            modifier = 0;
+        }
+        public Saving_Throw(Base_Stats_Enum _stat, int _mod) {
+            statistic = _stat;
+            modifier = _mod;
+        }
+        public Saving_Throw(Saving_Throw _throw) {
+            statistic = _throw.statistic;
+            modifier = _throw.modifier;
+        }
+        public Saving_Throw(String _string) {
+            String[] tempArray = _string.split(";");
+
+            statistic = Base_Stats_Enum.valueOf(tempArray[0]);
+            modifier = Integer.parseInt(tempArray[1]);
+        }
+
+                    ////////////////////////////////////////////////////////////////////////////////
+
+        public boolean equals (Saving_Throw _other) {
+            boolean is_same = true;
+
+            if (_other != null) {
+                if (this.statistic != _other.statistic) {
+                    is_same = false;
+                }
+                else if (this.modifier != _other.modifier) {
+                    is_same = false;
+                }
+            }
+            else {
+                return false;
+            }
+
+            return is_same;
+        }
+
+        @NotNull
+        @Override
+        public String toString()
+        {
+            return ": Saving Throw: ;" + this.statistic + ";" + this.modifier + ";";
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     public enum Alignment {
         LAWFUL_GOOD,        NEUTRAL_GOOD,       CHAOTIC_GOOD,
         LAWFUL_NEUTRAL,     NEUTRAL_NEUTRAL,    CHAOTIC_NEUTRAL,
@@ -272,34 +331,10 @@ public class Character {
         DND,        PATHFINDER,
     }
 
-    public static Game_Mode string_to_game_mode(String _mode) {
-        Game_Mode temp = Game_Mode.PATHFINDER;
-
-        try {
-            temp = Game_Mode.valueOf(_mode);
-        } catch (Exception e) {
-            temp = Game_Mode.DND;
-        }
-
-        return temp;
-    }
-
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public enum Type {
         PLAYER,     MONSTER,
-    }
-
-    public static Type string_to_type(String _type) {
-        Type temp = Type.MONSTER;
-
-        try {
-            temp = Type.valueOf(_type);
-        } catch (Exception e) {
-            temp = Type.PLAYER;
-        }
-
-        return temp;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -324,6 +359,7 @@ public class Character {
     private Attack[] attacks;
     private Proficient_In[] proficiencies;
     private int proficiency_bonus;
+    private Saving_Throw[] saving_throws;
     // TODO: Vector for items carried
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -344,6 +380,7 @@ public class Character {
         attacks = new Attack[12];
         proficiencies = new Proficient_In[12];
         proficiency_bonus = 0;
+        saving_throws = new Saving_Throw[12];
 
         health_points = Equation_HP(hp_die);
     }
@@ -366,7 +403,9 @@ public class Character {
         attacks = _char.get_attacks();
         proficiencies = new Proficient_In[12];
         proficiencies = _char.get_proficiencies();
-        proficiency_bonus = 0;
+        proficiency_bonus = _char.get_proficiency_bonus();
+        saving_throws = new Saving_Throw[12];
+        saving_throws = _char.get_saving_throws();
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -396,6 +435,8 @@ public class Character {
         attacks = Utility.convertToArrayOfAttack(_hash);
         proficiencies = new Proficient_In[12];
         proficiencies = Utility.convertToArrayOfProficiencies(_hash);
+        saving_throws = new Saving_Throw[12];
+        saving_throws = Utility.convertToArrayOfSavingThrows(_hash);
     }
 
         // TODO: GET MONSTER INFO FROM API if game_mode == DND
@@ -491,6 +532,10 @@ public class Character {
     public void set_proficiency_bonus(int _bonus) {
         this.proficiency_bonus = _bonus;
     }
+
+    public Saving_Throw[] get_saving_throws() { return saving_throws; }
+    public void set_saving_throws(Saving_Throw[] _throw) { this.saving_throws = _throw; }
+    public void clear_saving_throws() { saving_throws = new Saving_Throw[saving_throws.length]; }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 

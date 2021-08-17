@@ -45,6 +45,7 @@ public class Utility {
         public static final String ATTACKS_VECTOR = "attacks";
         public static final String PROFICIENCIES_VECTOR = "proficiencies";
         public static final String PROFICIENCY_BONUS = "proficiency_bonus";
+        public static final String SAVING_THROWS_VECTOR = "saving throws";
 
         // from Monster Class
         public static final String TYPE = "type";
@@ -273,6 +274,56 @@ public class Utility {
 
                         if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
                             Character.Proficient_In _prof = new Character.Proficient_In(temp[1]);
+                            _array[i] = _prof;
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            return null;
+        }
+
+        return _array;
+    }
+
+    public static Character.Saving_Throw[] convertToArrayOfSavingThrows(HashMap<String, String> _hashMap) {
+        Character.Saving_Throw[] _array = new Character.Saving_Throw[12];
+
+        String tempThrows = "";
+        if (_hashMap.get(TAG.SAVING_THROWS_VECTOR) != null && !_hashMap.get(TAG.SAVING_THROWS_VECTOR).equals("[]")) {
+            tempThrows = _hashMap.get(TAG.SAVING_THROWS_VECTOR);
+
+            String[] stringThrows = new String[24];
+            if (tempThrows != null) {
+                stringThrows = tempThrows.split(", ");
+            }
+
+            if (stringThrows.length > 1) {
+                for (int i = 0; i < stringThrows.length; i++) {
+                    if (stringThrows[i] != null && !stringThrows[i].equals("null")) {
+                        String[] temp = stringThrows[i].split(": ");
+                        tempThrows = "Saving Throw: ";
+
+                        for (int k = 0; k < temp.length; k++) {
+                            if (temp[k] != null && !temp[k].equals("null")) {
+                                if (!temp[k].equals("[") && !temp[k].equals("Proficient")) {
+                                    tempThrows += temp[k];
+                                }
+                            }
+                        }
+
+                        stringThrows = new String[12];
+                        stringThrows[i] = tempThrows;
+                    }
+                }
+
+                for (int i = 0; i < stringThrows.length; i++) {
+                    if (stringThrows[i] != null && !stringThrows[i].equals("null")) {
+                        String[] temp = stringThrows[i].split(": ");
+
+                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                            Character.Saving_Throw _prof = new Character.Saving_Throw(temp[1]);
                             _array[i] = _prof;
                         }
                     }
