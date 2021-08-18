@@ -32,7 +32,7 @@ public class Physical extends Attack {
     public Physical(String _string) {
         super(_string);
 
-        weapon_used = Weapon.valueOf(tempArray[5]);
+        weapon_used = Weapon.valueOf(tempArray[tempArray.length - 1]);
         // TODO: new variable definitions
     }
 

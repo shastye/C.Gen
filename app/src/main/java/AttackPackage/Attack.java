@@ -17,6 +17,7 @@ public class Attack {
     private Die die;
     private String special;
     protected String[] tempArray;
+    private int bonus;
 
     ///////////////////////////////////////////////////////////////////////////
 
@@ -26,13 +27,15 @@ public class Attack {
         die = Die.d4;
         special = "";
         tempArray = null;
+        bonus = 0;
     }
     public Attack(Attack _attack) {
         this.name = _attack.get_name();
         this.num_dice = _attack.get_num_dice();
         this.die = _attack.get_die();
         this.special = _attack.get_special();
-        tempArray = null;
+        tempArray = _attack.tempArray;
+        bonus = _attack.bonus;
     }
     public Attack(String _string) {
         tempArray = _string.split(";");
@@ -40,6 +43,7 @@ public class Attack {
         num_dice = Integer.parseInt(tempArray[2]);
         die = Die.valueOf(tempArray[3]);
         special = tempArray[4];
+        bonus = Integer.parseInt(tempArray[5]);
     }
 
     /////////////////////////////////////////////////////////////////////////
@@ -76,6 +80,6 @@ public class Attack {
     @Override
     public String toString()
     {
-        return ": Attack: ;" + this.name + ";" + this.num_dice + ";" + this.die + ";" + this.special + ";";
+        return ": Attack: ;" + this.name + ";" + this.num_dice + ";" + this.die + ";" + this.special + ";" + this.bonus + ";";
     }
 }
