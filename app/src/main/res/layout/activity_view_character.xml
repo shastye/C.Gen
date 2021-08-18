@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     TODO: (both here and in classes)
-
+            INITIATIVE
 
     TODO: (just here)
             SAVING THROWS
@@ -217,13 +217,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/bold_square" />
 
                 <TextView
                     android:id="@+id/insp_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="36dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Inspiration"
@@ -258,13 +258,13 @@
                     app:layout_constraintStart_toEndOf="@id/insp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/flowing_circle" />
 
                 <TextView
                     android:id="@+id/profBonus_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="40dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Proficiency Bonus"
@@ -279,7 +279,7 @@
                     android:id="@+id/profBonus_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="18dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
@@ -307,18 +307,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/xp_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Experience Points"
                     android:textColor="@color/parchment"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/xp_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/xp_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
@@ -348,13 +348,13 @@
                     app:layout_constraintStart_toEndOf="@id/xp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/level_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Level"
@@ -404,13 +404,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_sheild" />
 
                 <TextView
                     android:id="@+id/ac_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="28dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Armor Class"
@@ -445,13 +445,13 @@
                     app:layout_constraintStart_toEndOf="@id/ac_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/speed_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Speed"
@@ -486,13 +486,13 @@
                     app:layout_constraintStart_toEndOf="@id/speed_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/totalHealthPoints_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Hit Point Maximum"
@@ -542,13 +542,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/hd_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Hit Point Dice"
@@ -583,13 +583,13 @@
                     app:layout_constraintStart_toEndOf="@id/hd_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/generic_square" />
 
                 <TextView
                     android:id="@+id/ds_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Death Saves"
@@ -687,13 +687,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/mod_square" />
 
                 <TextView
                     android:id="@+id/strength_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Strength"
@@ -708,16 +708,16 @@
                     android:id="@+id/strength_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
                     android:textSize="34sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
+                    app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/dexterity_frame_imageView"
@@ -725,7 +725,7 @@
                     android:layout_height="120dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item"
+                    app:srcCompat="@drawable/mod_square"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/strength_frame_imageView" />
@@ -734,7 +734,7 @@
                     android:id="@+id/dexterity_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="65dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Dexterity"
@@ -742,52 +742,48 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/dexterity_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
                     android:textSize="34sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView" />
+                    app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/strength_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
 
                 <TextView
                     android:id="@+id/dexterity_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -808,13 +804,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/mod_square" />
 
                 <TextView
                     android:id="@+id/constitution_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Constitution"
@@ -827,11 +823,11 @@
 
                 <TextView
                     android:id="@+id/constitution_textView_actual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="42dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text="##"
                     android:textColor="@color/black"
                     android:textSize="34sp"
                     app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
@@ -849,13 +845,13 @@
                     app:layout_constraintStart_toEndOf="@id/constitution_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/mod_square" />
 
                 <TextView
                     android:id="@+id/intelligence_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Intelligence"
@@ -870,7 +866,7 @@
                     android:id="@+id/intelligence_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
@@ -890,13 +886,13 @@
                     app:layout_constraintStart_toEndOf="@id/intelligence_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/mod_square" />
 
                 <TextView
                     android:id="@+id/wisdom_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Wisdom"
@@ -911,7 +907,7 @@
                     android:id="@+id/wisdom_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
@@ -926,42 +922,39 @@
                     android:id="@+id/constitution_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView" />
 
                 <TextView
                     android:id="@+id/intelligence_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView" />
 
                 <TextView
                     android:id="@+id/wisdom_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.65"
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -981,13 +974,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item" />
+                    app:srcCompat="@drawable/mod_square" />
 
                 <TextView
                     android:id="@+id/charisma_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Charisma"
@@ -1002,16 +995,16 @@
                     android:id="@+id/charisma_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
                     android:textSize="34sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView" />
+                    app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/perception_frame_imageView"
@@ -1019,7 +1012,7 @@
                     android:layout_height="120dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/temp_gridview_item"
+                    app:srcCompat="@drawable/generic_square"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/charisma_frame_imageView" />
@@ -1028,7 +1021,7 @@
                     android:id="@+id/perception_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="65dp"
+                    android:layout_marginTop="26dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Perception"
@@ -1038,36 +1031,34 @@
                     app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/perception_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
                     android:textSize="34sp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintBottom_toBottomOf="@+id/perception_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView" />
+                    app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/charisma_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center"
                     android:text="+##"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.60"
                     app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
