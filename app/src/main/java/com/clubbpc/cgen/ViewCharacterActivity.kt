@@ -52,6 +52,8 @@ class ViewCharacterActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
+        // TODO: CHECK ATTACKS, WEAPONS, PROFICIENCIES, AND SAVE THROWS
+
         ////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////         Retrieve from database          /////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,6 +270,10 @@ class ViewCharacterActivity : AppCompatActivity() {
         profBonus_textView.text = currentPlayer._proficiency_bonus.toString()
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
+        // TODO: MOVE TO OWN XML FILE
+        //          COPY AND PASTE
+        //          THEN CHANGE
+
         var temp = ""
 
         val name_toolbar = findViewById<Toolbar>(R.id.characterName_toolbar)
