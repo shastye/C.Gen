@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <!--
     TODO: (both here and in classes)
             INITIATIVE
@@ -80,7 +83,7 @@
                 app:cardElevation="@dimen/fab_margin">
 
                 <TextView
-                    android:id="@+id/playerStats_createCharacter"
+                    android:id="@+id/playerStats_viewCharacter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/statistics_character"
@@ -99,18 +102,13 @@
 
                 <TextView
                     android:id="@+id/class_textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Class:" />
 
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="144dp"
-                    android:layout_height="match_parent" />
-
                 <TextView
                     android:id="@+id/class_textView_actual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Rouge" />
 
@@ -125,18 +123,13 @@
 
                 <TextView
                     android:id="@+id/background_textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Background: " />
 
-                <View
-                    android:id="@+id/divider2"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent" />
-
                 <TextView
                     android:id="@+id/background_textView_actual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="- None -" />
 
@@ -151,18 +144,13 @@
 
                 <TextView
                     android:id="@+id/race_textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Race: " />
 
-                <View
-                    android:id="@+id/divider3"
-                    android:layout_width="144dp"
-                    android:layout_height="match_parent" />
-
                 <TextView
                     android:id="@+id/race_textView_actual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Wood Elf" />
 
@@ -177,18 +165,13 @@
 
                 <TextView
                     android:id="@+id/alignment_textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Alignment: " />
 
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="112dp"
-                    android:layout_height="match_parent" />
-
                 <TextView
                     android:id="@+id/alignment_textView_actual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:text="Chaotic Evil" />
 
@@ -210,7 +193,7 @@
 
                 <ImageView
                     android:id="@+id/insp_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/profBonus_frame_imageView"
@@ -223,7 +206,7 @@
                     android:id="@+id/insp_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="32dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Inspiration"
@@ -251,7 +234,7 @@
 
                 <ImageView
                     android:id="@+id/profBonus_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -264,7 +247,7 @@
                     android:id="@+id/profBonus_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="36dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Proficiency Bonus"
@@ -291,7 +274,7 @@
                     app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--    ROW 5    -->
+<!--    ROW 5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row5"
                 android:layout_width="match_parent"
@@ -300,7 +283,7 @@
 
                 <ImageView
                     android:id="@+id/xp_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/level_frame_imageView"
@@ -313,12 +296,12 @@
                     android:id="@+id/xp_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Experience Points"
                     android:textColor="@color/parchment"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="@+id/xp_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/xp_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
@@ -341,7 +324,7 @@
 
                 <ImageView
                     android:id="@+id/level_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -354,7 +337,7 @@
                     android:id="@+id/level_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Level"
@@ -397,7 +380,7 @@
 
                 <ImageView
                     android:id="@+id/ac_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/speed_frame_imageView"
@@ -438,7 +421,7 @@
 
                 <ImageView
                     android:id="@+id/speed_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/mhp_frame_imageView"
@@ -479,7 +462,7 @@
 
                 <ImageView
                     android:id="@+id/mhp_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -535,7 +518,7 @@
 
                 <ImageView
                     android:id="@+id/hd_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ds_frame_imageView"
@@ -548,7 +531,7 @@
                     android:id="@+id/hd_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Hit Point Dice"
@@ -576,7 +559,7 @@
 
                 <ImageView
                     android:id="@+id/ds_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -589,7 +572,7 @@
                     android:id="@+id/ds_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Death Saves"
@@ -680,7 +663,7 @@
 
                 <ImageView
                     android:id="@+id/strength_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/dexterity_frame_imageView"
@@ -721,7 +704,7 @@
 
                 <ImageView
                     android:id="@+id/dexterity_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
@@ -797,7 +780,7 @@
 
                 <ImageView
                     android:id="@+id/constitution_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/intelligence_frame_imageView"
@@ -838,7 +821,7 @@
 
                 <ImageView
                     android:id="@+id/intelligence_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/wisdom_frame_imageView"
@@ -879,7 +862,7 @@
 
                 <ImageView
                     android:id="@+id/wisdom_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -967,7 +950,7 @@
 
                 <ImageView
                     android:id="@+id/charisma_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/perception_frame_imageView"
@@ -1008,7 +991,7 @@
 
                 <ImageView
                     android:id="@+id/perception_frame_imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
@@ -1021,7 +1004,7 @@
                     android:id="@+id/perception_textView"
                     android:layout_width="110dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:rotation="-12"
                     android:text="Perception"
@@ -1029,7 +1012,6 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/perception_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -1037,7 +1019,7 @@
                     android:id="@+id/perception_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="##"
                     android:textColor="@color/black"
