@@ -14,6 +14,7 @@ import AttackPackage.Attack;
 import AttackPackage.Magical;
 import AttackPackage.Physical;
 import CharacterPackage.Character;
+import CharacterPackage.Player;
 
 public class Utility {
     public static final class TAG {
@@ -81,6 +82,25 @@ public class Utility {
         public static final String PATHFINDER_MONSTERSHEETS_DOCUMENT = "PathFinder_monsterSheets";
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Player setInformationForDebugging(Player _player) {
+        Player temp = new Player(_player);
+
+        temp.add_failed_death_save();
+        temp.add_succeeded_death_save();
+
+        temp.add_attack(new Attack("Punch", 2, Die.d8, "None", null, 3));
+        temp.add_weapon(Physical.Weapon.DAGGER);
+        temp.add_weapon(Physical.Weapon.RAPIER);
+        temp.add_proficiency(new Character.Proficient_In(Character.Skill.ACROBATICS, 2, "None.", Character.Base_Stats_Enum.DEXTERITY));
+        temp.add_saving_throw(new Character.Saving_Throw(Character.Base_Stats_Enum.DEXTERITY, 3));
+
+        return temp;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @SuppressWarnings("rawtypes")
     public static HashMap<String, String> convertToHashMapStringString(HashMap<String, Any> _temp) {
         HashMap<String, String> temp = new HashMap<String, String>(0);
@@ -95,6 +115,8 @@ public class Utility {
 
         return temp;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static Attack[] convertToArrayOfAttack(HashMap<String, String> _hashMap) {
         Attack[] _array = new Attack[12];

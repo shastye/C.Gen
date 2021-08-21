@@ -37,6 +37,14 @@ public class Attack {
         tempArray = _attack.tempArray;
         bonus = _attack.bonus;
     }
+    public Attack(String _name, int _numDie, Die _die, String _special, String[] _tempArray, int _bonus) {
+        this.name = _name;
+        this.num_dice = _numDie;
+        this.die = _die;
+        this.special = _special;
+        tempArray = _tempArray;
+        bonus = _bonus;
+    }
     public Attack(String _string) {
         tempArray = _string.split(";");
         name = tempArray[1];

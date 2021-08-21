@@ -4,10 +4,12 @@ import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
 import Utility.Utility.TAG
+import Utility.Utility.checkForSaveThrow
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -67,6 +69,11 @@ class ViewCharacterActivity : AppCompatActivity() {
                 tempDNDplayers.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
+
+                        // TODO: DELETE WHEN DONE DEBUGGING
+                        //      comment out when not using
+                        //currentPlayer = Utility.Utility.setInformationForDebugging(currentPlayer)
+
                         setInformation()
                     }
                     .addOnFailureListener {

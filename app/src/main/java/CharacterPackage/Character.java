@@ -167,11 +167,11 @@ public class Character {
             special = "";
             stat_used = Base_Stats_Enum.CONSTITUTION;
         }
-        public Proficient_In(Skill _TYPE, int _bonus, String _special) {
+        public Proficient_In(Skill _TYPE, int _bonus, String _special, Base_Stats_Enum _stat) {
             proficiency = _TYPE;
             bonus = _bonus;
             special = _special;
-            stat_used = null;
+            stat_used = _stat;
         }
         public Proficient_In(Proficient_In _prof) {
             proficiency = _prof.proficiency;
