@@ -87,7 +87,7 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.add_saving_throw(new Character.Saving_Throw(Character.Base_Stats_Enum.CONSTITUTION, 1));
+        temp.add_proficiency(new Character.Proficient_In(Character.Skill.SLEIGHT_OF_HAND, _player.get_level(), ".None.", Character.Base_Stats_Enum.DEXTERITY));
 
         return temp;
     }
@@ -278,7 +278,6 @@ public class Utility {
                             }
                         }
 
-                        stringProficiencies = new String[12];
                         stringProficiencies[i] = tempProficiencies;
                     }
                 }
@@ -287,7 +286,7 @@ public class Utility {
                     if (stringProficiencies[i] != null && !stringProficiencies[i].equals("null")) {
                         String[] temp = stringProficiencies[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null")) {
                             Character.Proficient_In _prof = new Character.Proficient_In(temp[1]);
                             _array[i] = _prof;
                         }
@@ -353,7 +352,7 @@ public class Utility {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static boolean checkForSaveThrow(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
+    public static boolean checkForEnumValueInArray(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
         boolean contains = false;
 
         for (Character.Saving_Throw saveThrow : _array) {
@@ -364,12 +363,35 @@ public class Utility {
 
         return contains;
     }
-    public static int getModifierForSaveThrow(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
+    public static boolean checkForEnumValueInArray(Character.Skill _skill, Character.Proficient_In[] _array) {
+        boolean contains = false;
+
+        for (Character.Proficient_In prof : _array) {
+            if (prof != null && prof.proficiency == _skill) {
+                contains = true;
+            }
+        }
+
+        return contains;
+    }
+
+    public static int getModifierForArrayValue(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
         int mod = 0;
 
         for (Character.Saving_Throw saveThrow : _array) {
             if (saveThrow != null && saveThrow.statistic == _throw) {
                 mod = saveThrow.modifier;
+            }
+        }
+
+        return mod;
+    }
+    public static int getModifierForArrayValue(Character.Skill _skill, Character.Proficient_In[] _array) {
+        int mod = 0;
+
+        for (Character.Proficient_In prof : _array) {
+            if (prof != null && prof.proficiency == _skill) {
+                mod = prof.bonus;
             }
         }
 

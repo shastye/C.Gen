@@ -5,7 +5,7 @@ import CharacterPackage.Monster
 import CharacterPackage.Player
 import Utility.Utility
 import Utility.Utility.TAG
-import Utility.Utility.checkForSaveThrow
+import Utility.Utility.checkForEnumValueInArray
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -179,11 +179,13 @@ class ViewCharacterActivity : AppCompatActivity() {
     private fun setInformation(_player : CharacterPackage.Player) {
         var temp = ""
 
+        // INTRO TOOLBAR
         val name_toolbar = findViewById<Toolbar>(R.id.characterName_toolbar)
         name_toolbar.title = _player._name
         temp = "${_player._game_mode} ${_player._char_type}"
         name_toolbar.subtitle = temp
 
+        // CHARACTER INFORMATION
         val class_textView = findViewById<TextView>(R.id.class_textView_actual)
         class_textView.text = _player._classe.toString()
 
@@ -196,6 +198,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         val alignment_textView = findViewById<TextView>(R.id.alignment_textView_actual)
         alignment_textView.text = _player._alignment.toString()
 
+        // GENERIC STAT INFORMATION
         val xp_textView = findViewById<TextView>(R.id.xp_textView_actual)
         xp_textView.text = _player._experience_points.toString()
 
@@ -220,6 +223,13 @@ class ViewCharacterActivity : AppCompatActivity() {
         val dsS_textView = findViewById<TextView>(R.id.ds_successes_textView_actual)
         dsS_textView.text = currentPlayer._death_saves.successes.toString()
 
+        val insp_textView = findViewById<TextView>(R.id.insp_textView_actual)
+        insp_textView.text = currentPlayer._inspiration.toString()
+
+        val profBonus_textView = findViewById<TextView>(R.id.profBonus_textView_actual)
+        profBonus_textView.text = currentPlayer._proficiency_bonus.toString()
+
+        // BASE STAT INFORMATION
         val str_textView = findViewById<TextView>(R.id.strength_textView_actual)
         str_textView.text = currentPlayer._statistics.Strength.toString()
         val str_mod_textView = findViewById<TextView>(R.id.strength_textView_mod_actual)
@@ -271,54 +281,175 @@ class ViewCharacterActivity : AppCompatActivity() {
         val perc_textView = findViewById<TextView>(R.id.perception_textView_actual)
         perc_textView.text = currentPlayer._statistics.Perception.toString()
 
-        val insp_textView = findViewById<TextView>(R.id.insp_textView_actual)
-        insp_textView.text = currentPlayer._inspiration.toString()
-
-        val profBonus_textView = findViewById<TextView>(R.id.profBonus_textView_actual)
-        profBonus_textView.text = currentPlayer._proficiency_bonus.toString()
-
+        // SAVING THROWS INFORMATION
         val stStr_radio = findViewById<RadioButton>(R.id.save_throw_str)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)) {
             stStr_radio.isChecked = true;
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)}  Strength"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)}  Strength"
             stStr_radio.text = temp
         }
 
         val stDex_radio = findViewById<RadioButton>(R.id.save_throw_dex)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)) {
             stDex_radio.isChecked = true
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)}  Dexterity"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)}  Dexterity"
             stDex_radio.text = temp
         }
 
         val stConst_radio = findViewById<RadioButton>(R.id.save_throw_const)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)) {
             stConst_radio.isChecked = true
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)}  Constitution"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)}  Constitution"
             stConst_radio.text = temp
         }
 
         val stInt_radio = findViewById<RadioButton>(R.id.save_throw_int)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)) {
             stInt_radio.isChecked = true
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)}  Intelligence"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)}  Intelligence"
             stInt_radio.text = temp
         }
 
         val stWis_radio = findViewById<RadioButton>(R.id.save_throw_wis)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)) {
             stWis_radio.isChecked = true
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)}  Wisdom"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)}  Wisdom"
             stWis_radio.text = temp
         }
 
         val stChar_radio = findViewById<RadioButton>(R.id.save_throw_char)
-        if (checkForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)) {
+        if (checkForEnumValueInArray(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)) {
             stChar_radio.isChecked = true
-            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)}  Charisma"
+            temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)}  Charisma"
             stChar_radio.text = temp
         }
 
+        // SKILLS INFORMATION
+        val acro_radio = findViewById<RadioButton>(R.id.prof_acrobatics)
+        if (checkForEnumValueInArray(Character.Skill.ACROBATICS, currentPlayer._proficiencies)) {
+            acro_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.ACROBATICS, currentPlayer._proficiencies)}  Acrobatics"
+            acro_radio.text = temp
+        }
+
+        val AH_radio = findViewById<RadioButton>(R.id.prof_animal_handling)
+        if (checkForEnumValueInArray(Character.Skill.ANIMAL_HANDLING, currentPlayer._proficiencies)) {
+            AH_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.ANIMAL_HANDLING, currentPlayer._proficiencies)}  Animal Handling"
+            AH_radio.text = temp
+        }
+
+        val arcana_radio = findViewById<RadioButton>(R.id.prof_arcana)
+        if (checkForEnumValueInArray(Character.Skill.ARCANA, currentPlayer._proficiencies)) {
+            arcana_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.ARCANA, currentPlayer._proficiencies)}  Arcana"
+            arcana_radio.text = temp
+        }
+
+        val athl_radio = findViewById<RadioButton>(R.id.prof_athletics)
+        if (checkForEnumValueInArray(Character.Skill.ATHLETICS, currentPlayer._proficiencies)) {
+            athl_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.ATHLETICS, currentPlayer._proficiencies)}  Athletics"
+            athl_radio.text = temp
+        }
+
+        val dec_radio = findViewById<RadioButton>(R.id.prof_deception)
+        if (checkForEnumValueInArray(Character.Skill.DECEPTION, currentPlayer._proficiencies)) {
+            dec_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.DECEPTION, currentPlayer._proficiencies)}  Deception"
+            dec_radio.text = temp
+        }
+
+        val his_radio = findViewById<RadioButton>(R.id.prof_history)
+        if (checkForEnumValueInArray(Character.Skill.HISTORY, currentPlayer._proficiencies)) {
+            his_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.HISTORY, currentPlayer._proficiencies)}  History"
+            his_radio.text = temp
+        }
+
+        val Insight_radio = findViewById<RadioButton>(R.id.prof_insight)
+        if (checkForEnumValueInArray(Character.Skill.INSIGHT, currentPlayer._proficiencies)) {
+            Insight_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.INSIGHT, currentPlayer._proficiencies)}  Insight"
+            Insight_radio.text = temp
+        }
+
+        val int_radio = findViewById<RadioButton>(R.id.prof_intimidation)
+        if (checkForEnumValueInArray(Character.Skill.INTIMIDATION, currentPlayer._proficiencies)) {
+            int_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.INTIMIDATION, currentPlayer._proficiencies)}  Intimidation"
+            int_radio.text = temp
+        }
+
+        val inv_radio = findViewById<RadioButton>(R.id.prof_investigation)
+        if (checkForEnumValueInArray(Character.Skill.INVESTIGATION, currentPlayer._proficiencies)) {
+            inv_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.INVESTIGATION, currentPlayer._proficiencies)}  Investigation"
+            inv_radio.text = temp
+        }
+
+        val med_radio = findViewById<RadioButton>(R.id.prof_medicine)
+        if (checkForEnumValueInArray(Character.Skill.MEDICINE, currentPlayer._proficiencies)) {
+            med_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.MEDICINE, currentPlayer._proficiencies)}  Medicine"
+            med_radio.text = temp
+        }
+
+        val nat_radio = findViewById<RadioButton>(R.id.prof_nature)
+        if (checkForEnumValueInArray(Character.Skill.NATURE, currentPlayer._proficiencies)) {
+            nat_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.NATURE, currentPlayer._proficiencies)}  Nature"
+            nat_radio.text = temp
+        }
+
+        val perc_radio = findViewById<RadioButton>(R.id.prof_perception)
+        if (checkForEnumValueInArray(Character.Skill.PERCEPTION, currentPlayer._proficiencies)) {
+            perc_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.PERCEPTION, currentPlayer._proficiencies)}  Perception"
+            perc_radio.text = temp
+        }
+
+        val perf_radio = findViewById<RadioButton>(R.id.prof_performance)
+        if (checkForEnumValueInArray(Character.Skill.PERFORMANCE, currentPlayer._proficiencies)) {
+            perf_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.PERFORMANCE, currentPlayer._proficiencies)}  Performance"
+            perf_radio.text = temp
+        }
+
+        val pers_radio = findViewById<RadioButton>(R.id.prof_persuasion)
+        if (checkForEnumValueInArray(Character.Skill.PERSUASION, currentPlayer._proficiencies)) {
+            pers_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.PERSUASION, currentPlayer._proficiencies)}  Persuasion"
+            pers_radio.text = temp
+        }
+
+        val rel_radio = findViewById<RadioButton>(R.id.prof_religion)
+        if (checkForEnumValueInArray(Character.Skill.RELIGION, currentPlayer._proficiencies)) {
+            rel_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.RELIGION, currentPlayer._proficiencies)}  Religion"
+            rel_radio.text = temp
+        }
+
+        val soh_radio = findViewById<RadioButton>(R.id.prof_sleight_of_hand)
+        if (checkForEnumValueInArray(Character.Skill.SLEIGHT_OF_HAND, currentPlayer._proficiencies)) {
+            soh_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.SLEIGHT_OF_HAND, currentPlayer._proficiencies)}  Sleight of Hand"
+            soh_radio.text = temp
+        }
+
+        val st_radio = findViewById<RadioButton>(R.id.prof_stealth)
+        if (checkForEnumValueInArray(Character.Skill.STEALTH, currentPlayer._proficiencies)) {
+            st_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.STEALTH, currentPlayer._proficiencies)}  Stealth"
+            st_radio.text = temp
+        }
+
+        val sur_radio = findViewById<RadioButton>(R.id.prof_survival)
+        if (checkForEnumValueInArray(Character.Skill.SURVIVAL, currentPlayer._proficiencies)) {
+            sur_radio.isChecked = true
+            temp = "  +${Utility.getModifierForArrayValue(Character.Skill.SURVIVAL, currentPlayer._proficiencies)}  Survival"
+            sur_radio.text = temp
+        }
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE
