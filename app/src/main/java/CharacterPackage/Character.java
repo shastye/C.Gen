@@ -182,10 +182,10 @@ public class Character {
         public Proficient_In(String _string) {
             String[] tempArray = _string.split(";");
 
-            proficiency = Skill.valueOf(tempArray[0]);
-            bonus = Integer.parseInt(tempArray[1]);
-            stat_used = Base_Stats_Enum.valueOf(tempArray[2]);
-            special = tempArray[3];
+            proficiency = Skill.valueOf(tempArray[1]);
+            bonus = Integer.parseInt(tempArray[2]);
+            stat_used = Base_Stats_Enum.valueOf(tempArray[3]);
+            special = tempArray[4];
         }
 
                     ////////////////////////////////////////////////////////////////////////////////
@@ -285,8 +285,8 @@ public class Character {
         public Saving_Throw(String _string) {
             String[] tempArray = _string.split(";");
 
-            statistic = Base_Stats_Enum.valueOf(tempArray[0]);
-            modifier = Integer.parseInt(tempArray[1]);
+            statistic = Base_Stats_Enum.valueOf(tempArray[1]);
+            modifier = Integer.parseInt(tempArray[2]);
         }
 
                     ////////////////////////////////////////////////////////////////////////////////

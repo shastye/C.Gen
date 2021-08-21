@@ -73,7 +73,7 @@ class ViewCharacterActivity : AppCompatActivity() {
 
                         // TODO: DELETE WHEN DONE DEBUGGING
                         //      comment out when not using
-                        //currentPlayer = Utility.Utility.setInformationForDebugging(currentPlayer)
+                        //currentPlayer = Utility.setInformationForDebugging(currentPlayer)
 
                         setInformation()
                     }
@@ -283,35 +283,40 @@ class ViewCharacterActivity : AppCompatActivity() {
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)}  Strength"
             stStr_radio.text = temp
         }
+
         val stDex_radio = findViewById<RadioButton>(R.id.save_throw_dex)
         if (checkForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)) {
             stDex_radio.isChecked = true
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)}  Dexterity"
             stDex_radio.text = temp
         }
+
         val stConst_radio = findViewById<RadioButton>(R.id.save_throw_const)
         if (checkForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)) {
             stConst_radio.isChecked = true
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)}  Constitution"
-            stStr_radio.text = temp
+            stConst_radio.text = temp
         }
+
         val stInt_radio = findViewById<RadioButton>(R.id.save_throw_int)
         if (checkForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)) {
             stInt_radio.isChecked = true
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)}  Intelligence"
-            stStr_radio.text = temp
+            stInt_radio.text = temp
         }
+
         val stWis_radio = findViewById<RadioButton>(R.id.save_throw_wis)
         if (checkForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)) {
             stWis_radio.isChecked = true
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)}  Wisdom"
-            stStr_radio.text = temp
+            stWis_radio.text = temp
         }
+
         val stChar_radio = findViewById<RadioButton>(R.id.save_throw_char)
         if (checkForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)) {
             stChar_radio.isChecked = true
             temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)}  Charisma"
-            stStr_radio.text = temp
+            stChar_radio.text = temp
         }
 
     }

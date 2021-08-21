@@ -87,14 +87,7 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.add_failed_death_save();
-        temp.add_succeeded_death_save();
-
-        temp.add_attack(new Attack("Punch", 2, Die.d8, "None", null, 3));
-        temp.add_weapon(Physical.Weapon.DAGGER);
-        temp.add_weapon(Physical.Weapon.RAPIER);
-        temp.add_proficiency(new Character.Proficient_In(Character.Skill.ACROBATICS, 2, "None.", Character.Base_Stats_Enum.DEXTERITY));
-        temp.add_saving_throw(new Character.Saving_Throw(Character.Base_Stats_Enum.DEXTERITY, 3));
+        temp.add_saving_throw(new Character.Saving_Throw(Character.Base_Stats_Enum.CONSTITUTION, 1));
 
         return temp;
     }
@@ -329,13 +322,12 @@ public class Utility {
 
                         for (int k = 0; k < temp.length; k++) {
                             if (temp[k] != null && !temp[k].equals("null")) {
-                                if (!temp[k].equals("[") && !temp[k].equals("Proficient")) {
+                                if (!temp[k].equals("[") && !temp[k].equals("Saving Throw")) {
                                     tempThrows += temp[k];
                                 }
                             }
                         }
 
-                        stringThrows = new String[12];
                         stringThrows[i] = tempThrows;
                     }
                 }
@@ -344,7 +336,7 @@ public class Utility {
                     if (stringThrows[i] != null && !stringThrows[i].equals("null")) {
                         String[] temp = stringThrows[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null")) {
                             Character.Saving_Throw _prof = new Character.Saving_Throw(temp[1]);
                             _array[i] = _prof;
                         }
