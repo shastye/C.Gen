@@ -3,6 +3,7 @@ package com.clubbpc.cgen
 import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
+import Utility.Utility
 import Utility.Utility.TAG
 import Utility.Utility.checkForSaveThrow
 import android.content.Intent
@@ -275,6 +276,44 @@ class ViewCharacterActivity : AppCompatActivity() {
 
         val profBonus_textView = findViewById<TextView>(R.id.profBonus_textView_actual)
         profBonus_textView.text = currentPlayer._proficiency_bonus.toString()
+
+        val stStr_radio = findViewById<RadioButton>(R.id.save_throw_str)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)) {
+            stStr_radio.isChecked = true;
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.STRENGTH, currentPlayer._saving_throws)}  Strength"
+            stStr_radio.text = temp
+        }
+        val stDex_radio = findViewById<RadioButton>(R.id.save_throw_dex)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)) {
+            stDex_radio.isChecked = true
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.DEXTERITY, currentPlayer._saving_throws)}  Dexterity"
+            stDex_radio.text = temp
+        }
+        val stConst_radio = findViewById<RadioButton>(R.id.save_throw_const)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)) {
+            stConst_radio.isChecked = true
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CONSTITUTION, currentPlayer._saving_throws)}  Constitution"
+            stStr_radio.text = temp
+        }
+        val stInt_radio = findViewById<RadioButton>(R.id.save_throw_int)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)) {
+            stInt_radio.isChecked = true
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.INTELLIGENCE, currentPlayer._saving_throws)}  Intelligence"
+            stStr_radio.text = temp
+        }
+        val stWis_radio = findViewById<RadioButton>(R.id.save_throw_wis)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)) {
+            stWis_radio.isChecked = true
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.WISDOM, currentPlayer._saving_throws)}  Wisdom"
+            stStr_radio.text = temp
+        }
+        val stChar_radio = findViewById<RadioButton>(R.id.save_throw_char)
+        if (checkForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)) {
+            stChar_radio.isChecked = true
+            temp = "  +${Utility.getModifierForSaveThrow(Character.Base_Stats_Enum.CHARISMA, currentPlayer._saving_throws)}  Charisma"
+            stStr_radio.text = temp
+        }
+
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE

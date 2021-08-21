@@ -358,4 +358,29 @@ public class Utility {
 
         return _array;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static boolean checkForSaveThrow(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
+        boolean contains = false;
+
+        for (Character.Saving_Throw saveThrow : _array) {
+            if (saveThrow != null && saveThrow.statistic == _throw) {
+                contains = true;
+            }
+        }
+
+        return contains;
+    }
+    public static int getModifierForSaveThrow(Character.Base_Stats_Enum _throw, Character.Saving_Throw[] _array) {
+        int mod = 0;
+
+        for (Character.Saving_Throw saveThrow : _array) {
+            if (saveThrow != null && saveThrow.statistic == _throw) {
+                mod = saveThrow.modifier;
+            }
+        }
+
+        return mod;
+    }
 }
