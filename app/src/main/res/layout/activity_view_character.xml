@@ -587,13 +587,14 @@
                     android:id="@+id/ds_successes_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:gravity="center"
                     android:text="Successes: "
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView"
                     app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.46"
                     app:layout_constraintStart_toStartOf="@+id/ds_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
@@ -606,7 +607,7 @@
                     android:gravity="center"
                     android:text="Failures: "
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_textView"
                     app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/ds_frame_imageView"
@@ -617,27 +618,27 @@
                     android:id="@+id/ds_successes_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="22dp"
                     android:gravity="center"
                     android:text="#"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView_actual"
                     app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/ds_successes_textView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.375" />
+                    app:layout_constraintVertical_bias="0.50" />
 
                 <TextView
                     android:id="@+id/ds_failures_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="6dp"
                     android:gravity="center"
                     android:text="#"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_textView"
                     app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -1091,7 +1092,6 @@
                     android:paddingBottom="@dimen/fab_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
@@ -1194,6 +1194,7 @@
                     app:layout_constraintVertical_bias="0.90" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         </RelativeLayout>
