@@ -1511,6 +1511,67 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/other_proficiencies_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row12"
+                android:layout_marginTop="0dp"
+                android:background="@color/accent_red"
+                app:cardBackgroundColor="@color/dark_red"
+                app:cardElevation="@dimen/fab_margin">
+
+                <TextView
+                    android:id="@+id/other_proficiencies_viewCharacter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other Proficiencies and Languages"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:translationX="16dp" />
+            </androidx.cardview.widget.CardView>
+
+<!--    ROW 13   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/other_proficiencies_header">
+
+            <ImageView
+                android:id="@+id/other_proficiencies_frame_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:padding="@dimen/fab_margin"
+                android:paddingLeft="@dimen/fab_margin"
+                android:paddingTop="@dimen/fab_margin"
+                android:paddingRight="@dimen/fab_margin"
+                android:paddingBottom="@dimen/fab_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/generic_square_no_banner" />
+
+                <TextView
+                    android:id="@+id/other_proficiencies_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/other_proficiencies_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/other_proficiencies_frame_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/other_proficiencies_frame_imageView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </RelativeLayout>
     </ScrollView>
 

@@ -450,6 +450,43 @@ class ViewCharacterActivity : AppCompatActivity() {
             temp = "  +${Utility.getModifierForArrayValue(Character.Skill.SURVIVAL, currentPlayer._proficiencies)}  Survival"
             sur_radio.text = temp
         }
+
+        val otherProf_textView = findViewById<TextView>(R.id.other_proficiencies_textView)
+        temp = ""
+        for (prof : Character.Proficient_In in currentPlayer._proficiencies) {
+            if (   prof.proficiency != Character.Skill.ACROBATICS
+                && prof.proficiency != Character.Skill.ANIMAL_HANDLING
+                && prof.proficiency != Character.Skill.ARCANA
+                && prof.proficiency != Character.Skill.ATHLETICS
+                && prof.proficiency != Character.Skill.DECEPTION
+                && prof.proficiency != Character.Skill.HISTORY
+                && prof.proficiency != Character.Skill.INSIGHT
+                && prof.proficiency != Character.Skill.INTIMIDATION
+                && prof.proficiency != Character.Skill.INVESTIGATION
+                && prof.proficiency != Character.Skill.MEDICINE
+                && prof.proficiency != Character.Skill.NATURE
+                && prof.proficiency != Character.Skill.PERCEPTION
+                && prof.proficiency != Character.Skill.PERFORMANCE
+                && prof.proficiency != Character.Skill.PERSUASION
+                && prof.proficiency != Character.Skill.RELIGION
+                && prof.proficiency != Character.Skill.SLEIGHT_OF_HAND
+                && prof.proficiency != Character.Skill.STEALTH
+                && prof.proficiency != Character.Skill.SURVIVAL
+            ) {
+                temp += "${prof.bonus}  ${prof.proficiency}  "
+                when (prof.stat_used) {
+                    Character.Base_Stats_Enum.STRENGTH -> temp += "(Str)"
+                    Character.Base_Stats_Enum.DEXTERITY -> temp += "(Dex)"
+                    Character.Base_Stats_Enum.CONSTITUTION -> temp += "(Con)"
+                    Character.Base_Stats_Enum.INTELLIGENCE -> temp += "(Int)"
+                    Character.Base_Stats_Enum.WISDOM -> temp += "(Wis)"
+                    Character.Base_Stats_Enum.CHARISMA -> temp += "(Cha)"
+                    Character.Base_Stats_Enum.PERCEPTION -> temp += "(Per)"
+                    null -> temp += ""
+                }
+            }
+        }
+        otherProf_textView.text = temp
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE
