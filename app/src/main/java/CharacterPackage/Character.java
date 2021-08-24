@@ -352,6 +352,7 @@ public class Character {
     private Character.Game_Mode game_mode;
     private Character.Type char_type;
     private int level;
+    private int initiative;
     private int health_points;
     private Alignment alignment;
     private Base_Stats_Struct statistics;
@@ -373,6 +374,7 @@ public class Character {
         name = _name;
         game_mode = Game_Mode.DND;
         char_type = Type.PLAYER;
+        initiative = 0;
         level = 1;
         alignment = Alignment.CHAOTIC_EVIL;
         statistics = new Base_Stats_Struct(10);
@@ -393,6 +395,7 @@ public class Character {
         name = _char.get_name();
         game_mode = _char.get_game_mode();
         char_type = _char.get_char_type();
+        initiative = _char.initiative;
         level = _char.get_level();
         health_points = _char.get_health_points();
         alignment = _char.get_alignment();
@@ -416,6 +419,7 @@ public class Character {
         name = _hash.get(TAG.NAME);
         game_mode = Game_Mode.valueOf(_hash.get(TAG.GAME_MODE));
         char_type = Type.valueOf(_hash.get(TAG.CHARACTER_TYPE));
+        initiative = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.INITIATIVE)));
         level = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.LEVEL)));
         health_points = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.HEALTH_POINTS)));
         alignment = Alignment.valueOf(_hash.get(TAG.ALIGNMENT));
@@ -467,6 +471,9 @@ public class Character {
 
     public Type get_char_type() { return char_type; }
     public void set_char_type(Type _type) { char_type = _type; }
+
+    public int get_initiative() { return initiative; }
+    public void set_initiative(int _init) { initiative = _init; }
 
     public int get_level() { return level; }
     public void set_level(int _level) { level = _level; }
@@ -592,7 +599,22 @@ public class Character {
         boolean is_same = true;
 
         if (_other != null) {
-            if (!this.name.equals(_other.name)) {
+            if (this.template_char != _other.template_char) {
+                is_same = false;
+            }
+            else if (!this.name.equals(_other.name)) {
+                is_same = false;
+            }
+            else if (!this.game_mode.equals(_other.game_mode)) {
+                is_same = false;
+            }
+            else if (!this.char_type.equals(_other.char_type)) {
+                is_same = false;
+            }
+            else if (this.initiative != _other.initiative) {
+                is_same = false;
+            }
+            else if (this.level != _other.level) {
                 is_same = false;
             }
             else if (this.health_points != _other.health_points) {
@@ -616,6 +638,9 @@ public class Character {
             else if (this.hp_die != _other.hp_die) {
                 is_same = false;
             }
+            else if (this.proficiency_bonus != _other.proficiency_bonus) {
+                is_same = false;
+            }
             else if (!Arrays.equals(this.weapons, _other.weapons)) {
                 is_same = false;
             }
@@ -623,9 +648,6 @@ public class Character {
                 is_same = false;
             }
             else if (!Arrays.equals(this.proficiencies, _other.proficiencies)) {
-                is_same = false;
-            }
-            else if (this.proficiency_bonus != _other.proficiency_bonus) {
                 is_same = false;
             }
         }
@@ -644,6 +666,7 @@ public class Character {
         temp.put(TAG.NAME, this.name);
         temp.put(TAG.GAME_MODE, String.valueOf(this.game_mode));
         temp.put(TAG.CHARACTER_TYPE, String.valueOf(this.char_type));
+        temp.put(TAG.INITIATIVE, String.valueOf(this.initiative));
         temp.put(TAG.LEVEL, String.valueOf(this.level));
         temp.put(TAG.HEALTH_POINTS, String.valueOf(this.health_points));
         temp.put(TAG.ALIGNMENT, String.valueOf(this.alignment));

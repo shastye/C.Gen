@@ -481,6 +481,9 @@ class ViewCharacterActivity : AppCompatActivity() {
             }
         }
         otherProf_textView.text = temp
+
+        val init_textView = findViewById<TextView>(R.id.initiative_textView_actual)
+        init_textView.text = _player._initiative.toString()
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE

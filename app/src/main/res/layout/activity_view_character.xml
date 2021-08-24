@@ -190,12 +190,53 @@
                 android:layout_below="@id/image_divider0">
 
                 <ImageView
+                    android:id="@+id/initiative_frame_imageView"
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="120dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/insp_frame_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/generic_square" />
+
+                <TextView
+                    android:id="@+id/initiative_textView"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="22dp"
+                    android:gravity="center"
+                    android:rotation="-12"
+                    android:text="Initiative"
+                    android:textColor="@color/parchment"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/initiative_textView_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="##"
+                    android:textColor="@color/black"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/initiative_frame_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
                     android:id="@+id/insp_frame_imageView"
                     android:layout_width="@dimen/image_width"
                     android:layout_height="120dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/profBonus_frame_imageView"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/initiative_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/bold_square" />
