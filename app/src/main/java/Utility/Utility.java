@@ -1,11 +1,7 @@
 package Utility;
 
-import android.util.Log;
-
 import com.google.protobuf.Any;
-import com.google.protobuf.Type;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -88,8 +84,7 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.add_proficiency(new Character.Proficient_In(Character.Skill.INSTRUMENTS, _player.get_level(), ".None.", Character.Base_Stats_Enum.DEXTERITY));
-        temp.add_proficiency(new Character.Proficient_In(Character.Skill.COMMON, _player.get_level(), "None..", Character.Base_Stats_Enum.INTELLIGENCE));
+        temp.add_weapon(new Physical.Weapon_Struct(Physical.Weapon_Enum.DAGGER, 2, Die.d8));
 
         return temp;
     }
@@ -188,8 +183,8 @@ public class Utility {
         return _array;
     }
 
-    public static Physical.Weapon[] convertToArrayOfWeapon(HashMap<String, String> _hashMap) {
-        Physical.Weapon[] _array = new Physical.Weapon[12];
+    public static Physical.Weapon_Struct[] convertToArrayOfWeapon(HashMap<String, String> _hashMap) {
+        Physical.Weapon_Struct[] _array = new Physical.Weapon_Struct[12];
 
         String tempWeapons = "";
         if (_hashMap.get(TAG.WEAPONS_VECTOR) != null && !_hashMap.get(TAG.WEAPONS_VECTOR).equals("[]")) {
@@ -240,8 +235,7 @@ public class Utility {
                         String[] temp = stringWeapons[i].split(": ");
 
                         if (!temp[0].equals("")) {
-                            Physical.Weapon weapon = Physical.Weapon.valueOf(temp[0]);
-                            _array[i] = weapon;
+                            _array[i] = new Physical.Weapon_Struct(temp[0]);
                         }
                     }
                 }

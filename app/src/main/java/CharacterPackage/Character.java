@@ -4,11 +4,12 @@ import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
 
+import AttackPackage.Physical;
 import Utility.Utility;
 import Utility.Utility.TAG;
 import Utility.Die;
 import AttackPackage.Attack;
-import AttackPackage.Physical.Weapon;
+import AttackPackage.Physical.Weapon_Enum;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -360,7 +361,7 @@ public class Character {
     private int armor_rating;
     private int total_hp_dice;
     private Die hp_die;
-    private Weapon[] weapons;
+    private Physical.Weapon_Struct[] weapons;
     private Attack[] attacks;
     private Proficient_In[] proficiencies;
     private int proficiency_bonus;
@@ -382,7 +383,7 @@ public class Character {
         armor_rating = 10;
         total_hp_dice = 0;
         hp_die = Die.d4;
-        weapons = new Weapon[12];
+        weapons = new Physical.Weapon_Struct[12];
         attacks = new Attack[12];
         proficiencies = new Proficient_In[12];
         proficiency_bonus = 0;
@@ -404,7 +405,7 @@ public class Character {
         armor_rating = _char.get_armor_rating();
         total_hp_dice = _char.get_total_hp_dice();
         hp_die = _char.get_hp_die();
-        weapons = new Weapon[12];
+        weapons = new Physical.Weapon_Struct[12];
         weapons = _char.get_weapons();
         attacks = new Attack[12];
         attacks = _char.get_attacks();
@@ -437,7 +438,7 @@ public class Character {
         hp_die = Die.valueOf(_hash.get(TAG.HEALTH_POINTS_DIE));
         proficiency_bonus = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.PROFICIENCY_BONUS)));
 
-        weapons = new Weapon[12];
+        weapons = new Physical.Weapon_Struct[12];
         weapons = Utility.convertToArrayOfWeapon(_hash);
         attacks = new Attack[12];
         attacks = Utility.convertToArrayOfAttack(_hash);
@@ -525,10 +526,10 @@ public class Character {
         this.hp_die = die;
     }
 
-    public Weapon[] get_weapons() { return weapons; }
-    public void set_weapons(Weapon[] _weapons) { this.weapons = _weapons; }
-    public void clear_weapons() { weapons = new Weapon[weapons.length]; }
-    public void add_weapon(Weapon _weapon) {
+    public Physical.Weapon_Struct[] get_weapons() { return weapons; }
+    public void set_weapons(Physical.Weapon_Struct[] _weapons) { this.weapons = _weapons; }
+    public void clear_weapons() { weapons = new Physical.Weapon_Struct[weapons.length]; }
+    public void add_weapon(Physical.Weapon_Struct _weapon) {
         for (int i = 0; i < weapons.length; i++) {
             if (weapons[i] == null) {
                 weapons[i] = _weapon;
