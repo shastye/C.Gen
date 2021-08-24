@@ -90,8 +90,8 @@ public class Player extends Character {
     ////////////////////////////////////////////////////////////
 
     private Death_Saves death_saves;
-    private int total_hit_dice;
-    private Die hit_die;
+    private int total_hit_dice; // TODO: DELETE; LOGIC ERROR
+    private Die hit_die;        // TODO: DELETE; LOGIC ERROR
     private Race race;
     private Classes classe;
     private String background;
