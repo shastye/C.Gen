@@ -87,7 +87,8 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.add_proficiency(new Character.Proficient_In(Character.Skill.SLEIGHT_OF_HAND, _player.get_level(), ".None.", Character.Base_Stats_Enum.DEXTERITY));
+        temp.add_proficiency(new Character.Proficient_In(Character.Skill.INSTRUMENTS, _player.get_level(), ".None.", Character.Base_Stats_Enum.DEXTERITY));
+        temp.add_proficiency(new Character.Proficient_In(Character.Skill.COMMON, _player.get_level(), "None..", Character.Base_Stats_Enum.INTELLIGENCE));
 
         return temp;
     }

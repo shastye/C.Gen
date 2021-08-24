@@ -142,7 +142,10 @@ public class Character {
         RAPIERS,            SHORTSWORDS,        INSTRUMENTS,        ALCHEMIST,      CLUBS,
         DAGGERS,            DARTS,              JAVELINS,           MACES,          QUARTERSTAFFS,
         SCIMITAR,           SICKLES,            SLINGS,             SPEARS,         HERBALISM,
-        ALL_ARMOR,          LIGHT_CROSSBOWS,
+        ALL_ARMOR,          LIGHT_CROSSBOWS,    COMMON,             DWARVISH,       ELVISH,
+        GIANT,              GNOMISH,            GOBLIN,             HAFLING,        ORC,
+        ABYSSAL,            CELESTIAL,          DRACONIC,           DEEP_SPEECH,    INFERNAL,
+        PRIMORDIAL,         SYLVAN,             UNDERCOMMON,
     }
 
                     ////////////////////////////////////////////////////////////////////////////////
