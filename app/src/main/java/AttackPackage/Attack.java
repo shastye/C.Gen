@@ -71,6 +71,9 @@ public class Attack {
     public String[] get_array() { return tempArray; }
     public void set_array(String[] _array) { this.tempArray = _array; }
 
+    public int get_bonus() { return bonus; }
+    public void set_bonus(int _bonus) { this.bonus = _bonus; }
+
     //////////////////////////////////////////////////////////////////////////
 
     public HashMap<String, String> get_hash_map() {

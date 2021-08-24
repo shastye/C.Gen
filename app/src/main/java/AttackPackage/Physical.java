@@ -85,14 +85,14 @@ public class Physical extends Attack {
     public Physical(String _string) {
         super(_string);
 
-        weapon_info = new Weapon_Struct(tempArray[tempArray.length - 1]);
+        weapon_info = new Weapon_Struct("Weapon: " + ";" + tempArray[tempArray.length - 3] + ";" + tempArray[tempArray.length - 2] + ";" + tempArray[tempArray.length - 1]);
         // TODO: new variable definitions
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
-    Weapon_Struct get_weapon_info() { return weapon_info; }
-    void set_weapon_info(Weapon_Struct _weapon) { this.weapon_info = _weapon; }
+    public Weapon_Struct get_weapon_info() { return weapon_info; }
+    public void set_weapon_info(Weapon_Struct _weapon) { this.weapon_info = _weapon; }
 
     // TODO: more getters and setters
 
@@ -105,6 +105,6 @@ public class Physical extends Attack {
     @Override
     public String toString()
     {
-        return ": Physical: ;" + this.weapon_info.toString() + ";";
+        return ": Physical: ;" + this.get_name() + ";" + this.get_num_dice() + ";" + this.get_die() + ";" + this.get_special() + ";" + this.get_bonus() + ";" + this.weapon_info.toString() + ";";
     }
 }

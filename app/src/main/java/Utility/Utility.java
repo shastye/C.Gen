@@ -84,7 +84,15 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.add_weapon(new Physical.Weapon_Struct(Physical.Weapon_Enum.DAGGER, 2, Die.d8));
+        Physical tempPhys = new Physical();
+        tempPhys.set_name("Stab");
+        tempPhys.set_bonus(3);
+        tempPhys.set_die(Die.d4);
+        tempPhys.set_num_dice(2);
+        tempPhys.set_special("..None..");
+        tempPhys.set_weapon_info(new Physical.Weapon_Struct(Physical.Weapon_Enum.DAGGER, 1, Die.d6));
+
+        temp.add_attack(tempPhys);
 
         return temp;
     }

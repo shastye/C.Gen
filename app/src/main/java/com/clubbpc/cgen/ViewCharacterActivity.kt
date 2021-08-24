@@ -1,5 +1,6 @@
 package com.clubbpc.cgen
 
+import AttackPackage.Physical
 import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
@@ -484,6 +485,93 @@ class ViewCharacterActivity : AppCompatActivity() {
 
         val init_textView = findViewById<TextView>(R.id.initiative_textView_actual)
         init_textView.text = _player._initiative.toString()
+
+        val a1n_textView = findViewById<TextView>(R.id.attack1_name_textView)
+        val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_textView)
+        val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_textView)
+        var i : Int = 0
+        while (i < _player._attacks.size) {
+            if (_player._attacks[i] != null) {
+                if (_player._attacks[i] is Physical) {
+                    val tempPhysical: Physical = _player._attacks[i] as Physical
+                    a1n_textView.text = tempPhysical._name
+                    a1b_textView.text = tempPhysical._bonus.toString()
+                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                    a1dt_textView.text = temp
+
+                    i++
+                    break
+                }
+                else {
+                    i++
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        val a2n_textView = findViewById<TextView>(R.id.attack2_name_textView)
+        val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_textView)
+        val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_textView)
+        while (i < _player._attacks.size) {
+            if (_player._attacks[i] != null) {
+                if (_player._attacks[i] is Physical) {
+                    val tempPhysical: Physical = _player._attacks[i] as Physical
+                    a2n_textView.text = tempPhysical._name
+                    a2b_textView.text = tempPhysical._bonus.toString()
+                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                    a2dt_textView.text = temp
+
+                    i++
+                    break
+                }
+                else {
+                    i++
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        val a3n_textView = findViewById<TextView>(R.id.attack3_name_textView)
+        val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_textView)
+        val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_textView)
+        while (i < _player._attacks.size) {
+            if (_player._attacks[i] != null) {
+                if (_player._attacks[i] is Physical) {
+                    val tempPhysical: Physical = _player._attacks[i] as Physical
+                    a3n_textView.text = tempPhysical._name
+                    a3b_textView.text = tempPhysical._bonus.toString()
+                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                    a3dt_textView.text = temp
+
+                    i++
+                    break
+                }
+                else {
+                    i++
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        val weapons_textView = findViewById<TextView>(R.id.otherAttacks_textView)
+        temp = ""
+        for (k in _player._weapons.indices) {
+            if (_player._weapons[k] != null) {
+                val weapon: Physical.Weapon_Struct = _player._weapons[k]
+
+                temp += "${weapon.weapon.toString()}  :  ${weapon.num_die}${weapon.die}\n\n"
+            }
+        }
+        weapons_textView.text = temp
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE
