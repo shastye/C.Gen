@@ -5,7 +5,7 @@ import org.junit.Test
 
 import java.util.Vector
 import CharacterPackage.Character
-import AttackPackage.Physical.Weapon
+import AttackPackage.Physical.Weapon_Enum
 import CharacterPackage.Player
 import Utility.Die
 
@@ -102,13 +102,13 @@ class CharacterClassUnitTests {
         assertEquals(4, char._total_hp_dice)
         assertEquals(Die.d12, char._hp_die)
 
-        val temp : Vector<Weapon> = Vector<Weapon>(0)
-        temp.add(Weapon.RAPIER)
+        val temp : Vector<Weapon_Enum> = Vector<Weapon_Enum>(0)
+        temp.add(Weapon_Enum.RAPIER)
         assertEquals(temp, char._weapons)
         assertEquals(temp.clear(), char.clear_weapons())
 
-        temp.add(Weapon.RAPIER)
-        temp.add(Weapon.RAPIER)
+        temp.add(Weapon_Enum.RAPIER)
+        temp.add(Weapon_Enum.RAPIER)
         char.clear_weapons()
         assertEquals(temp, char._weapons)
 
@@ -218,13 +218,13 @@ class PlayerClassUnitTests {
         assertEquals(3, char._total_hit_dice)
         assertEquals(Die.d4, char._hit_die)
 
-        val temp : Vector<Weapon> = Vector<Weapon>(0)
-        temp.add(Weapon.RAPIER)
+        val temp : Vector<Weapon_Enum> = Vector<Weapon_Enum>(0)
+        temp.add(Weapon_Enum.RAPIER)
         assertEquals(temp, char._weapons)
         assertEquals(temp.clear(), char.clear_weapons())
 
-        temp.add(Weapon.RAPIER)
-        temp.add(Weapon.RAPIER)
+        temp.add(Weapon_Enum.RAPIER)
+        temp.add(Weapon_Enum.RAPIER)
         char.clear_weapons()
         assertEquals(temp, char._weapons)
 
