@@ -346,6 +346,108 @@ public class Character {
 
     // TODO: Enum for items carried
 
+    public static class Money {
+        public int copper;
+        public int silver;
+        public int electrum;
+        public int gold;
+        public int platinum;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        public Money() {
+            copper = 0;
+            silver = 0;
+            electrum = 0;
+            gold = 0;
+            platinum = 0;
+        }
+        public Money(int _num) {
+            copper = _num;
+            silver = _num;
+            electrum = _num;
+            gold = _num;
+            platinum = _num;
+        }
+        public Money(int _c, int _s, int _e, int _g, int _p) {
+            copper = _c;
+            silver = _s;
+            electrum = _e;
+            gold = _g;
+            platinum = _p;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        public static Money convertMoney(Money _current) {
+            while (_current.copper >= 10) {
+                _current.copper -= 10;
+                _current.silver++;
+            }
+
+            while (_current.silver >= 5) {
+                _current.silver -= 5;
+                _current.electrum++;
+            }
+
+            while (_current.electrum >= 2) {
+                _current.electrum -= 2;
+                _current.gold++;
+            }
+
+            while (_current.gold >= 10) {
+                _current.gold -= 10;
+                _current.platinum++;
+            }
+
+            return _current;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        @NotNull
+        @Override
+        public String toString()
+        {
+            return ": Money : ;" + this.copper + ";" + this.silver + ";" + this.electrum + ";" + this.gold + ";" + this.platinum + ";";
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static class Item {
+        public String item;
+        public Money cost;
+        public int weight;
+        public String attributes;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        public Item() {
+            item = "";
+            cost = new Money();
+            weight = 0;
+            attributes = "";
+        }
+        public Item(String _string) {
+            String[] temp = _string.split(";");
+            item = temp[1];
+            cost = new Money(Integer.parseInt(temp[3]), Integer.parseInt(temp[4]),
+                    Integer.parseInt(temp[5]), Integer.parseInt(temp[6]), Integer.parseInt(temp[7]));
+            weight = Integer.parseInt(temp[9]);
+            attributes = temp[8];
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        @NotNull
+        @Override
+        public String toString()
+        {
+            return ": Item : ;" + this.item + ";" + this.cost.toString() + ";" + this.weight + ";" + this.attributes + ";";
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean template_char;
 
@@ -366,7 +468,7 @@ public class Character {
     private Proficient_In[] proficiencies;
     private int proficiency_bonus;
     private Saving_Throw[] saving_throws;
-    // TODO: Vector for items carried
+    private Item[] items;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -388,6 +490,7 @@ public class Character {
         proficiencies = new Proficient_In[12];
         proficiency_bonus = 0;
         saving_throws = new Saving_Throw[12];
+        items = new Item[12];
 
         health_points = Equation_HP(hp_die);
     }
@@ -414,6 +517,8 @@ public class Character {
         proficiency_bonus = _char.get_proficiency_bonus();
         saving_throws = new Saving_Throw[12];
         saving_throws = _char.get_saving_throws();
+        items = new Item[12];
+        items = _char.get_items();
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -446,6 +551,8 @@ public class Character {
         proficiencies = Utility.convertToArrayOfProficiencies(_hash);
         saving_throws = new Saving_Throw[12];
         saving_throws = Utility.convertToArrayOfSavingThrows(_hash);
+        items = new Item[12];
+        items = Utility.convertToArrayOfItem(_hash);
     }
 
         // TODO: GET MONSTER INFO FROM API if game_mode == DND
@@ -581,6 +688,18 @@ public class Character {
         }
     }
 
+    public Item[] get_items() { return items; }
+    public void set_items(Item[] _items) { this.items = _items; }
+    public void clear_items() { items = new Item[items.length]; }
+    public void add_item(Item _item) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null) {
+                items[i] = _item;
+                break;
+            }
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int Equation_HP(Die _die) {
@@ -651,6 +770,9 @@ public class Character {
             else if (!Arrays.equals(this.proficiencies, _other.proficiencies)) {
                 is_same = false;
             }
+            else if (!Arrays.equals(this.items, _other.items)) {
+                is_same = false;
+            }
         }
         else {
             is_same = false;
@@ -687,6 +809,7 @@ public class Character {
         temp.put(TAG.PROFICIENCIES_VECTOR, Arrays.toString(this.proficiencies));
         temp.put(TAG.PROFICIENCY_BONUS, String.valueOf(this.proficiency_bonus));
         temp.put(TAG.SAVING_THROWS_VECTOR, Arrays.toString(this.saving_throws));
+        temp.put(TAG.ITEMS_VECTOR, Arrays.toString(this.items));
 
         return temp;
     }

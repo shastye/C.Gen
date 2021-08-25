@@ -44,6 +44,7 @@ public class Utility {
         public static final String PROFICIENCY_BONUS = "proficiency_bonus";
         public static final String SAVING_THROWS_VECTOR = "saving throws";
         public static final String INITIATIVE = "initiative";
+        public static final String ITEMS_VECTOR = "items";
 
         // from Monster Class
         public static final String TYPE = "type";
@@ -84,15 +85,13 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        Physical tempPhys = new Physical();
-        tempPhys.set_name("Stab");
-        tempPhys.set_bonus(3);
-        tempPhys.set_die(Die.d4);
-        tempPhys.set_num_dice(2);
-        tempPhys.set_special("..None..");
-        tempPhys.set_weapon_info(new Physical.Weapon_Struct(Physical.Weapon_Enum.DAGGER, 1, Die.d6));
+        Character.Item item = new Character.Item();
+        item.item = "Amulet";
+        item.cost = new Character.Money(0,0,0,5,0);
+        item.weight = 1;
+        item.attributes = "";
 
-        temp.add_attack(tempPhys);
+        temp.add_item(item);
 
         return temp;
     }
@@ -155,7 +154,6 @@ public class Utility {
                             }
                         }
 
-                        stringAttacks = new String[12];
                         stringAttacks[i] = tempAttacks;
                     }
                 }
@@ -164,7 +162,7 @@ public class Utility {
                     if (stringAttacks[i] != null && !stringAttacks[i].equals("null")) {
                         String[] temp = stringAttacks[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null")) {
+                        if (temp[1] != null  && !temp[1].equals("[null") && !temp[1].equals("null") && !temp[1].equals("null]")) {
                             switch (temp[0]) {
                                 case "Attack":
                                     Attack att = new Attack(stringAttacks[i]);
@@ -226,7 +224,6 @@ public class Utility {
                             }
                         }
 
-                        stringWeapons = new String[12];
                         stringWeapons[i] = tempWeapons;
                     }
                 }
@@ -244,6 +241,70 @@ public class Utility {
 
                         if (!temp[0].equals("")) {
                             _array[i] = new Physical.Weapon_Struct(temp[0]);
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            return null;
+        }
+
+        return _array;
+    }
+
+    public static Character.Item[] convertToArrayOfItem(HashMap<String, String> _hashMap) {
+        Character.Item[] _array = new Character.Item[12];
+
+        String tempItems = "";
+        if (_hashMap.get(TAG.ITEMS_VECTOR) != null && !_hashMap.get(TAG.ITEMS_VECTOR).equals("[]")) {
+            tempItems = _hashMap.get(TAG.ITEMS_VECTOR);
+
+            String[] stringItems = new String[24];
+            if (tempItems != null) {
+                stringItems = tempItems.split(", ");
+            }
+
+            if (stringItems.length > 1) {
+                for (int i = 0; i < stringItems.length; i++) {
+                    if (stringItems[i] != null && !stringItems[i].equals("null")) {
+                        String[] temp = stringItems[i].split(": ");
+                        tempItems = "";
+
+                        for (int j = 0; j < temp.length; j++) {
+                            if (temp[j] != null && !temp[j].equals("null") && tempItems.equals("")) {
+                                if (temp[j].equals("Item")) {
+                                    tempItems += temp[j];
+                                    tempItems += "s: ";
+                                }
+                            }
+                        }
+
+                        for (int k = 0; k < temp.length; k++) {
+                            if (temp[k] != null && !temp[k].equals("null") && !temp[k].equals("[null") && !temp[k].equals("null]") ) {
+                                if (!temp[k].equals("[") && !temp[k].equals("Item")) {
+                                    tempItems += temp[k];
+                                }
+                            }
+                        }
+
+                        stringItems[i] = tempItems;
+                    }
+                }
+
+                for (int i = 0; i < stringItems.length; i++) {
+                    if (stringItems[i] != null && !stringItems[i].equals("null")) {
+                        if (stringItems[i].contains("[")) {
+                            stringItems[i] = stringItems[i].replace("[", "");
+                        }
+                        if (stringItems[i].contains("]")) {
+                            stringItems[i] = stringItems[i].replace("]", "");
+                        }
+
+                        String[] temp = stringItems[i].split(": ");
+
+                        if (!temp[0].equals("")) {
+                            _array[i] = new Character.Item(temp[0]);
                         }
                     }
                 }
