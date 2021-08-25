@@ -4,11 +4,11 @@
 
 <!--
     TODO: (both here and in classes)
+        IMPLEMENT HAVING MULTIPLE OF ONE WEAPON
+        ITEMS CARRIED (place before weapons)
 
     TODO: (just here)
-            WEAPONS
-            ATTACKS
-
+        MAGICAL ATTACKS
 -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1610,10 +1610,156 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/physical_attacks_header"
+                android:id="@+id/equipment_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Row13"
+                android:layout_marginTop="0dp"
+                android:background="@color/accent_red"
+                app:cardBackgroundColor="@color/dark_red"
+                app:cardElevation="@dimen/fab_margin">
+
+                <TextView
+                    android:id="@+id/equipment_viewCharacter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Equipment"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:translationX="16dp" />
+            </androidx.cardview.widget.CardView>
+
+<!--    ROW 13.5   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row13.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/equipment_header">
+
+                <ImageView
+                    android:id="@+id/equipment_frame_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="515dp"
+                    android:padding="@dimen/fab_margin"
+                    android:paddingLeft="@dimen/fab_margin"
+                    android:paddingTop="@dimen/fab_margin"
+                    android:paddingRight="@dimen/fab_margin"
+                    android:paddingBottom="@dimen/fab_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/equipment_square_no_banner" />
+
+                <TextView
+                    android:id="@+id/copper_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="54dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="CP"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintBottom_toTopOf="@id/silver_textView"  />
+
+                <TextView
+                    android:id="@+id/silver_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="SP"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/copper_textView"
+                    app:layout_constraintBottom_toTopOf="@id/electrum_textView"  />
+
+                <TextView
+                    android:id="@+id/electrum_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="EP"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/silver_textView"
+                    app:layout_constraintBottom_toTopOf="@id/gold_textView"  />
+
+                <TextView
+                    android:id="@+id/gold_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="GP"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/electrum_textView"
+                    app:layout_constraintBottom_toTopOf="@id/platinum_textView"  />
+
+                <TextView
+                    android:id="@+id/platinum_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="PP"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/gold_textView"  />
+
+                <TextView
+                    android:id="@+id/equipment_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47dp"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="EQUIPMENT"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintHorizontal_bias="0.63"
+                    app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView"  />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/physical_attacks_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row13.5"
                 android:layout_marginTop="0dp"
                 android:background="@color/accent_red"
                 app:cardBackgroundColor="@color/dark_red"
