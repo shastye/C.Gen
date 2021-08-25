@@ -45,6 +45,7 @@ public class Utility {
         public static final String SAVING_THROWS_VECTOR = "saving throws";
         public static final String INITIATIVE = "initiative";
         public static final String ITEMS_VECTOR = "items";
+        public static final String MONEY = "money";
 
         // from Monster Class
         public static final String TYPE = "type";

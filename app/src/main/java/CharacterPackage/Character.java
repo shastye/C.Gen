@@ -344,8 +344,6 @@ public class Character {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: Enum for items carried
-
     public static class Money {
         public int copper;
         public int silver;
@@ -368,6 +366,8 @@ public class Character {
             electrum = _num;
             gold = _num;
             platinum = _num;
+
+            convertMoney(this);
         }
         public Money(int _c, int _s, int _e, int _g, int _p) {
             copper = _c;
@@ -375,11 +375,23 @@ public class Character {
             electrum = _e;
             gold = _g;
             platinum = _p;
+
+            convertMoney(this);
+        }
+        public Money(String _string) {
+            String[] temp = _string.split(";");
+            copper = Integer.parseInt(temp[1]);
+            silver = Integer.parseInt(temp[2]);
+            electrum = Integer.parseInt(temp[3]);
+            gold = Integer.parseInt(temp[4]);
+            platinum = Integer.parseInt(temp[5]);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static Money convertMoney(Money _current) {
+        public static void convertMoney(Money _current) {
+            // TODO: IF VALUE IS NEGATIVE, BREAK UP LARGER PIECES
+
             while (_current.copper >= 10) {
                 _current.copper -= 10;
                 _current.silver++;
@@ -399,8 +411,6 @@ public class Character {
                 _current.gold -= 10;
                 _current.platinum++;
             }
-
-            return _current;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -469,6 +479,7 @@ public class Character {
     private int proficiency_bonus;
     private Saving_Throw[] saving_throws;
     private Item[] items;
+    private Money money;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -491,6 +502,7 @@ public class Character {
         proficiency_bonus = 0;
         saving_throws = new Saving_Throw[12];
         items = new Item[12];
+        money = new Money();
 
         health_points = Equation_HP(hp_die);
     }
@@ -519,6 +531,7 @@ public class Character {
         saving_throws = _char.get_saving_throws();
         items = new Item[12];
         items = _char.get_items();
+        money = _char.get_money();
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -542,6 +555,7 @@ public class Character {
         total_hp_dice = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.TOTAL_HEALTH_POINTS_DICE)));
         hp_die = Die.valueOf(_hash.get(TAG.HEALTH_POINTS_DIE));
         proficiency_bonus = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.PROFICIENCY_BONUS)));
+        money = new Money(_hash.get(TAG.MONEY));
 
         weapons = new Physical.Weapon_Struct[12];
         weapons = Utility.convertToArrayOfWeapon(_hash);
@@ -700,6 +714,11 @@ public class Character {
         }
     }
 
+    public Money get_money() {
+        return money;
+    }
+    public void set_money(Money _money) { this.money = _money; }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int Equation_HP(Die _die) {
@@ -810,6 +829,7 @@ public class Character {
         temp.put(TAG.PROFICIENCY_BONUS, String.valueOf(this.proficiency_bonus));
         temp.put(TAG.SAVING_THROWS_VECTOR, Arrays.toString(this.saving_throws));
         temp.put(TAG.ITEMS_VECTOR, Arrays.toString(this.items));
+        temp.put(TAG.MONEY, String.valueOf(money));
 
         return temp;
     }
