@@ -385,6 +385,8 @@ public class Character {
             electrum = Integer.parseInt(temp[3]);
             gold = Integer.parseInt(temp[4]);
             platinum = Integer.parseInt(temp[5]);
+
+            convertMoney(this);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////

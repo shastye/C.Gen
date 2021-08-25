@@ -452,6 +452,7 @@ class ViewCharacterActivity : AppCompatActivity() {
             sur_radio.text = temp
         }
 
+        // OTHER PROFICIENCIES INFORMATION
         val otherProf_textView = findViewById<TextView>(R.id.other_proficiencies_textView)
         temp = ""
         for (i in _player._proficiencies.indices) {
@@ -483,9 +484,11 @@ class ViewCharacterActivity : AppCompatActivity() {
         }
         otherProf_textView.text = temp
 
+        // INITIATIVE INFORMATION
         val init_textView = findViewById<TextView>(R.id.initiative_textView_actual)
         init_textView.text = _player._initiative.toString()
 
+        // ATTACK INFORMATION
         val a1n_textView = findViewById<TextView>(R.id.attack1_name_textView)
         val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_textView)
         val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_textView)
@@ -495,7 +498,8 @@ class ViewCharacterActivity : AppCompatActivity() {
                 if (_player._attacks[i] is Physical) {
                     val tempPhysical: Physical = _player._attacks[i] as Physical
                     a1n_textView.text = tempPhysical._name
-                    a1b_textView.text = tempPhysical._bonus.toString()
+                    temp = "+${tempPhysical._bonus}"
+                    a1b_textView.text = temp
                     temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
                     temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
                     a1dt_textView.text = temp
@@ -520,7 +524,8 @@ class ViewCharacterActivity : AppCompatActivity() {
                 if (_player._attacks[i] is Physical) {
                     val tempPhysical: Physical = _player._attacks[i] as Physical
                     a2n_textView.text = tempPhysical._name
-                    a2b_textView.text = tempPhysical._bonus.toString()
+                    temp = "+${tempPhysical._bonus}"
+                    a2b_textView.text = temp
                     temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
                     temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
                     a2dt_textView.text = temp
@@ -545,7 +550,8 @@ class ViewCharacterActivity : AppCompatActivity() {
                 if (_player._attacks[i] is Physical) {
                     val tempPhysical: Physical = _player._attacks[i] as Physical
                     a3n_textView.text = tempPhysical._name
-                    a3b_textView.text = tempPhysical._bonus.toString()
+                    temp = "+${tempPhysical._bonus}"
+                    a3b_textView.text = temp
                     temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
                     temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
                     a3dt_textView.text = temp
@@ -562,6 +568,7 @@ class ViewCharacterActivity : AppCompatActivity() {
             }
         }
 
+        // WEAPONS INFORMATION
         val weapons_textView = findViewById<TextView>(R.id.otherAttacks_textView)
         temp = ""
         for (k in _player._weapons.indices) {
@@ -572,6 +579,39 @@ class ViewCharacterActivity : AppCompatActivity() {
             }
         }
         weapons_textView.text = temp
+
+        // EQUIPMENT INFORMATION
+        val cp_textView = findViewById<TextView>(R.id.copper_textView)
+        cp_textView.text = _player._money.copper.toString()
+
+        val sp_textView = findViewById<TextView>(R.id.silver_textView)
+        sp_textView.text = _player._money.silver.toString()
+
+        val ep_textView = findViewById<TextView>(R.id.electrum_textView)
+        ep_textView.text = _player._money.electrum.toString()
+
+        val gp_textView = findViewById<TextView>(R.id.gold_textView)
+        gp_textView.text = _player._money.gold.toString()
+
+        val pp_textView = findViewById<TextView>(R.id.platinum_textView)
+        pp_textView.text = _player._money.platinum.toString()
+
+        val equip_textView = findViewById<TextView>(R.id.equipment_textView)
+        temp = ""
+        for (p in _player._items.indices) {
+            if (_player._items[p] != null) {
+                val item: Character.Item = _player._items[p]
+
+                temp += item.item
+
+                if (item.attributes != "") {
+                    temp += "(${item.attributes})"
+                }
+
+                temp += "\n\n"
+            }
+        }
+        equip_textView.text = temp
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE

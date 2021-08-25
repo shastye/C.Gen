@@ -5,7 +5,6 @@
 <!--
     TODO: (both here and in classes)
         IMPLEMENT HAVING MULTIPLE OF ONE WEAPON
-        ITEMS CARRIED (place before weapons)
 
     TODO: (just here)
         MAGICAL ATTACKS
@@ -1665,7 +1664,7 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView"
                     app:layout_constraintBottom_toTopOf="@id/silver_textView"  />
@@ -1682,7 +1681,7 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/copper_textView"
                     app:layout_constraintBottom_toTopOf="@id/electrum_textView"  />
@@ -1699,7 +1698,7 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/silver_textView"
                     app:layout_constraintBottom_toTopOf="@id/gold_textView"  />
@@ -1716,7 +1715,7 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/electrum_textView"
                     app:layout_constraintBottom_toTopOf="@id/platinum_textView"  />
@@ -1733,7 +1732,7 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintHorizontal_bias="0.23"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/gold_textView"  />
 
@@ -1741,7 +1740,7 @@
                     android:id="@+id/equipment_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="47dp"
+                    android:layout_marginTop="36dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text="EQUIPMENT"

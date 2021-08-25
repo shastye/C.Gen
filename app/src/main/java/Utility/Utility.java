@@ -86,13 +86,7 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        Character.Item item = new Character.Item();
-        item.item = "Amulet";
-        item.cost = new Character.Money(0,0,0,5,0);
-        item.weight = 1;
-        item.attributes = "";
-
-        temp.add_item(item);
+        temp.set_money(new Character.Money(9,5,24,37,1));
 
         return temp;
     }
