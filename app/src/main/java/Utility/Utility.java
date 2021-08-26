@@ -5,6 +5,7 @@ import com.google.protobuf.Any;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 import AttackPackage.Attack;
 import AttackPackage.Magical;
@@ -46,6 +47,8 @@ public class Utility {
         public static final String INITIATIVE = "initiative";
         public static final String ITEMS_VECTOR = "items";
         public static final String MONEY = "money";
+        public static final String SPELL_SLOTS = "spell slots";
+        public static final String USED_SPELL_SLOTS = "used spell slots";
 
         // from Monster Class
         public static final String TYPE = "type";
@@ -86,7 +89,26 @@ public class Utility {
     public static Player setInformationForDebugging(Player _player) {
         Player temp = new Player(_player);
 
-        temp.set_money(new Character.Money(9,5,24,37,1));
+        Magical spell = new Magical();
+
+        spell.set_name("Commune");
+        spell.set_level(5);
+        spell.set_special("Divination");
+        spell.set_duration("1 minutes");
+        spell.set_range(0);
+        spell.set_time_in_actions(1);
+
+        temp.add_attack(spell);
+
+        Physical hit = new Physical();
+
+        hit.set_name("Punch");
+        hit.set_special("Finesse");
+        hit.set_die(Die.d4);
+        hit.set_num_dice(2);
+        hit.set_weapon_info(new Physical.Weapon_Struct(Physical.Weapon_Enum.NONE, 0, Die.d4));
+
+        temp.add_attack(hit);
 
         return temp;
     }
@@ -110,6 +132,34 @@ public class Utility {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static int[] convertToArrayOfInt(HashMap<String, String> _hashMap, String _tag, int _size) {
+        int[] _array = new int[_size];
+
+        String tempInt = "";
+        if (_hashMap.get(_tag) != null && !Objects.equals(_hashMap.get(_tag), "[]")) {
+            tempInt = _hashMap.get(_tag);
+
+            String[] stringInt = new String[24];
+            if (tempInt != null) {
+                stringInt = tempInt.split(", ");
+            }
+
+            if (stringInt.length > 1) {
+                for (int i = 0; i < stringInt.length; i++) {
+                    if (stringInt[i] != null) {
+                        if (stringInt[i].contains("]") || stringInt[i].contains("[")) {
+                            stringInt[i] = stringInt[i].replace("[", "");
+                            stringInt[i] = stringInt[i].replace("]", "");
+
+                            _array[i] = Integer.parseInt(stringInt[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        return _array;
+    }
     public static Attack[] convertToArrayOfAttack(HashMap<String, String> _hashMap) {
         Attack[] _array = new Attack[12];
 

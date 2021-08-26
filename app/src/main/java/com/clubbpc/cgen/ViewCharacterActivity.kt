@@ -1,5 +1,6 @@
 package com.clubbpc.cgen
 
+import AttackPackage.Magical
 import AttackPackage.Physical
 import CharacterPackage.Character
 import CharacterPackage.Monster
@@ -10,11 +11,14 @@ import Utility.Utility.checkForEnumValueInArray
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -55,8 +59,6 @@ class ViewCharacterActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-        // TODO: CHECK ATTACKS, WEAPONS, PROFICIENCIES, AND SAVE THROWS
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////         Retrieve from database          /////////////////////////////
@@ -612,6 +614,432 @@ class ViewCharacterActivity : AppCompatActivity() {
             }
         }
         equip_textView.text = temp
+
+        // SPELLS INFORMATION
+        val spells_section = findViewById<ConstraintLayout>(R.id.spells_section)
+        val ability = findViewById<TextView>(R.id.spell_ability_textView_actual)
+        val dc = findViewById<TextView>(R.id.spell_dc_textView_actual)
+        val bonus = findViewById<TextView>(R.id.spell_bonus_textView_actual)
+
+        var tempdc = 8 + _player._proficiency_bonus
+        val tempBonus = tempdc + _player._proficiency_bonus
+        temp = "+${tempBonus}"
+        bonus.text = temp
+
+        var spellcaster = true
+        when (_player._classe) {
+            Player.Classes.ARTIFICER -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.INTELLIGENCE.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Intelligence)
+                temp = "+${tempdc}"
+                dc.text = temp
+            }
+            Player.Classes.BARD -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.CHARISMA.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Charisma)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.CLERIC -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.WISDOM.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Wisdom)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.DRUID -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.WISDOM.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Wisdom)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.FIGHTER -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.INTELLIGENCE.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Intelligence)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.PALADIN -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.CHARISMA.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Charisma)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.RANGER -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.WISDOM.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Wisdom)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.ROGUE -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.INTELLIGENCE.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Intelligence)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.SORCERER -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.CHARISMA.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Charisma)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.WARLOCK -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.CHARISMA.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Charisma)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            Player.Classes.WIZARD -> {
+                spells_section.visibility = View.VISIBLE
+                ability.text = Character.Base_Stats_Enum.INTELLIGENCE.toString()
+                tempdc += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Intelligence)
+                temp = "+" + tempdc
+                dc.text = temp
+            }
+            else -> {
+                spells_section.visibility = View.INVISIBLE
+                spells_section.maxHeight = 0
+                spellcaster = false
+            }
+        }
+
+        if (spellcaster) {
+            val totalSpells = arrayOf(0,0,0,0,0,0,0,0,0,0)
+
+            for (k in _player._attacks.indices) {
+                if (_player._attacks[k] != null) {
+                    if (_player._attacks[k] is Magical) {
+                        val spell: Magical = _player._attacks[k] as Magical
+
+                        when (spell._level) {
+                            0 -> totalSpells[0] += 1
+                            1 -> totalSpells[1] += 1
+                            2 -> totalSpells[2] += 1
+                            3 -> totalSpells[3] += 1
+                            4 -> totalSpells[4] += 1
+                            5 -> totalSpells[5] += 1
+                            6 -> totalSpells[6] += 1
+                            7 -> totalSpells[7] += 1
+                            8 -> totalSpells[8] += 1
+                            9 -> totalSpells[9] += 1
+                        }
+                    }
+                }
+            }
+
+            // SET CANTRIPS
+            val cantrips = findViewById<ConstraintLayout>(R.id.Row16)
+            if (totalSpells[0] > 0) {
+                val cantrips_rg = findViewById<RadioGroup>(R.id.cantrips_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 0) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                cantrips_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                cantrips.visibility = View.INVISIBLE
+                cantrips.maxHeight = 0
+            }
+
+            // SET LEVEL 1 SPELLS
+            val spells1 = findViewById<ConstraintLayout>(R.id.Row17) // 1 = 17
+            if (totalSpells[1] > 0) {
+                val spells1_rg = findViewById<RadioGroup>(R.id.spell1_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 1) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells1_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l1_slots = findViewById<TextView>(R.id.spell1_total_textView)
+                l1_slots.text = _player._spell_slots[1].toString()
+
+                val l1_used_slots = findViewById<TextView>(R.id.spell1_expended_textView)
+                l1_used_slots.text = _player._used_spell_slots[1].toString()
+            }
+            else {
+                spells1.visibility = View.INVISIBLE
+                spells1.maxHeight = 0
+            }
+
+            // SET LEVEL 2 SPELLS
+            val spells2 = findViewById<ConstraintLayout>(R.id.Row18)
+            if (totalSpells[2] > 0) {
+                val spells2_rg = findViewById<RadioGroup>(R.id.spell2_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 2) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells2_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l2_slots = findViewById<TextView>(R.id.spell2_total_textView)
+                l2_slots.text = _player._spell_slots[2].toString()
+
+                val l2_used_slots = findViewById<TextView>(R.id.spell2_expended_textView)
+                l2_used_slots.text = _player._used_spell_slots[2].toString()
+            }
+            else {
+                spells2.visibility = View.INVISIBLE
+                spells2.maxHeight = 0
+            }
+
+            // SET LEVEL 3 SPELLS
+            val spells3 = findViewById<ConstraintLayout>(R.id.Row19)
+            if (totalSpells[3] > 0) {
+                val spells3_rg = findViewById<RadioGroup>(R.id.spell3_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 3) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells3_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l3_slots = findViewById<TextView>(R.id.spell3_total_textView)
+                l3_slots.text = _player._spell_slots[3].toString()
+
+                val l3_used_slots = findViewById<TextView>(R.id.spell3_expended_textView)
+                l3_used_slots.text = _player._used_spell_slots[3].toString()
+            }
+            else {
+                spells3.visibility = View.INVISIBLE
+                spells3.maxHeight = 0
+            }
+
+            // SET LEVEL 4 SPELLS
+            val spells4 = findViewById<ConstraintLayout>(R.id.Row20)
+            if (totalSpells[4] > 0) {
+                val spells4_rg = findViewById<RadioGroup>(R.id.spell4_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 4) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells4_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l4_slots = findViewById<TextView>(R.id.spell4_total_textView)
+                l4_slots.text = _player._spell_slots[4].toString()
+
+                val l4_used_slots = findViewById<TextView>(R.id.spell4_expended_textView)
+                l4_used_slots.text = _player._used_spell_slots[4].toString()
+            }
+            else {
+                spells4.visibility = View.INVISIBLE
+                spells4.maxHeight = 0
+            }
+
+            // SET LEVEL 5 SPELLS
+            val spells5 = findViewById<ConstraintLayout>(R.id.Row21)
+            if (totalSpells[5] > 0) {
+                val spells5_rg = findViewById<RadioGroup>(R.id.spell5_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 5) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells5_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l5_slots = findViewById<TextView>(R.id.spell5_total_textView)
+                l5_slots.text = _player._spell_slots[5].toString()
+
+                val l5_used_slots = findViewById<TextView>(R.id.spell5_expended_textView)
+                l5_used_slots.text = _player._used_spell_slots[5].toString()
+            }
+            else {
+                spells5.visibility = View.INVISIBLE
+                spells5.maxHeight = 0
+            }
+
+            // SET LEVEL 6 SPELLS
+            val spells6 = findViewById<ConstraintLayout>(R.id.Row22)
+            if (totalSpells[6] > 0) {
+                val spells6_rg = findViewById<RadioGroup>(R.id.spell6_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 6) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells6_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l6_slots = findViewById<TextView>(R.id.spell6_total_textView)
+                l6_slots.text = _player._spell_slots[6].toString()
+
+                val l6_used_slots = findViewById<TextView>(R.id.spell6_expended_textView)
+                l6_used_slots.text = _player._used_spell_slots[6].toString()
+            }
+            else {
+                spells6.visibility = View.INVISIBLE
+                spells6.maxHeight = 0
+            }
+
+            // SET LEVEL 7 SPELLS
+            val spells7 = findViewById<ConstraintLayout>(R.id.Row23)
+            if (totalSpells[7] > 0) {
+                val spells7_rg = findViewById<RadioGroup>(R.id.spell7_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 7) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells7_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l7_slots = findViewById<TextView>(R.id.spell7_total_textView)
+                l7_slots.text = _player._spell_slots[7].toString()
+
+                val l7_used_slots = findViewById<TextView>(R.id.spell7_expended_textView)
+                l7_used_slots.text = _player._used_spell_slots[7].toString()
+            }
+            else {
+                spells7.visibility = View.INVISIBLE
+                spells7.maxHeight = 0
+            }
+
+            // SET LEVEL 8 SPELLS
+            val spells8 = findViewById<ConstraintLayout>(R.id.Row24)
+            if (totalSpells[8] > 0) {
+                val spells8_rg = findViewById<RadioGroup>(R.id.spell8_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 8) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells8_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l8_slots = findViewById<TextView>(R.id.spell8_total_textView)
+                l8_slots.text = _player._spell_slots[8].toString()
+
+                val l8_used_slots = findViewById<TextView>(R.id.spell8_expended_textView)
+                l8_used_slots.text = _player._used_spell_slots[8].toString()
+            }
+            else {
+                spells8.visibility = View.INVISIBLE
+                spells8.maxHeight = 0
+            }
+
+            // SET LEVEL 9 SPELLS
+            val spells9 = findViewById<ConstraintLayout>(R.id.Row25)
+            if (totalSpells[9] > 0) {
+                val spells9_rg = findViewById<RadioGroup>(R.id.spell9_radioGroup)
+
+                for (k in _player._attacks.indices) {
+                    if (_player._attacks[k] != null) {
+                        if (_player._attacks[k] is Magical) {
+                            val spell: Magical = _player._attacks[k] as Magical
+
+                            if (spell._level == 9) {
+                                val radio = RadioButton(this)
+                                radio.id = View.generateViewId()
+                                radio.text = spell._name
+                                spells9_rg.addView(radio)
+                            }
+                        }
+                    }
+                }
+
+                val l9_slots = findViewById<TextView>(R.id.spell9_total_textView)
+                l9_slots.text = _player._spell_slots[9].toString()
+
+                val l9_used_slots = findViewById<TextView>(R.id.spell9_expended_textView)
+                l9_used_slots.text = _player._used_spell_slots[9].toString()
+            }
+            else {
+                spells9.visibility = View.INVISIBLE
+                spells9.maxHeight = 0
+            }
+        }
     }
     private fun setInformation(_monster : CharacterPackage.Monster) {
         // TODO: MOVE TO OWN XML FILE

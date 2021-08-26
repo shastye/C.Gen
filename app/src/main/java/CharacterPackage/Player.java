@@ -66,13 +66,19 @@ public class Player extends Character {
         BARBARIAN,      BARD,       CLERIC,         DRUID,
         FIGHTER,        MONK,       PALADIN,        ROGUE,
         SORCERER,       WARLOCK,    WIZARD,         ARTIFICER,
-        BLOOD_HUNTER,
+        BLOOD_HUNTER,   RANGER,
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public enum Race {
-        HUMAN,      DRAGONBORN,     DWARF,      // TODO: Add rest of races
+        HUMAN,      DRAGONBORN,     DWARF,      ELF,        GNOME,      HALF_ELF,       HALFLING,
+        HALF_ORC,   TIEFLING,       ORC,        LEONIN,     SATYR,      LINEAGES,       ARAKOCRA,
+        GENASI,     GOLIATH,        AASIMAR,    BUGBEAR,    FIRBOLG,    GOBLIN,         HOBGOBLIN,
+        KENKU,      KOBOLD,         LIZARDFOLK, TABAXI,     TRITON,     YUANTI_PUREBLOOD,
+        TORTLE,     CHANGELING,     KALASHTAR,  SHIFTER,    WARFORGED,  FERAL_TIEFLING,
+        GITH,       CENTAUR,        LOXODON,    MINOTAUR,   VADALKEN,   SIMIC_HYBRID,
+        VERDAN,     LOCATHAH,       GRUNG,
     }
 
     public static Race string_to_race(String _race) {

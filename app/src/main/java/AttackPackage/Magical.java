@@ -3,45 +3,69 @@ package AttackPackage;
 import org.jetbrains.annotations.NotNull;
 
 public class Magical extends Attack {
-    //////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // TODO: enums and structs
 
-    //////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: variables
+    private int level;
+    private int time_in_actions;
+    private int range;
+    private String duration;
 
-    //////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Magical() {
         super();
 
-        // TODO: new variable definitions
+        level = 0;
+        time_in_actions = 1;
+        range = 0;
+        duration = "Instantaneous";
     }
     public Magical(Attack _attack) {
         super(_attack);
 
-        // TODO: new variable definitions
+        level = 0;
+        time_in_actions = 1;
+        range = 0;
+        duration = "Instantaneous";
     }
     public Magical(String _string) {
         super(_string);
 
-        // TODO: new variable definitions
+        level = Integer.parseInt(tempArray[tempArray.length - 4]);
+        time_in_actions = Integer.parseInt(tempArray[tempArray.length - 3]);
+        range = Integer.parseInt(tempArray[tempArray.length - 2]);
+        duration = tempArray[tempArray.length - 1];
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: getters and setters
+    public int get_level() { return level; }
+    public void set_level(int _level) { level = _level; }
 
-    ////////////////////////////////////////////////////////////////////////////
+    public int get_time_in_actions() { return time_in_actions; }
+    public void set_time_in_actions(int _time) { time_in_actions = _time; }
+
+    public int get_range() { return range; }
+    public void set_range(int _range) { range = _range; }
+
+    public String get_duration() { return duration; }
+    public void set_duration(String _duration) { duration = _duration; }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // TODO: methods
-    // TODO: MAKE HASHMAP
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @NotNull
     @Override
     public String toString()
     {
-        return ": Magical: ;" + ""/*Change this <- to this.[field] */ + ";";
+        return ": Magical: ;" + this.get_name() + ";" + this.get_special() + ";" + level + ";"
+                + time_in_actions + ";" + range + ";" + duration + ";";
     }
 }

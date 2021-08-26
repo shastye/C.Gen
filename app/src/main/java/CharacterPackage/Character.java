@@ -482,6 +482,8 @@ public class Character {
     private Saving_Throw[] saving_throws;
     private Item[] items;
     private Money money;
+    private int[] spell_slots;
+    private int[] used_spell_slots;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -505,6 +507,8 @@ public class Character {
         saving_throws = new Saving_Throw[12];
         items = new Item[12];
         money = new Money();
+        spell_slots = new int[10];
+        used_spell_slots = new int[10];
 
         health_points = Equation_HP(hp_die);
     }
@@ -534,6 +538,10 @@ public class Character {
         items = new Item[12];
         items = _char.get_items();
         money = _char.get_money();
+        spell_slots = new int[10];
+        spell_slots = _char.get_spell_slots();
+        used_spell_slots = new int[10];
+        used_spell_slots = _char.get_spell_slots();
     }
     public Character(HashMap<String, String> _hash) {
         template_char = Boolean.parseBoolean(Objects.requireNonNull(_hash.get(TAG.TEMPLATE_CHARACTER)));
@@ -557,7 +565,7 @@ public class Character {
         total_hp_dice = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.TOTAL_HEALTH_POINTS_DICE)));
         hp_die = Die.valueOf(_hash.get(TAG.HEALTH_POINTS_DIE));
         proficiency_bonus = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.PROFICIENCY_BONUS)));
-        money = new Money(_hash.get(TAG.MONEY));
+        money = new Money(Objects.requireNonNull(_hash.get(TAG.MONEY)));
 
         weapons = new Physical.Weapon_Struct[12];
         weapons = Utility.convertToArrayOfWeapon(_hash);
@@ -569,6 +577,10 @@ public class Character {
         saving_throws = Utility.convertToArrayOfSavingThrows(_hash);
         items = new Item[12];
         items = Utility.convertToArrayOfItem(_hash);
+        spell_slots = new int[12];
+        spell_slots = Utility.convertToArrayOfInt(_hash, TAG.SPELL_SLOTS, 10);
+        used_spell_slots = new int[12];
+        used_spell_slots = Utility.convertToArrayOfInt(_hash, TAG.USED_SPELL_SLOTS, 10);
     }
 
         // TODO: GET MONSTER INFO FROM API if game_mode == DND
@@ -721,6 +733,15 @@ public class Character {
     }
     public void set_money(Money _money) { this.money = _money; }
 
+    public int[] get_spell_slots() { return spell_slots; }
+    public void set_spell_slots(int[] _slots) { this.spell_slots = _slots; }
+    public void clear_spell_slots() { spell_slots = new int[spell_slots.length]; }
+
+    public int[] get_used_spell_slots() { return used_spell_slots; }
+    public void set_used_spell_slots(int[] _used_slots) { this.used_spell_slots = _used_slots; }
+    public void clear_used_spell_slots() { used_spell_slots = new int[used_spell_slots.length]; }
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int Equation_HP(Die _die) {
@@ -831,7 +852,9 @@ public class Character {
         temp.put(TAG.PROFICIENCY_BONUS, String.valueOf(this.proficiency_bonus));
         temp.put(TAG.SAVING_THROWS_VECTOR, Arrays.toString(this.saving_throws));
         temp.put(TAG.ITEMS_VECTOR, Arrays.toString(this.items));
-        temp.put(TAG.MONEY, String.valueOf(money));
+        temp.put(TAG.MONEY, String.valueOf(this.money));
+        temp.put(TAG.SPELL_SLOTS, Arrays.toString(this.spell_slots));
+        temp.put(TAG.USED_SPELL_SLOTS, Arrays.toString(this.used_spell_slots));
 
         return temp;
     }

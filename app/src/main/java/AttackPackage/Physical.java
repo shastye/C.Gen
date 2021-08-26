@@ -9,7 +9,7 @@ public class Physical extends Attack {
 
     public enum Weapon_Enum {    // TODO: MAKE AS ENUM CLASS?
                             //       That way each weapons hit die/etc can be saved per weapon?
-        RAPIER,     CLUB,               DAGGER,     GREATCLUB,      HANDAXE,
+        NONE,       RAPIER,             CLUB,       DAGGER,     GREATCLUB,      HANDAXE,
         JAVELIN,    LIGHT_HAMMER,       MACE,
 
         // TODO: ADD MORE WEAPONS
@@ -68,6 +68,9 @@ public class Physical extends Attack {
 
     //////////////////////////////////////////////////////////////////////////////
 
+    private int bonus;      // TODO: MOVE TO PHYSICAL
+    private Die die;        // TODO: MOVE TO PHYSICAL
+    private int num_dice;   // TODO: MOVE TO PHYSICAL
     private Weapon_Struct weapon_info;
 
     //////////////////////////////////////////////////////////////////////////////
@@ -75,21 +78,38 @@ public class Physical extends Attack {
     public Physical() {
         super();
 
+        bonus = 0;
+        die = Die.d4;
+        num_dice = 0;
         weapon_info = new Weapon_Struct(Weapon_Enum.RAPIER);
     }
     public Physical(Attack _attack) {
         super(_attack);
 
+        bonus = 0;
+        die = Die.d4;
+        this.num_dice = 0;
         weapon_info = new Weapon_Struct(Weapon_Enum.RAPIER);
     }
     public Physical(String _string) {
         super(_string);
 
+        bonus = Integer.parseInt(tempArray[tempArray.length - 7]);
+        die = Die.valueOf(tempArray[tempArray.length - 6]);
+        num_dice = Integer.parseInt(tempArray[tempArray.length - 5]);
         weapon_info = new Weapon_Struct("Weapon: " + ";" + tempArray[tempArray.length - 3] + ";" + tempArray[tempArray.length - 2] + ";" + tempArray[tempArray.length - 1]);
-        // TODO: new variable definitions
     }
 
     ////////////////////////////////////////////////////////////////////////////
+
+    public int get_bonus() { return bonus; }
+    public void set_bonus(int _bonus) { this.bonus = _bonus; }
+
+    public Die get_die() { return die; }
+    public void set_die(Die _die) { this.die = _die; }
+
+    public int get_num_dice() { return num_dice; }
+    public void set_num_dice(int _dice) { this.num_dice = _dice; }
 
     public Weapon_Struct get_weapon_info() { return weapon_info; }
     public void set_weapon_info(Weapon_Struct _weapon) { this.weapon_info = _weapon; }
@@ -105,6 +125,6 @@ public class Physical extends Attack {
     @Override
     public String toString()
     {
-        return ": Physical: ;" + this.get_name() + ";" + this.get_num_dice() + ";" + this.get_die() + ";" + this.get_special() + ";" + this.get_bonus() + ";" + this.weapon_info.toString() + ";";
+        return ": Physical: ;" + this.get_name() + ";" + this.get_special() + ";" + this.get_bonus() + ";" + this.die + ";" + this.get_num_dice() + ";" + this.weapon_info.toString() + ";";
     }
 }
