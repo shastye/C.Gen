@@ -74,10 +74,6 @@ class ViewCharacterActivity : AppCompatActivity() {
                     .addOnCompleteListener{ document ->
                         currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
 
-                        // TODO: DELETE WHEN DONE DEBUGGING
-                        //      comment out when not using
-                        //currentPlayer = Utility.setInformationForDebugging(currentPlayer)
-
                         setInformation()
                     }
                     .addOnFailureListener {
@@ -117,13 +113,11 @@ class ViewCharacterActivity : AppCompatActivity() {
                     }
             }
         }
-        else {
-            Log.e("INFORMATION LOST", "No information was retrieved for character of name ${charName} in ${gameMode} ${charType}.")
-        }
 
 
     }
 
+    // TODO: DELETE AT END
     override fun onDestroy() {
         super.onDestroy()
 
@@ -1074,10 +1068,6 @@ class ViewCharacterActivity : AppCompatActivity() {
 
         val mhp_textView = findViewById<TextView>(R.id.maxHealthPoints_textView_actual)
         mhp_textView.text = currentPlayer._health_points.toString()
-
-        val hd_textView = findViewById<TextView>(R.id.hd_textView_actual)
-        temp = "${currentPlayer._total_hit_dice}${currentPlayer._hit_die}"
-        hd_textView.text = temp
 
         val dsF_textView = findViewById<TextView>(R.id.ds_failures_textView_actual)
         dsF_textView.text = currentPlayer._death_saves.failures.toString()

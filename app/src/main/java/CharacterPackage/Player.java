@@ -96,8 +96,6 @@ public class Player extends Character {
     ////////////////////////////////////////////////////////////
 
     private Death_Saves death_saves;
-    private int total_hit_dice; // TODO: DELETE; LOGIC ERROR
-    private Die hit_die;        // TODO: DELETE; LOGIC ERROR
     private Race race;
     private Classes classe;
     private String background;
@@ -110,8 +108,6 @@ public class Player extends Character {
         super(_name);
 
         death_saves = new Death_Saves(0);
-        total_hit_dice = 0;
-        hit_die = Die.d6;
         race = Race.HUMAN;
         classe = Classes.CLERIC;
         experience_points = 0;
@@ -122,8 +118,6 @@ public class Player extends Character {
         super(_character);
 
         death_saves = new Death_Saves(0);
-        total_hit_dice = 0;
-        hit_die = Die.d4;
         race = Race.DRAGONBORN;
         classe = Classes.BARD;
         experience_points = 0;
@@ -134,8 +128,6 @@ public class Player extends Character {
         super(_player);
 
         death_saves = _player.get_death_saves();
-        total_hit_dice = _player.get_total_hit_dice();
-        hit_die = _player.get_hit_die();
         race = _player.get_race();
         classe = _player.get_classe();
         experience_points = 0;
@@ -148,8 +140,6 @@ public class Player extends Character {
         death_saves = new Death_Saves(0);
         death_saves.failures = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.DEATH_SAVES_FAILURES)));
         death_saves.successes = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.DEATH_SAVES_SUCCESSES)));
-        total_hit_dice = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.TOTAL_HIT_DICE)));
-        hit_die = Die.valueOf(_hash.get(TAG.HIT_DIE));
         race = Race.valueOf(_hash.get(TAG.RACE));
         classe = Classes.valueOf(_hash.get(TAG.CLASS));
         experience_points = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.EXPERIENCE_POINTS)));
@@ -167,12 +157,6 @@ public class Player extends Character {
     }
     public void add_failed_death_save() { this.death_saves.failures++; }
     public void add_succeeded_death_save() {this.death_saves.successes++; }
-
-    public int get_total_hit_dice() { return total_hit_dice; }
-    public void set_total_hit_dice(int _dice) { this.total_hit_dice = _dice; }
-
-    public Die get_hit_die() { return hit_die; }
-    public void set_hit_die(Die _die) { this.hit_die = _die; }
 
     public Race get_race() { return race; }
     public void set_race(Race race) { this.race = race; }
@@ -196,12 +180,6 @@ public class Player extends Character {
 
         if (super.equals(_other)) {
             if (!this.death_saves.equals(_other.get_death_saves())) {
-                is_equal = false;
-            }
-            else if (this.total_hit_dice != _other.get_total_hit_dice()) {
-                is_equal = false;
-            }
-            else if (this.hit_die != _other.get_hit_die()) {
                 is_equal = false;
             }
             else if (this.race != _other.race ) {
@@ -233,8 +211,6 @@ public class Player extends Character {
 
         temp.put(TAG.DEATH_SAVES_SUCCESSES, String.valueOf(this.death_saves.successes));
         temp.put(TAG.DEATH_SAVES_FAILURES, String.valueOf(this.death_saves.failures));
-        temp.put(TAG.TOTAL_HIT_DICE, String.valueOf(this.total_hit_dice));
-        temp.put(TAG.HIT_DIE, String.valueOf(this.hit_die));
         temp.put(TAG.RACE, String.valueOf(this.race));
         temp.put(TAG.CLASS, String.valueOf(this.classe));
         temp.put(TAG.EXPERIENCE_POINTS, String.valueOf(this.experience_points));

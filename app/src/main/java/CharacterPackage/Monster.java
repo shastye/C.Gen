@@ -106,7 +106,7 @@ public class Monster extends Character {
         swimming_speed = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.SPEED_SWIMMING)));
         challenge_rating = Double.parseDouble(Objects.requireNonNull(_hash.get(TAG.CHALLENGE_RATING)));
         senses = new Vector<>(0);
-        //senses = _hash.get(TAG.TAG_SENSES_VECTOR);  // TODO: EXTRACT SENSES FROM STRING
+        //senses = _hash.get(TAG.TAG_SENSES_VECTOR);  //TODO: EXTRACT SENSES FROM STRING
         experience_points = Integer.parseInt(Objects.requireNonNull(_hash.get(TAG.EXPERIENCE_POINTS)));
     }
 

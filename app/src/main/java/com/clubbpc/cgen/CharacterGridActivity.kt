@@ -30,7 +30,7 @@ class CharacterGridActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
 
     private var tempUsers = Firebase.firestore.collection(TAG.USERS_COLLECTION)
-    private var tempUserDoc = tempUsers.document(/*"Sierra"*/auth.currentUser?.email.toString())
+    private var tempUserDoc = tempUsers.document(auth.currentUser?.email.toString())
 
     private var tempDNDplayers = tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT)
     private var tempPFplayers = tempUserDoc.collection(TAG.PATHFINDER_PLAYERSHEETS_DOCUMENT)

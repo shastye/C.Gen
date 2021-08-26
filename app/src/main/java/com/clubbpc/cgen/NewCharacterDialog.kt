@@ -29,7 +29,7 @@ class NewCharacterDialog : DialogFragment() {
     private var thisUser: User = User()
     private var newChar: Player = Player("")
     private val tempUsers = Firebase.firestore.collection(TAG.USERS_COLLECTION)
-    private val tempUserDoc = tempUsers.document(/*"Sierra"*/auth.currentUser?.email.toString())
+    private val tempUserDoc = tempUsers.document(auth.currentUser?.email.toString())
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,55 +57,21 @@ class NewCharacterDialog : DialogFragment() {
     }
 
     override fun onStart() {
-
-        // TODO: MAKE USER.LEVEL TRANSFER TO THE DIALOG BEFORE IT OPENS SO THE DEFAULT SHOWS TO THE USER
-
         super.onStart()
         dialog!!.window?.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        thisUser = User(activity?.intent?.getSerializableExtra("USER_INFO") as? HashMap<String, String>?)
-        if (isInfoTransferred()) {
-            Log.e(TAG1_s, thisUser._hashMap.toString())
-
-            val charLevel = this.view?.findViewById<EditText>(R.id.dialog_characterLevel_editText)
-            if (charLevel != null) {
-                val temp: Editable = Editable.Factory.getInstance().newEditable(thisUser._default_character_level.toString())
-                charLevel.text = temp
+        tempUserDoc.get()
+            .addOnCompleteListener{ document ->
+                val char_level = this.view?.findViewById<EditText>(R.id.dialog_characterLevel_editText)
+                val temp: Editable = Editable.Factory.getInstance().newEditable(document.result?.get(TAG.DEFAULT_CHARACTER_LEVEL).toString())
+                char_level?.text = temp
             }
-        }
-        else {
-            Log.e(TAG1_f, "Info not transferred correctly.")
-        }
+            .addOnFailureListener {
+                Log.e("FAILURE", "Information not gathered from database - DND Player.")
+            }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private fun getUserInfo(tempHash: HashMap<String, String>?) {
-        thisUser._email = tempHash?.get("email")
-        thisUser._name = tempHash?.get(TAG.NAME)
-        thisUser._default_character_level = tempHash?.get(TAG.DEFAULT_CHARACTER_LEVEL).toString().toInt()
-    }
-
-    private fun isInfoTransferred(): Boolean {
-        var infoTransferred = true
-
-        if (thisUser._name == "") {
-            Log.e(TAG1_f, "Name: ${thisUser._name}")
-            infoTransferred = false
-        }
-
-        if (thisUser._default_character_level == -1) {
-            Log.e(TAG1_f, "Level: ${thisUser._default_character_level}")
-            infoTransferred = false
-        }
-
-        if (thisUser._email == "") {
-            Log.e(TAG1_f, "Email: ${thisUser._email}")
-            infoTransferred = false
-        }
-
-        return infoTransferred
-    }
 
     private fun getInfoFromDialog(view: View) {
         enumValues<Character.Game_Mode>().forEach {
@@ -141,17 +107,16 @@ class NewCharacterDialog : DialogFragment() {
     private fun reload() {
         val myIntent = Intent(activity, NewCharacterActivity1::class.java)
 
-
         val newPlayer: Player
         val newMonster: Monster
-        val cont: Boolean
 
         if (newChar._char_type.toString() == "PLAYER") {
             newPlayer = Player(newChar)
 
-            cont = canContinue(newPlayer)
-            if (cont) {
-                myIntent.putExtra(TAG2, newPlayer._hashMap)
+            if (canContinue(newPlayer)) {
+                myIntent.putExtra("CHARACTER NAME", newPlayer._name)
+                myIntent.putExtra("CHARACTER TYPE", newPlayer._char_type.toString())
+                myIntent.putExtra("CHARACTER GAME", newPlayer._game_mode.toString())
 
                 if (newPlayer._game_mode.toString() == "DND") {
                     tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT).document(newPlayer._name).set(newPlayer._hashMap)
@@ -166,9 +131,10 @@ class NewCharacterDialog : DialogFragment() {
         } else if (newChar._char_type.toString() == "MONSTER") {
             newMonster = Monster(newChar)
 
-            cont = canContinue(newMonster)
-            if (cont) {
-                myIntent.putExtra(TAG2, newMonster._hashMap)
+            if (canContinue(newMonster)) {
+                myIntent.putExtra("CHARACTER NAME", newMonster._name)
+                myIntent.putExtra("CHARACTER TYPE", newMonster._char_type.toString())
+                myIntent.putExtra("CHARACTER GAME", newMonster._game_mode.toString())
 
                 if (newMonster._game_mode.toString() == "DND") {
                     tempUserDoc.collection(TAG.DND_MONSTERSHEETS_DOCUMENT).document(newMonster._name).set(newMonster._hashMap)
@@ -211,7 +177,5 @@ class NewCharacterDialog : DialogFragment() {
     companion object {
         private const val TAG1_s = "SUCCESS_LOADDATA:DIALOG"
         private const val TAG1_f = "FAILURE_LOADDATA:DIALOG"
-
-        private const val TAG2 = "NEW CHARACTER"
     }
 }

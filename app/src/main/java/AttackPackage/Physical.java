@@ -7,8 +7,7 @@ import Utility.Die;
 public class Physical extends Attack {
     //////////////////////////////////////////////////////////////////////////////
 
-    public enum Weapon_Enum {    // TODO: MAKE AS ENUM CLASS?
-                            //       That way each weapons hit die/etc can be saved per weapon?
+    public enum Weapon_Enum {
         NONE,       RAPIER,             CLUB,       DAGGER,     GREATCLUB,      HANDAXE,
         JAVELIN,    LIGHT_HAMMER,       MACE,
 
@@ -68,9 +67,9 @@ public class Physical extends Attack {
 
     //////////////////////////////////////////////////////////////////////////////
 
-    private int bonus;      // TODO: MOVE TO PHYSICAL
-    private Die die;        // TODO: MOVE TO PHYSICAL
-    private int num_dice;   // TODO: MOVE TO PHYSICAL
+    private int bonus;
+    private Die die;
+    private int num_dice;
     private Weapon_Struct weapon_info;
 
     //////////////////////////////////////////////////////////////////////////////
@@ -114,12 +113,9 @@ public class Physical extends Attack {
     public Weapon_Struct get_weapon_info() { return weapon_info; }
     public void set_weapon_info(Weapon_Struct _weapon) { this.weapon_info = _weapon; }
 
-    // TODO: more getters and setters
+
 
     ////////////////////////////////////////////////////////////////////////////
-
-    // TODO: methods
-    // TODO: GET HASHMAP
 
     @NotNull
     @Override

@@ -11,9 +11,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class IntroActivity : AppCompatActivity() {
-
-    // TODO: CHANGE ALL .PUTEXTRA TO A PULL FROM THE DATABASE UNLESS VITALLY NECESSARY
-
     private var auth: FirebaseAuth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
