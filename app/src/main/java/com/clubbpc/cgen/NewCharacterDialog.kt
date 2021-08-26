@@ -4,8 +4,8 @@ import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
 import Utility.Utility.TAG
-
 import Utility.User
+
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,15 +13,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+
 import androidx.fragment.app.DialogFragment
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.clubbpc.cgen.EditCharacterActivity as NewCharacterActivity1
+
+import com.clubbpc.cgen.EditCharacterActivity as EditCharacterActivity1
 
 class NewCharacterDialog : DialogFragment() {
 
@@ -59,6 +63,10 @@ class NewCharacterDialog : DialogFragment() {
     override fun onStart() {
         super.onStart()
         dialog!!.window?.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        val race_spinner = this.view?.findViewById<Spinner>(R.id.dialog_characterRace_spinner)
+        race_spinner?.setAdapter( ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Player.Race.values()) )
+
 
         tempUserDoc.get()
             .addOnCompleteListener{ document ->
@@ -101,7 +109,7 @@ class NewCharacterDialog : DialogFragment() {
     }
 
     private fun reload() {
-        val myIntent = Intent(activity, NewCharacterActivity1::class.java)
+        val myIntent = Intent(activity, EditCharacterActivity1::class.java)
 
         val newPlayer: Player
         val newMonster: Monster
