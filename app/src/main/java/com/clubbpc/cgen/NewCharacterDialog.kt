@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.clubbpc.cgen.NewCharacterActivity as NewCharacterActivity1
+import com.clubbpc.cgen.EditCharacterActivity as NewCharacterActivity1
 
 class NewCharacterDialog : DialogFragment() {
 
@@ -75,16 +75,12 @@ class NewCharacterDialog : DialogFragment() {
 
     private fun getInfoFromDialog(view: View) {
         enumValues<Character.Game_Mode>().forEach {
-            Log.e("GameMode it.name", it.name)
-
             if (it.name.lowercase() == view.findViewById<Spinner>(R.id.dialog_gameMode_spinner).selectedItem.toString().lowercase()) {
                 newChar._game_mode = it
             }
         }
 
         enumValues<Character.Type>().forEach {
-            Log.e("Type it.name", it.name)
-
             if (it.name.lowercase() == view.findViewById<Spinner>(R.id.dialog_characterType_spinner).selectedItem.toString().lowercase()) {
                 newChar._char_type = it
             }

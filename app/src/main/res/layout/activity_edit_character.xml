@@ -90,20 +90,23 @@
             <TableRow
                 android:id="@+id/Row1"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="45dp"
                 android:layout_below="@id/player_stats_header">
 
                 <TextView
                     android:id="@+id/class_textView"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
-                    android:text="Class:" />
+                    android:text="Class:"
+                    android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/class_textView_actual"
-                    android:layout_width="@dimen/textRow_width"
+                <Spinner
+                    android:id="@+id/class_spinner_actual"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rouge" />
+                    android:popupBackground="@android:drawable/spinner_dropdown_background"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="155dp" />
 
             </TableRow>
 
@@ -111,20 +114,22 @@
             <TableRow
                 android:id="@+id/Row2"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="45dp"
                 android:layout_below="@id/Row1">
 
                 <TextView
                     android:id="@+id/background_textView"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
-                    android:text="Background: " />
+                    android:text="Background: "
+                    android:textSize="20sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/background_textView_actual"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
-                    android:text="- None -" />
+                    android:hint="Background"
+                    android:text="" />
 
             </TableRow>
 
@@ -132,20 +137,23 @@
             <TableRow
                 android:id="@+id/Row3"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="45dp"
                 android:layout_below="@id/Row2">
 
                 <TextView
                     android:id="@+id/race_textView"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
-                    android:text="Race: " />
+                    android:text="Race: "
+                    android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/race_textView_actual"
-                    android:layout_width="@dimen/textRow_width"
+                <Spinner
+                    android:id="@+id/race_spinner_actual"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wood Elf" />
+                    android:popupBackground="@android:drawable/spinner_dropdown_background"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="155dp" />
 
             </TableRow>
 
@@ -153,20 +161,23 @@
             <TableRow
                 android:id="@+id/Row4"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="45dp"
                 android:layout_below="@id/Row3">
 
                 <TextView
                     android:id="@+id/alignment_textView"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
-                    android:text="Alignment: " />
+                    android:text="Alignment: "
+                    android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/alignment_textView_actual"
-                    android:layout_width="@dimen/textRow_width"
+                <Spinner
+                    android:id="@+id/alignment_spinner_actual"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chaotic Evil" />
+                    android:popupBackground="@android:drawable/spinner_dropdown_background"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="155dp" />
 
             </TableRow>
 
@@ -177,7 +188,7 @@
                 android:layout_below="@id/Row4"
                 app:srcCompat="@drawable/temp_divider" />
 
-<!--    ROW 4.5    -->
+            <!--    ROW 4.5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row4.5"
                 android:layout_width="match_parent"
@@ -210,7 +221,7 @@
                     app:layout_constraintStart_toStartOf="@+id/initiative_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/initiative_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -251,7 +262,7 @@
                     app:layout_constraintStart_toStartOf="@+id/insp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/insp_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -292,7 +303,7 @@
                     app:layout_constraintStart_toStartOf="@+id/profBonus_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/profBonus_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -308,7 +319,7 @@
                     app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 5    -->
+            <!--    ROW 5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row5"
                 android:layout_width="match_parent"
@@ -341,7 +352,7 @@
                     app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/xp_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -382,7 +393,7 @@
                     app:layout_constraintStart_toStartOf="@+id/level_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/level_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -405,7 +416,7 @@
                 android:layout_below="@id/Row5"
                 app:srcCompat="@drawable/temp_divider" />
 
-<!--    ROW 6    -->
+            <!--    ROW 6    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row6"
                 android:layout_width="match_parent"
@@ -438,7 +449,7 @@
                     app:layout_constraintStart_toStartOf="@+id/ac_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/ac_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -479,7 +490,7 @@
                     app:layout_constraintStart_toStartOf="@+id/speed_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/speed_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -520,7 +531,7 @@
                     app:layout_constraintStart_toStartOf="@+id/mhp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/maxHealthPoints_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -543,7 +554,7 @@
                 android:layout_below="@id/Row6"
                 app:srcCompat="@drawable/temp_divider" />
 
-<!--    ROW 7    -->
+            <!--    ROW 7    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row7"
                 android:layout_width="match_parent"
@@ -576,7 +587,7 @@
                     app:layout_constraintStart_toStartOf="@+id/hd_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/hd_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -648,7 +659,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/ds_successes_textView"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
+                <EditText
                     android:id="@+id/ds_successes_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -664,7 +675,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.50" />
 
-                <TextView
+                <EditText
                     android:id="@+id/ds_failures_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -689,7 +700,7 @@
                 android:layout_below="@id/Row7"
                 app:srcCompat="@drawable/temp_divider" />
 
-<!--    ROW 8    -->
+            <!--    ROW 8    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row8"
                 android:layout_width="match_parent"
@@ -722,7 +733,7 @@
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/strength_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -763,7 +774,7 @@
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/dexterity_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -778,7 +789,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
+                <EditText
                     android:id="@+id/strength_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -791,7 +802,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/dexterity_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -806,7 +817,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 9    -->
+            <!--    ROW 9    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row9"
                 android:layout_width="match_parent"
@@ -839,7 +850,7 @@
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/constitution_textView_actual"
                     android:layout_width="42dp"
                     android:layout_height="45dp"
@@ -880,7 +891,7 @@
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/intelligence_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -921,7 +932,7 @@
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/wisdom_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -936,7 +947,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
+                <EditText
                     android:id="@+id/constitution_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -949,7 +960,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/intelligence_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -962,7 +973,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/wisdom_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -976,7 +987,7 @@
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 10    -->
+            <!--    ROW 10    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row10"
                 android:layout_width="match_parent"
@@ -1009,7 +1020,7 @@
                     app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/charisma_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1050,7 +1061,7 @@
                     app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/perception_textView_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1065,7 +1076,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
+                <EditText
                     android:id="@+id/charisma_textView_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1108,7 +1119,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-<!--    ROW 11    -->
+            <!--    ROW 11    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row11"
                 android:layout_width="match_parent"
@@ -1135,7 +1146,7 @@
                     android:id="@+id/save_throw_str"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Strength"
                     android:textColor="@color/black"
@@ -1215,7 +1226,7 @@
                     android:id="@+id/save_throw_char"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Charisma"
                     android:textColor="@color/black"
@@ -1250,7 +1261,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-<!--    ROW 12    -->
+            <!--    ROW 12    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row12"
                 android:layout_width="match_parent"
@@ -1276,7 +1287,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Acrobatics"
                     android:textColor="@color/black"
@@ -1306,7 +1317,7 @@
                     android:id="@+id/prof_arcana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Arcana"
                     android:textColor="@color/black"
@@ -1330,13 +1341,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_deception"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_arcana"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_arcana" />
 
                 <RadioButton
                     android:id="@+id/prof_deception"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Deception"
                     android:textColor="@color/black"
@@ -1351,7 +1362,7 @@
                     android:id="@+id/prof_history"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  History"
                     android:textColor="@color/black"
@@ -1360,13 +1371,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_insight"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_deception"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_deception" />
 
                 <RadioButton
                     android:id="@+id/prof_insight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Insight"
                     android:textColor="@color/black"
@@ -1375,7 +1386,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_intimidation"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_history"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_history" />
 
                 <RadioButton
                     android:id="@+id/prof_intimidation"
@@ -1390,13 +1401,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_investigation"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_insight"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_insight" />
 
                 <RadioButton
                     android:id="@+id/prof_investigation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Investigation"
                     android:textColor="@color/black"
@@ -1405,7 +1416,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_medicine"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_intimidation"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_intimidation" />
 
                 <RadioButton
                     android:id="@+id/prof_medicine"
@@ -1420,13 +1431,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_nature"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_investigation"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_investigation" />
 
                 <RadioButton
                     android:id="@+id/prof_nature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Nature"
                     android:textColor="@color/black"
@@ -1435,13 +1446,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_perception"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_medicine"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_medicine" />
 
                 <RadioButton
                     android:id="@+id/prof_perception"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Perception"
                     android:textColor="@color/black"
@@ -1450,7 +1461,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_performance"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_nature"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_nature" />
 
                 <RadioButton
                     android:id="@+id/prof_performance"
@@ -1465,13 +1476,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_persuasion"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_perception"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_perception" />
 
                 <RadioButton
                     android:id="@+id/prof_persuasion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Persuasion"
                     android:textColor="@color/black"
@@ -1480,7 +1491,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_religion"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_performance"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_performance" />
 
                 <RadioButton
                     android:id="@+id/prof_religion"
@@ -1495,13 +1506,13 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_sleight_of_hand"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_persuasion"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_persuasion" />
 
                 <RadioButton
                     android:id="@+id/prof_sleight_of_hand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Sleight of Hand"
                     android:textColor="@color/black"
@@ -1510,7 +1521,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_stealth"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_religion"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_religion" />
 
                 <RadioButton
                     android:id="@+id/prof_stealth"
@@ -1525,14 +1536,14 @@
                     app:layout_constraintBottom_toTopOf="@+id/prof_survival"
                     app:layout_constraintEnd_toEndOf="@+id/proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/proficiencies_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/prof_sleight_of_hand"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prof_sleight_of_hand" />
 
                 <RadioButton
                     android:id="@+id/prof_survival"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="36dp"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Survival"
                     android:textColor="@color/black"
@@ -1566,30 +1577,30 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-<!--    ROW 13   -->
+            <!--    ROW 13   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/other_proficiencies_header">
 
-            <ImageView
-                android:id="@+id/other_proficiencies_frame_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:padding="@dimen/fab_margin"
-                android:paddingLeft="@dimen/fab_margin"
-                android:paddingTop="@dimen/fab_margin"
-                android:paddingRight="@dimen/fab_margin"
-                android:paddingBottom="@dimen/fab_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/generic_square_no_banner" />
+                <ImageView
+                    android:id="@+id/other_proficiencies_frame_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:padding="@dimen/fab_margin"
+                    android:paddingLeft="@dimen/fab_margin"
+                    android:paddingTop="@dimen/fab_margin"
+                    android:paddingRight="@dimen/fab_margin"
+                    android:paddingBottom="@dimen/fab_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/generic_square_no_banner" />
 
-                <TextView
+                <EditText
                     android:id="@+id/other_proficiencies_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1599,7 +1610,6 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/other_proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/other_proficiencies_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/other_proficiencies_frame_imageView" />
@@ -1627,7 +1637,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-<!--    ROW 13.5   -->
+            <!--    ROW 13.5   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row13.5"
                 android:layout_width="match_parent"
@@ -1650,7 +1660,7 @@
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/equipment_square_no_banner" />
 
-                <TextView
+                <EditText
                     android:id="@+id/copper_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1660,14 +1670,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@id/silver_textView"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@id/silver_textView"  />
+                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/silver_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1677,14 +1686,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@id/electrum_textView"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/copper_textView"
-                    app:layout_constraintBottom_toTopOf="@id/electrum_textView"  />
+                    app:layout_constraintTop_toBottomOf="@+id/copper_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/electrum_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1694,14 +1702,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@id/gold_textView"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/silver_textView"
-                    app:layout_constraintBottom_toTopOf="@id/gold_textView"  />
+                    app:layout_constraintTop_toBottomOf="@+id/silver_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/gold_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1711,14 +1718,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@id/platinum_textView"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/electrum_textView"
-                    app:layout_constraintBottom_toTopOf="@id/platinum_textView"  />
+                    app:layout_constraintTop_toBottomOf="@+id/electrum_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/platinum_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1728,13 +1734,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/gold_textView"  />
+                    app:layout_constraintTop_toBottomOf="@+id/gold_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/equipment_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1744,11 +1749,10 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.63"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView"  />
+                    app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1773,7 +1777,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-<!--    ROW 14   -->
+            <!--    ROW 14   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row14"
                 android:layout_width="match_parent"
@@ -1796,7 +1800,7 @@
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/attack_square_no_banner" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack1_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1806,13 +1810,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_textView"
                     app:layout_constraintEnd_toStartOf="@+id/attack1_bonus_textView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_textView"  />
+                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack1_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1822,13 +1825,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_textView"
                     app:layout_constraintEnd_toEndOf="@+id/attack1_damageType_textView"
                     app:layout_constraintStart_toEndOf="@+id/attack1_name_textView"
-                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_textView" />
+                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack1_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1838,13 +1840,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_textView"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toEndOf="@+id/attack1_bonus_textView"
-                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_textView" />
+                    app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack2_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1854,13 +1855,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_textView"
                     app:layout_constraintEnd_toStartOf="@+id/attack2_bonus_textView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack2_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1870,13 +1870,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_textView"
                     app:layout_constraintEnd_toEndOf="@+id/attack2_damageType_textView"
                     app:layout_constraintStart_toEndOf="@+id/attack2_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack2_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1886,13 +1885,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_textView"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toEndOf="@+id/attack2_bonus_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack3_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1902,12 +1900,11 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toStartOf="@+id/attack3_bonus_textView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_name_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack3_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1917,12 +1914,11 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/attack3_damageType_textView"
                     app:layout_constraintStart_toEndOf="@+id/attack3_name_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/attack3_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1932,12 +1928,11 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toEndOf="@+id/attack3_bonus_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_textView" />
 
-                <TextView
+                <EditText
                     android:id="@+id/otherAttacks_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1947,7 +1942,6 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:buttonTint="@color/accent_red"
                     app:layout_constraintBottom_toBottomOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
@@ -1957,7 +1951,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
+            <!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/spells_section"
                 android:layout_width="match_parent"
@@ -1986,7 +1980,7 @@
                         android:translationX="16dp" />
                 </androidx.cardview.widget.CardView>
 
-<!--    ROW 15   -->
+                <!--    ROW 15   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row15"
                     android:layout_width="match_parent"
@@ -2020,7 +2014,7 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell_ability_textView_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2061,7 +2055,7 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell_dc_textView_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2102,7 +2096,7 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell_bonus_textView_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2120,7 +2114,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 16   -->
+                <!--    ROW 16   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row16"
                     android:layout_width="match_parent"
@@ -2176,7 +2170,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 17   -->
+                <!--    ROW 17   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row17"
                     android:layout_width="match_parent"
@@ -2216,7 +2210,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell1_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2228,12 +2222,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell1_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell1_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2245,10 +2239,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell1_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell1_radioGroup"
@@ -2266,7 +2260,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 18   -->
+                <!--    ROW 18   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row18"
                     android:layout_width="match_parent"
@@ -2306,7 +2300,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell2_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2318,12 +2312,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell2_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell2_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2335,10 +2329,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell2_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell2_radioGroup"
@@ -2356,7 +2350,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 19   -->
+                <!--    ROW 19   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row19"
                     android:layout_width="match_parent"
@@ -2396,7 +2390,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell3_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2408,12 +2402,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell3_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell3_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2425,10 +2419,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell3_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell3_radioGroup"
@@ -2446,7 +2440,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 20   -->
+                <!--    ROW 20   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row20"
                     android:layout_width="match_parent"
@@ -2486,7 +2480,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell4_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2498,12 +2492,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell4_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell4_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2515,10 +2509,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell4_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell4_radioGroup"
@@ -2536,7 +2530,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 21   -->
+                <!--    ROW 21   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row21"
                     android:layout_width="match_parent"
@@ -2576,7 +2570,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell5_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2588,12 +2582,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell5_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell5_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2605,10 +2599,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell5_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell5_radioGroup"
@@ -2626,7 +2620,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 22   -->
+                <!--    ROW 22   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row22"
                     android:layout_width="match_parent"
@@ -2666,7 +2660,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell6_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2678,12 +2672,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell6_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell6_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2695,10 +2689,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell6_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell6_radioGroup"
@@ -2716,7 +2710,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 23   -->
+                <!--    ROW 23   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row23"
                     android:layout_width="match_parent"
@@ -2756,7 +2750,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell7_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2768,12 +2762,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell7_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell7_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2785,10 +2779,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell7_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell7_radioGroup"
@@ -2806,7 +2800,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 24   -->
+                <!--    ROW 24   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row24"
                     android:layout_width="match_parent"
@@ -2846,7 +2840,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell8_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2858,12 +2852,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell8_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell8_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2875,10 +2869,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell8_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell8_radioGroup"
@@ -2896,7 +2890,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    ROW 25   -->
+                <!--    ROW 25   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row25"
                     android:layout_width="match_parent"
@@ -2936,7 +2930,7 @@
                         app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
                         app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell9_total_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2948,12 +2942,12 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.37"
                         app:layout_constraintStart_toStartOf="@+id/spell9_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.37" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/spell9_expended_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -2965,10 +2959,10 @@
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.69"
                         app:layout_constraintStart_toStartOf="@+id/spell9_frame_imageView"
                         app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
-                        app:layout_constraintVertical_bias="0.1"
-                        app:layout_constraintHorizontal_bias="0.69" />
+                        app:layout_constraintVertical_bias="0.1" />
 
                     <RadioGroup
                         android:id="@+id/spell9_radioGroup"

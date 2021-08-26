@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".NewCharacterActivity">
+        <activity android:name=".EditCharacterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

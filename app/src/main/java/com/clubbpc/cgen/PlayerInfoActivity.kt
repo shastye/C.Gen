@@ -80,22 +80,10 @@ class PlayerInfoActivity : AppCompatActivity() {
                         if (isInfoTransferred()) {
                             reload()
                         }
-                        else {
-                            Log.e(TAG3_f, "Failure to set the members")
-                        }
                     }
 
-                } else {
-                    Log.e(TAG2_sbn, "No such document")
                 }
             }
-            .addOnFailureListener { exception ->
-                Log.e(TAG2_f, "get failed with ", exception)
-            }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-        Log.e("!!! NOTE 2 !!!", "thisUser => ${tempUser._hashMap}")
 
         return tempUser
     }
@@ -104,17 +92,14 @@ class PlayerInfoActivity : AppCompatActivity() {
         var infoTransferred = true
 
         if (thisUser._name == "") {
-            Log.e(TAG3_f, "Name: ${thisUser._name}")
             infoTransferred = false
         }
 
         if (thisUser._default_character_level == -1) {
-            Log.e(TAG3_f, "Level: ${thisUser._default_character_level}")
             infoTransferred = false
         }
 
         if (thisUser._email == "") {
-            Log.e(TAG3_f, "Email: ${thisUser._email}")
             infoTransferred = false
         }
 

@@ -396,7 +396,7 @@ public class Utility {
                     if (stringProficiencies[i] != null && !stringProficiencies[i].equals("null")) {
                         String[] temp = stringProficiencies[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null")) {
+                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null") && !temp[1].equals("[null")) {
                             Character.Proficient_In _prof = new Character.Proficient_In(temp[1]);
                             _array[i] = _prof;
                         }
@@ -445,7 +445,7 @@ public class Utility {
                     if (stringThrows[i] != null && !stringThrows[i].equals("null")) {
                         String[] temp = stringThrows[i].split(": ");
 
-                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null")) {
+                        if (temp[1] != null  && !temp[1].equals("null]") && !temp[1].equals("null") && !temp[1].equals("[null")) {
                             Character.Saving_Throw _prof = new Character.Saving_Throw(temp[1]);
                             _array[i] = _prof;
                         }

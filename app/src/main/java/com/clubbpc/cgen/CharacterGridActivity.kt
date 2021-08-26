@@ -73,9 +73,6 @@ class CharacterGridActivity : AppCompatActivity() {
                             findViewById<GridView>(R.id.character_gridView).adapter = playerAdapter
                         }
                     }
-                    .addOnFailureListener { exception ->
-                        Log.e("${TAG3_f}DND_P", "Error getting documents.", exception)
-                    }
             }
             else {
                 tempDNDmonsters.get()
@@ -89,9 +86,6 @@ class CharacterGridActivity : AppCompatActivity() {
                             monsterAdapter = MonsterAdapter(this, monsterList)
                             findViewById<GridView>(R.id.character_gridView).adapter = monsterAdapter
                         }
-                    }
-                    .addOnFailureListener { exception ->
-                        Log.e("${TAG3_f}DND_M", "Error getting documents.", exception)
                     }
 
             }
@@ -110,9 +104,6 @@ class CharacterGridActivity : AppCompatActivity() {
                             findViewById<GridView>(R.id.character_gridView).adapter = playerAdapter
                         }
                     }
-                    .addOnFailureListener { exception ->
-                        Log.e("${TAG3_f}PF_P", "Error getting documents.", exception)
-                    }
             }
             else {
                 tempPFmonsters.get()
@@ -126,9 +117,6 @@ class CharacterGridActivity : AppCompatActivity() {
                             monsterAdapter = MonsterAdapter(this, monsterList)
                             findViewById<GridView>(R.id.character_gridView).adapter = monsterAdapter
                         }
-                    }
-                    .addOnFailureListener { exception ->
-                        Log.e("${TAG3_f}PF_M", "Error getting documents.", exception)
                     }
             }
         }

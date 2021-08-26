@@ -76,18 +76,12 @@ class ViewCharacterActivity : AppCompatActivity() {
 
                         setInformation()
                     }
-                    .addOnFailureListener {
-                        Log.e("FAILURE", "Information not gathered from database - DND Player.")
-                    }
             }
             else {
                 tempDNDmonsters.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
                         setInformation()
-                    }
-                    .addOnFailureListener {
-                        Log.e("FAILURE", "Information not gathered from database - DND Monster.")
                     }
             }
         }
@@ -98,18 +92,12 @@ class ViewCharacterActivity : AppCompatActivity() {
                         currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
                         setInformation()
                     }
-                    .addOnFailureListener {
-                        Log.e("FAILURE", "Information not gathered from database - PF Player.")
-                    }
             }
             else {
                 tempPFmonsters.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
                         setInformation()
-                    }
-                    .addOnFailureListener {
-                        Log.e("FAILURE", "Information not gathered from database - PF Monster.")
                     }
             }
         }
@@ -124,26 +112,19 @@ class ViewCharacterActivity : AppCompatActivity() {
         if (gameMode == "DND") {
             if (charType == "PLAYER") {
                 tempDNDplayers.document(currentPlayer._name).set(currentPlayer._hashMap)
-                Log.e("INFORMATION SAVED", currentPlayer._hashMap.toString())
             }
             else {
 
                 tempDNDmonsters.document(currentMonster._name).set(currentMonster._hashMap)
-                Log.e("INFORMATION SAVED", currentMonster._hashMap.toString())
             }
         }
         else if (gameMode == "PATHFINDER") {
             if (charType == "PLAYER") {
                 tempPFplayers.document(currentPlayer._name).set(currentPlayer._hashMap)
-                Log.e("INFORMATION SAVED", currentPlayer._hashMap.toString())
             }
             else {
                 tempPFmonsters.document(currentMonster._name).set(currentMonster._hashMap)
-                Log.e("INFORMATION SAVED", currentMonster._hashMap.toString())
             }
-        }
-        else {
-            Log.e("INFORMATION LOST", "No information was saved.")
         }
 
 
@@ -155,21 +136,11 @@ class ViewCharacterActivity : AppCompatActivity() {
         if (charType == "PLAYER") {
             if (!currentPlayer._name.equals("")) {
                 setInformation(currentPlayer)
-                Log.e("CURRENT PLAYER", charName.toString() + " + " + currentPlayer._name.toString())
-            }
-            else {
-                Log.e(TAG1_f, currentPlayer._hashMap.toString())
-                Log.e(TAG1_f, "Data didn't transfer successfully")
             }
         }
         else {
             if(!currentMonster._name.equals("")) {
                 setInformation(currentMonster)
-                Log.e("CURRENT PLAYER", charName.toString() + " + " + currentMonster._name.toString())
-            }
-            else {
-                Log.e(TAG1_f, currentMonster._hashMap.toString())
-                Log.e(TAG1_f, "Data didn't transfer successfully")
             }
         }
     }
@@ -769,6 +740,7 @@ class ViewCharacterActivity : AppCompatActivity() {
                                 val radio = RadioButton(this)
                                 radio.id = View.generateViewId()
                                 radio.text = spell._name
+                                radio.isClickable = false;
                                 spells1_rg.addView(radio)
                             }
                         }
