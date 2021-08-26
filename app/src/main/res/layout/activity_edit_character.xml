@@ -2130,16 +2130,16 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/spell_ability_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
+                        android:hint="Stat Used"
                         android:text=""
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:hint="Stat Used"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
@@ -2172,17 +2172,17 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/spell_dc_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:text=""
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        android:hint="@string/int_character_level"
-                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
@@ -2215,17 +2215,17 @@
                         app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/spell_bonus_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:text=""
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        android:hint="@string/int_character_level"
-                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
@@ -2345,7 +2345,7 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell1_editText_textView"
+                        android:id="@+id/spell1_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"

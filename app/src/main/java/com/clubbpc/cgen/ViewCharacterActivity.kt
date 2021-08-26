@@ -126,8 +126,6 @@ class ViewCharacterActivity : AppCompatActivity() {
                 tempPFmonsters.document(currentMonster._name).set(currentMonster._hashMap)
             }
         }
-
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

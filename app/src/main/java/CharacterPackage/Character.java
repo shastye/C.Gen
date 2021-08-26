@@ -173,7 +173,7 @@ public class Character {
         }
         public Proficient_In(Skill _TYPE, int _characterLevel, String _special, Base_Stats_Enum _stat) {
             proficiency = _TYPE;
-            bonus = _characterLevel;
+            set_bonus(_characterLevel);
             special = _special;
             stat_used = _stat;
         }
