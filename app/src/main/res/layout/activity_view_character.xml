@@ -1659,7 +1659,7 @@
                     android:layout_marginTop="54dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="CP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1676,7 +1676,7 @@
                     android:layout_marginTop="47dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="SP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1693,7 +1693,7 @@
                     android:layout_marginTop="47dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="EP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1710,7 +1710,7 @@
                     android:layout_marginTop="47dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="GP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1727,7 +1727,7 @@
                     android:layout_marginTop="47dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="PP"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1743,7 +1743,7 @@
                     android:layout_marginTop="36dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="EQUIPMENT"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1946,7 +1946,7 @@
                     android:layout_marginTop="42dp"
                     android:clickable="false"
                     android:gravity="center"
-                    android:text="WEAPONS"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
@@ -1959,6 +1959,1038 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/spells_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row14">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/spells_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spells_section"
+                    android:layout_marginTop="0dp"
+                    android:background="@color/accent_red"
+                    app:cardBackgroundColor="@color/dark_red"
+                    app:cardElevation="@dimen/fab_margin"
+                    app:layout_constraintTop_toTopOf="parent"  >
+
+                    <TextView
+                        android:id="@+id/spells_viewCharacter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spells"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:translationX="16dp" />
+                </androidx.cardview.widget.CardView>
+
+<!--    ROW 15   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spells_header"
+                    app:layout_constraintTop_toBottomOf="@+id/spells_header"  >
+
+                    <ImageView
+                        android:id="@+id/spell_ability_frame_imageView"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="120dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/generic_square" />
+
+                    <TextView
+                        android:id="@+id/spell_ability_textView"
+                        android:layout_width="110dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:rotation="-12"
+                        android:text="Casting Ability"
+                        android:textColor="@color/parchment"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/spell_ability_textView_actual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="29dp"
+                        android:gravity="center"
+                        android:text="STAT"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/spell_dc_frame_imageView"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="120dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell_ability_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/generic_square" />
+
+                    <TextView
+                        android:id="@+id/spell_dc_textView"
+                        android:layout_width="110dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:rotation="-12"
+                        android:text="Save DC"
+                        android:textColor="@color/parchment"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/spell_dc_textView_actual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="+##"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/spell_bonus_frame_imageView"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="120dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/spell_dc_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/generic_square" />
+
+                    <TextView
+                        android:id="@+id/spell_bonus_textView"
+                        android:layout_width="110dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:rotation="-12"
+                        android:text="Attack Bonus"
+                        android:textColor="@color/parchment"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/spell_bonus_textView_actual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="+##"
+                        android:textColor="@color/black"
+                        android:textSize="34sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 16   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row15"
+                    app:layout_constraintTop_toBottomOf="@id/Row15">
+
+                    <ImageView
+                        android:id="@+id/cantrips_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="430dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/cantrips_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/cantrips_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="CANTRIPS"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.55"
+                        app:layout_constraintStart_toStartOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <RadioGroup
+                        android:id="@+id/cantrips_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/cantrips_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/cantrips_textView"
+                        app:layout_constraintTop_toTopOf="@+id/cantrips_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 17   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row16"
+                    app:layout_constraintTop_toBottomOf="@id/Row16">
+
+                    <ImageView
+                        android:id="@+id/spell1_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell1_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell1_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell1_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell1_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell1_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell1_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 18   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row17"
+                    app:layout_constraintTop_toBottomOf="@id/Row17">
+
+                    <ImageView
+                        android:id="@+id/spell2_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell2_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell2_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell2_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell2_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell2_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell2_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 19   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row18"
+                    app:layout_constraintTop_toBottomOf="@id/Row18">
+
+                    <ImageView
+                        android:id="@+id/spell3_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell3_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell3_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell3_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell3_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell3_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell3_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell3_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 20   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row19"
+                    app:layout_constraintTop_toBottomOf="@id/Row19">
+
+                    <ImageView
+                        android:id="@+id/spell4_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell4_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell4_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell4_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell4_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell4_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell4_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell4_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 21   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row20"
+                    app:layout_constraintTop_toBottomOf="@id/Row20">
+
+                    <ImageView
+                        android:id="@+id/spell5_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell5_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell5_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell5_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell5_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell5_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell5_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell5_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 22   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row21"
+                    app:layout_constraintTop_toBottomOf="@id/Row21">
+
+                    <ImageView
+                        android:id="@+id/spell6_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell6_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell6_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell6_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell6_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell6_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell6_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell6_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 23   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row22"
+                    app:layout_constraintTop_toBottomOf="@id/Row22">
+
+                    <ImageView
+                        android:id="@+id/spell7_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell7_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell7_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell7_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell7_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell7_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell7_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell7_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 24   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row23"
+                    app:layout_constraintTop_toBottomOf="@id/Row23">
+
+                    <ImageView
+                        android:id="@+id/spell8_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell8_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="8"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell8_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell8_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell8_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell8_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell8_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell8_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 25   -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Row25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Row24"
+                    app:layout_constraintTop_toBottomOf="@id/Row24">
+
+                    <ImageView
+                        android:id="@+id/spell9_frame_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="635dp"
+                        android:padding="@dimen/fab_margin"
+                        android:paddingLeft="@dimen/fab_margin"
+                        android:paddingTop="@dimen/fab_margin"
+                        android:paddingRight="@dimen/fab_margin"
+                        android:paddingBottom="@dimen/fab_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/spell_generic_square_no_banner" />
+
+                    <TextView
+                        android:id="@+id/spell9_level_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center"
+                        android:text="9"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1" />
+
+                    <TextView
+                        android:id="@+id/spell9_total_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="100dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.37" />
+
+                    <TextView
+                        android:id="@+id/spell9_expended_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="55dp"
+                        android:gravity="center"
+                        android:text="##"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintStart_toStartOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.69" />
+
+                    <RadioGroup
+                        android:id="@+id/spell9_radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        app:layout_constraintVertical_bias="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/spell9_frame_imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spell9_level_textView"
+                        app:layout_constraintTop_toTopOf="@+id/spell9_frame_imageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="false"
+                        android:orientation="vertical"  />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <!-- KEEP ALL SPELL CASTING INFO ABOVE THIS LINE -->
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
     </ScrollView>
 
