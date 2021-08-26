@@ -121,6 +121,7 @@ class NewCharacterDialog : DialogFragment() {
                 myIntent.putExtra("CHARACTER NAME", newPlayer._name)
                 myIntent.putExtra("CHARACTER TYPE", newPlayer._char_type.toString())
                 myIntent.putExtra("CHARACTER GAME", newPlayer._game_mode.toString())
+                myIntent.putExtra("INFO FROM", "NEW CHARACTER")
 
                 if (newPlayer._game_mode.toString() == "DND") {
                     tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT).document(newPlayer._name).set(newPlayer._hashMap)
@@ -139,6 +140,7 @@ class NewCharacterDialog : DialogFragment() {
                 myIntent.putExtra("CHARACTER NAME", newMonster._name)
                 myIntent.putExtra("CHARACTER TYPE", newMonster._char_type.toString())
                 myIntent.putExtra("CHARACTER GAME", newMonster._game_mode.toString())
+                myIntent.putExtra("INFO FROM", "NEW CHARACTER")
 
                 if (newMonster._game_mode.toString() == "DND") {
                     tempUserDoc.collection(TAG.DND_MONSTERSHEETS_DOCUMENT).document(newMonster._name).set(newMonster._hashMap)

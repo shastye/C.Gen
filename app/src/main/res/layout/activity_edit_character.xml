@@ -125,7 +125,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/background_textView_actual"
+                    android:id="@+id/background_editText_actual"
                     android:layout_width="@dimen/textRow_width"
                     android:layout_height="wrap_content"
                     android:hint="Background"
@@ -188,11 +188,11 @@
                 android:layout_below="@id/Row4"
                 app:srcCompat="@drawable/temp_divider" />
 
-            <!--    ROW 4.5    -->
+<!--    ROW 4.5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row4.5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/image_divider0">
 
                 <ImageView
@@ -222,19 +222,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/initiative_textView_actual"
+                    android:id="@+id/initiative_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/initiative_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/initiative_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/initiative_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/insp_frame_imageView"
@@ -263,19 +265,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/insp_textView_actual"
+                    android:id="@+id/insp_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/insp_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/insp_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/insp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/profBonus_frame_imageView"
@@ -304,26 +308,28 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/profBonus_textView_actual"
+                    android:id="@+id/profBonus_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profBonus_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/profBonus_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/profBonus_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--    ROW 5    -->
+<!--    ROW 5    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/Row4.5">
 
                 <ImageView
@@ -353,19 +359,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/xp_textView_actual"
+                    android:id="@+id/xp_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/xp_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/xp_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/xp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/level_frame_imageView"
@@ -394,19 +402,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/level_textView_actual"
+                    android:id="@+id/level_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/level_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/level_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/level_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
@@ -416,11 +426,11 @@
                 android:layout_below="@id/Row5"
                 app:srcCompat="@drawable/temp_divider" />
 
-            <!--    ROW 6    -->
+<!--    ROW 6    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/image_divider1">
 
                 <ImageView
@@ -450,19 +460,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/ac_textView_actual"
+                    android:id="@+id/ac_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/ac_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/ac_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/ac_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/speed_frame_imageView"
@@ -491,19 +503,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/speed_textView_actual"
+                    android:id="@+id/speed_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/speed_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/speed_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/speed_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/mhp_frame_imageView"
@@ -532,19 +546,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/maxHealthPoints_textView_actual"
+                    android:id="@+id/maxHealthPoints_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="###"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/mhp_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/mhp_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/mhp_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
@@ -554,11 +570,11 @@
                 android:layout_below="@id/Row6"
                 app:srcCompat="@drawable/temp_divider" />
 
-            <!--    ROW 7    -->
+<!--    ROW 7    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/image_divider2">
 
                 <ImageView
@@ -588,19 +604,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/hd_textView_actual"
+                    android:id="@+id/hd_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="#d#"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/hd_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/hd_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/hd_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/ds_frame_imageView"
@@ -634,7 +652,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:gravity="center"
-                    android:text="Successes: "
+                    android:text="Successes:"
                     android:textColor="@color/black"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView"
@@ -650,7 +668,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    android:text="Failures: "
+                    android:text="Failures:"
                     android:textColor="@color/black"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_textView"
@@ -660,28 +678,34 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <EditText
-                    android:id="@+id/ds_successes_textView_actual"
+                    android:id="@+id/ds_successes_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
+                    android:layout_marginEnd="8dp"
                     android:gravity="center"
-                    android:text="#"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/ds_failures_textView_actual"
+                    app:layout_constraintBottom_toTopOf="@+id/ds_failures_editText_actual"
                     app:layout_constraintEnd_toEndOf="@+id/ds_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/ds_successes_textView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.50" />
+                    app:layout_constraintVertical_bias="0.50"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/ds_failures_textView_actual"
+                    android:id="@+id/ds_failures_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="6dp"
                     android:gravity="center"
-                    android:text="#"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/ds_textView"
@@ -700,11 +724,11 @@
                 android:layout_below="@id/Row7"
                 app:srcCompat="@drawable/temp_divider" />
 
-            <!--    ROW 8    -->
+<!--    ROW 8    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row8"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/image_divider3">
 
                 <ImageView
@@ -734,19 +758,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/strength_textView_actual"
+                    android:id="@+id/strength_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/dexterity_frame_imageView"
@@ -775,53 +801,59 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/dexterity_textView_actual"
+                    android:id="@+id/dexterity_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/strength_textView_mod_actual"
+                    android:id="@+id/strength_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/strength_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/strength_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/strength_frame_imageView" />
 
                 <EditText
-                    android:id="@+id/dexterity_textView_mod_actual"
+                    android:id="@+id/dexterity_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/dexterity_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/dexterity_frame_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--    ROW 9    -->
+<!--    ROW 9    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/Row8">
 
                 <ImageView
@@ -851,19 +883,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/constitution_textView_actual"
-                    android:layout_width="42dp"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/constitution_editText_actual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/intelligence_frame_imageView"
@@ -892,19 +926,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/intelligence_textView_actual"
+                    android:id="@+id/intelligence_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/wisdom_frame_imageView"
@@ -933,65 +969,73 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/wisdom_textView_actual"
+                    android:id="@+id/wisdom_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/constitution_textView_mod_actual"
+                    android:id="@+id/constitution_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/constitution_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/constitution_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/constitution_frame_imageView" />
 
                 <EditText
-                    android:id="@+id/intelligence_textView_mod_actual"
+                    android:id="@+id/intelligence_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/intelligence_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/intelligence_frame_imageView" />
 
                 <EditText
-                    android:id="@+id/wisdom_textView_mod_actual"
+                    android:id="@+id/wisdom_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/wisdom_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/wisdom_frame_imageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--    ROW 10    -->
+<!--    ROW 10    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row10"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_below="@id/Row9">
 
                 <ImageView
@@ -1021,19 +1065,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/charisma_textView_actual"
+                    android:id="@+id/charisma_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <ImageView
                     android:id="@+id/perception_frame_imageView"
@@ -1062,29 +1108,33 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/perception_textView_actual"
+                    android:id="@+id/perception_editText_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="##"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="34sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@+id/perception_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/perception_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/perception_frame_imageView"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/charisma_textView_mod_actual"
+                    android:id="@+id/charisma_editText_mod_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:text="+##"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/charisma_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/charisma_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/charisma_frame_imageView" />
@@ -1119,7 +1169,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-            <!--    ROW 11    -->
+<!--    ROW 11    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row11"
                 android:layout_width="match_parent"
@@ -1162,7 +1212,7 @@
                     android:id="@+id/save_throw_dex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Dexterity"
                     android:textColor="@color/black"
@@ -1178,7 +1228,7 @@
                     android:id="@+id/save_throw_const"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Constitution"
                     android:textColor="@color/black"
@@ -1194,7 +1244,7 @@
                     android:id="@+id/save_throw_int"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Intelligence"
                     android:textColor="@color/black"
@@ -1210,7 +1260,7 @@
                     android:id="@+id/save_throw_wis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Wisdom"
                     android:textColor="@color/black"
@@ -1261,7 +1311,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-            <!--    ROW 12    -->
+<!--    ROW 12    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row12"
                 android:layout_width="match_parent"
@@ -1302,7 +1352,7 @@
                     android:id="@+id/prof_animal_handling"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Animal Handling"
                     android:textColor="@color/black"
@@ -1332,7 +1382,7 @@
                     android:id="@+id/prof_athletics"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Athletics"
                     android:textColor="@color/black"
@@ -1392,7 +1442,7 @@
                     android:id="@+id/prof_intimidation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Intimidation"
                     android:textColor="@color/black"
@@ -1422,7 +1472,7 @@
                     android:id="@+id/prof_medicine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Medicine"
                     android:textColor="@color/black"
@@ -1467,7 +1517,7 @@
                     android:id="@+id/prof_performance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Performance"
                     android:textColor="@color/black"
@@ -1497,7 +1547,7 @@
                     android:id="@+id/prof_religion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Religion"
                     android:textColor="@color/black"
@@ -1527,7 +1577,7 @@
                     android:id="@+id/prof_stealth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:gravity="center"
                     android:text="  __  Stealth"
                     android:textColor="@color/black"
@@ -1575,9 +1625,10 @@
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:translationX="16dp" />
+
             </androidx.cardview.widget.CardView>
 
-            <!--    ROW 13   -->
+<!--    ROW 13   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row13"
                 android:layout_width="match_parent"
@@ -1600,7 +1651,7 @@
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/generic_square_no_banner" />
 
-                <EditText
+                <TextView
                     android:id="@+id/other_proficiencies_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1613,6 +1664,20 @@
                     app:layout_constraintEnd_toEndOf="@+id/other_proficiencies_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/other_proficiencies_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/other_proficiencies_frame_imageView" />
+
+                <ImageButton
+                    android:id="@+id/newProficiency_imageButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
+                    app:srcCompat="@android:drawable/ic_input_add"
+                    app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1637,7 +1702,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-            <!--    ROW 13.5   -->
+<!--    ROW 13.5   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row13.5"
                 android:layout_width="match_parent"
@@ -1661,85 +1726,95 @@
                     app:srcCompat="@drawable/equipment_square_no_banner" />
 
                 <EditText
-                    android:id="@+id/copper_textView"
+                    android:id="@+id/copper_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="54dp"
+                    android:layout_marginTop="37dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/silver_textView"
+                    android:textSize="24sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
+                    app:layout_constraintBottom_toTopOf="@id/silver_editText"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView" />
 
                 <EditText
-                    android:id="@+id/silver_textView"
+                    android:id="@+id/silver_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="47dp"
+                    android:layout_marginTop="12dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/electrum_textView"
+                    android:textSize="24sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
+                    app:layout_constraintBottom_toTopOf="@id/electrum_editText"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/copper_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/copper_editText" />
 
                 <EditText
-                    android:id="@+id/electrum_textView"
+                    android:id="@+id/electrum_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="47dp"
+                    android:layout_marginTop="12dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/gold_textView"
+                    android:textSize="24sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
+                    app:layout_constraintBottom_toTopOf="@id/gold_editText"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/silver_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/silver_editText" />
 
                 <EditText
-                    android:id="@+id/gold_textView"
+                    android:id="@+id/gold_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="47dp"
+                    android:layout_marginTop="12dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/platinum_textView"
+                    android:textSize="24sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
+                    app:layout_constraintBottom_toTopOf="@id/platinum_editText"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/electrum_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/electrum_editText" />
 
                 <EditText
-                    android:id="@+id/platinum_textView"
+                    android:id="@+id/platinum_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="47dp"
+                    android:layout_marginTop="13dp"
                     android:clickable="false"
                     android:gravity="center"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
+                    android:hint="@string/int_character_level"
+                    android:inputType="number"
                     app:layout_constraintEnd_toEndOf="@+id/equipment_frame_imageView"
                     app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/gold_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/gold_editText" />
 
-                <EditText
+                <TextView
                     android:id="@+id/equipment_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1753,6 +1828,20 @@
                     app:layout_constraintHorizontal_bias="0.63"
                     app:layout_constraintStart_toStartOf="@+id/equipment_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/equipment_frame_imageView" />
+
+                <ImageButton
+                    android:id="@+id/newEquipment_imageButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
+                    app:srcCompat="@android:drawable/ic_input_add"
+                    app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1777,7 +1866,7 @@
                     android:translationX="16dp" />
             </androidx.cardview.widget.CardView>
 
-            <!--    ROW 14   -->
+<!--    ROW 14   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Row14"
                 android:layout_width="match_parent"
@@ -1800,7 +1889,7 @@
                     app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/attack_square_no_banner" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack1_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1815,7 +1904,7 @@
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack1_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1830,7 +1919,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack1_name_textView"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack1_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1845,7 +1934,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack1_bonus_textView"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack2_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1860,7 +1949,7 @@
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/attack1_name_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack2_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1875,7 +1964,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack2_name_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack2_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1890,7 +1979,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack2_bonus_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack3_name_textView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -1904,7 +1993,7 @@
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_name_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack3_bonus_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1918,7 +2007,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack3_name_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/attack3_damageType_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1932,7 +2021,7 @@
                     app:layout_constraintStart_toEndOf="@+id/attack3_bonus_textView"
                     app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_textView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/otherAttacks_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1948,10 +2037,37 @@
                     app:layout_constraintTop_toBottomOf="@+id/attack3_bonus_textView"
                     app:layout_constraintVertical_bias="0.0" />
 
+                <ImageButton
+                    android:id="@+id/newAttack_imageButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.35"
+                    app:srcCompat="@android:drawable/ic_input_add"
+                    app:tint="@color/white" />
+
+                <ImageButton
+                    android:id="@+id/newWeapon_imageButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.9"
+                    app:srcCompat="@android:drawable/ic_input_add"
+                    app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
+<!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/spells_section"
                 android:layout_width="match_parent"
@@ -1980,7 +2096,7 @@
                         android:translationX="16dp" />
                 </androidx.cardview.widget.CardView>
 
-                <!--    ROW 15   -->
+<!--    ROW 15   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row15"
                     android:layout_width="match_parent"
@@ -2015,14 +2131,15 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/spell_ability_textView_actual"
+                        android:id="@+id/spell_ability_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="29dp"
+                        android:layout_marginTop="16dp"
                         android:gravity="center"
-                        android:text="STAT"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:hint="Stat Used"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_ability_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_ability_frame_imageView"
@@ -2056,14 +2173,16 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/spell_dc_textView_actual"
+                        android:id="@+id/spell_dc_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:text="+##"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textSize="34sp"
+                        android:textSize="24sp"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_dc_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_dc_frame_imageView"
@@ -2097,24 +2216,39 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/spell_bonus_textView_actual"
+                        android:id="@+id/spell_bonus_editText_actual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:text="+##"
+                        android:text=""
                         android:textColor="@color/black"
-                        android:textSize="34sp"
+                        android:textSize="24sp"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintStart_toStartOf="@+id/spell_bonus_frame_imageView"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
+                    <ImageButton
+                        android:id="@+id/newSpell_imageButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/rounded_corner"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.9"
+                        app:srcCompat="@android:drawable/ic_input_add"
+                        app:tint="@color/white" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 16   -->
+<!--    ROW 16   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row16"
                     android:layout_width="match_parent"
@@ -2170,7 +2304,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 17   -->
+<!--    ROW 17   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row17"
                     android:layout_width="match_parent"
@@ -2211,15 +2345,17 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell1_total_textView"
+                        android:id="@+id/spell1_editText_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="26sp"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
                         app:layout_constraintHorizontal_bias="0.37"
@@ -2228,15 +2364,17 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell1_expended_textView"
+                        android:id="@+id/spell1_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="26sp"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell1_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell1_frame_imageView"
                         app:layout_constraintHorizontal_bias="0.69"
@@ -2260,7 +2398,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 18   -->
+<!--    ROW 18   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row18"
                     android:layout_width="match_parent"
@@ -2301,15 +2439,17 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell2_total_textView"
+                        android:id="@+id/spell2_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="26sp"
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
                         app:layout_constraintEnd_toEndOf="@+id/spell2_frame_imageView"
                         app:layout_constraintHorizontal_bias="0.37"
@@ -2318,13 +2458,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell2_expended_textView"
+                        android:id="@+id/spell2_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell2_frame_imageView"
@@ -2350,7 +2492,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 19   -->
+<!--    ROW 19   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row19"
                     android:layout_width="match_parent"
@@ -2391,13 +2533,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell3_total_textView"
+                        android:id="@+id/spell3_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
@@ -2408,13 +2552,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell3_expended_textView"
+                        android:id="@+id/spell3_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell3_frame_imageView"
@@ -2440,7 +2586,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 20   -->
+<!--    ROW 20   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row20"
                     android:layout_width="match_parent"
@@ -2481,13 +2627,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell4_total_textView"
+                        android:id="@+id/spell4_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
@@ -2498,13 +2646,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell4_expended_textView"
+                        android:id="@+id/spell4_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell4_frame_imageView"
@@ -2530,7 +2680,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 21   -->
+<!--    ROW 21   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row21"
                     android:layout_width="match_parent"
@@ -2560,7 +2710,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
                         android:gravity="center"
-                        android:text="5"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
@@ -2571,13 +2723,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell5_total_textView"
+                        android:id="@+id/spell5_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
@@ -2588,13 +2742,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell5_expended_textView"
+                        android:id="@+id/spell5_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell5_frame_imageView"
@@ -2620,7 +2776,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 22   -->
+<!--    ROW 22   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row22"
                     android:layout_width="match_parent"
@@ -2661,13 +2817,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell6_total_textView"
+                        android:id="@+id/spell6_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
@@ -2678,13 +2836,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell6_expended_textView"
+                        android:id="@+id/spell6_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell6_frame_imageView"
@@ -2710,7 +2870,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 23   -->
+<!--    ROW 23   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row23"
                     android:layout_width="match_parent"
@@ -2740,7 +2900,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
                         android:gravity="center"
-                        android:text="7"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
@@ -2751,13 +2913,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell7_total_textView"
+                        android:id="@+id/spell7_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
@@ -2768,13 +2932,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell7_expended_textView"
+                        android:id="@+id/spell7_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell7_frame_imageView"
@@ -2800,7 +2966,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 24   -->
+<!--    ROW 24   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row24"
                     android:layout_width="match_parent"
@@ -2830,7 +2996,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
                         android:gravity="center"
-                        android:text="8"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
@@ -2841,13 +3009,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell8_total_textView"
+                        android:id="@+id/spell8_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
@@ -2858,13 +3028,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell8_expended_textView"
+                        android:id="@+id/spell8_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell8_frame_imageView"
@@ -2890,7 +3062,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--    ROW 25   -->
+<!--    ROW 25   -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Row25"
                     android:layout_width="match_parent"
@@ -2931,13 +3103,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell9_total_textView"
+                        android:id="@+id/spell9_total_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="100dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"
@@ -2948,13 +3122,15 @@
                         app:layout_constraintVertical_bias="0.1" />
 
                     <EditText
-                        android:id="@+id/spell9_expended_textView"
+                        android:id="@+id/spell9_expended_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="55dp"
                         android:gravity="center"
-                        android:text="##"
+                        android:text=""
+                        android:hint="@string/int_character_level"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="26sp"
                         app:layout_constraintBottom_toBottomOf="@+id/spell9_frame_imageView"

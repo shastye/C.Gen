@@ -8,11 +8,12 @@ import Utility.Utility.TAG
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ImageButton
-import android.widget.Spinner
+import android.text.Editable
+import android.view.View
+import android.widget.*
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -37,6 +38,7 @@ class EditCharacterActivity : AppCompatActivity() {
     private var gameMode: String = ""
     private var charType: String = ""
     private var charName: String = ""
+    private var previousActivity: String = ""
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,20 +46,10 @@ class EditCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_character)
 
-        val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
-        backButton.setOnClickListener() {
-            val myIntent = Intent(this, CharacterGridActivity::class.java)
-            startActivity(myIntent)
-            finish()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
         charName = intent.getStringExtra("CHARACTER NAME").toString()
         charType = intent.getStringExtra("CHARACTER TYPE").toString()
         gameMode = intent.getStringExtra("CHARACTER GAME").toString()
+        previousActivity = intent.getStringExtra("INFO FROM").toString()
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////         Retrieve from enums          //////////////////////////////
@@ -73,7 +65,7 @@ class EditCharacterActivity : AppCompatActivity() {
         alignment_spinner.setAdapter( ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Alignment.values()) )
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////         Retrieve from database          /////////////////////////////
+        ////////         Retrieve from database (FROM NEW CHARACTER DIALOG)         ////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         if (gameMode == "DND") {
@@ -82,6 +74,10 @@ class EditCharacterActivity : AppCompatActivity() {
                     .addOnCompleteListener{ document ->
                         currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
 
+                        if (previousActivity == "NEW CHARACTER") {
+                            setNewInformation(currentPlayer)
+                        }
+
                         //setInformation()
                     }
             }
@@ -89,6 +85,11 @@ class EditCharacterActivity : AppCompatActivity() {
                 tempDNDmonsters.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
+
+                        if (previousActivity == "NEW CHARACTER") {
+                            setNewInformation(currentMonster)
+                        }
+
                         //setInformation()
                     }
             }
@@ -98,6 +99,11 @@ class EditCharacterActivity : AppCompatActivity() {
                 tempPFplayers.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentPlayer = Player(document.result?.data as java.util.HashMap<String, String>)
+
+                        if (previousActivity == "NEW CHARACTER") {
+                            setNewInformation(currentPlayer)
+                        }
+
                         //setInformation()
                     }
             }
@@ -105,13 +111,78 @@ class EditCharacterActivity : AppCompatActivity() {
                 tempPFmonsters.document(charName).get()
                     .addOnCompleteListener{ document ->
                         currentMonster = Monster(document.result?.data as java.util.HashMap<String, String>)
+
+                        if (previousActivity == "NEW CHARACTER") {
+                            setNewInformation(currentMonster)
+                        }
+
                         //setInformation()
                     }
             }
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
+        backButton.setOnClickListener() {
+            val myIntent = Intent(this, CharacterGridActivity::class.java)
+            startActivity(myIntent)
+            finish()
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private fun setMadeInformation(_player: CharacterPackage.Player) {
+
+    }
+
+    private fun setNewInformation(_player : CharacterPackage.Player) {
+        var temp = ""
+        var tempEditable: Editable
+        var tempInt: Int
+
+        // INTRO TOOLBAR
+        val name_toolbar = findViewById<Toolbar>(R.id.characterName_toolbar)
+        name_toolbar.title = _player._name
+        temp = "${_player._game_mode} ${_player._char_type}"
+        name_toolbar.subtitle = temp
+
+        // CHARACTER INFORMATION FROM DIALOG
+        val level_editText = findViewById<EditText>(R.id.level_editText_actual)
+        tempEditable = Editable.Factory.getInstance().newEditable(_player._level.toString())
+        level_editText.text = tempEditable
+
+        val race_spinner = findViewById<Spinner>(R.id.race_spinner_actual)
+        tempInt = 0
+        enumValues<Player.Race>().forEach { race ->
+            if (race == _player._race) {
+                tempInt = race.ordinal
+            }
+        }
+        race_spinner.setSelection(tempInt, false)
+    }
+    private fun setNewInformation(_monster : CharacterPackage.Monster) {
+        // TODO: MOVE TO OWN XML FILE
+        //          COPY AND PASTE
+        //          THEN CHANGE
+
+        var temp = ""
+
+        val name_toolbar = findViewById<Toolbar>(R.id.characterName_toolbar)
+        name_toolbar.title = _monster._name
+        temp = "${_monster._game_mode} ${_monster._char_type}"
+        name_toolbar.subtitle = temp
+
+        findViewById<TextView>(R.id.class_textView).text = "Size:"
+        val class_textView = findViewById<TextView>(R.id.class_textView_actual)
+        class_textView.text = _monster._size.toString()
+
+        val alignment_textView = findViewById<TextView>(R.id.alignment_textView_actual)
+        alignment_textView.text = _monster._alignment.toString()
+    }
 
     companion object {
         private const val TAG1_s = "SUCCESS_LOADDATA:NCA"
