@@ -98,8 +98,6 @@ class NewCharacterDialog : DialogFragment() {
         newChar._name = view.findViewById<EditText>(R.id.dialog_characterName_editText).text.toString()
 
         enumValues<Player.Race>().forEach {
-            Log.e("Race it.name", it.name)
-
             if (it.name.lowercase() == view.findViewById<Spinner>(R.id.dialog_characterRace_spinner).selectedItem.toString().lowercase()) {
                 newChar._race = it
             }

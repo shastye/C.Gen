@@ -1,5 +1,6 @@
 package com.clubbpc.cgen
 
+import AttackPackage.Magical
 import AttackPackage.Physical
 import CharacterPackage.Character
 import CharacterPackage.Monster
@@ -48,7 +49,7 @@ class EditCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_character)
 
-        // HIDE NEW ITEMS
+        // HIDE NEW ITEM DIALOGS
         val newProfRow = findViewById<ConstraintLayout>(R.id.Row13_1)
         newProfRow.visibility = View.GONE
         newProfRow.layoutParams.height = 0
@@ -65,6 +66,10 @@ class EditCharacterActivity : AppCompatActivity() {
         newWeaponRow.visibility = View.GONE
         newWeaponRow.layoutParams.height = 0
 
+        val newSpellRow = findViewById<ConstraintLayout>(R.id.Row15_5)
+        newSpellRow.visibility = View.GONE
+        newSpellRow.layoutParams.height = 0
+
         // DEAL WITH BUTTONS
         val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
         backButton.setOnClickListener {
@@ -73,6 +78,7 @@ class EditCharacterActivity : AppCompatActivity() {
             finish()
         }
 
+            // NEW PROFICIENCY
         val newProfButton = findViewById<ImageButton>(R.id.newProficiency_imageButton)
         newProfButton.setOnClickListener {
             newProfRow.visibility = View.VISIBLE
@@ -141,6 +147,7 @@ class EditCharacterActivity : AppCompatActivity() {
             newProfRow.layoutParams.height = 0
         }
 
+            // NEW ITEM
         val newItemButton = findViewById<ImageButton>(R.id.newEquipment_imageButton)
         newItemButton.setOnClickListener {
             newItemRow.visibility = View.VISIBLE
@@ -199,6 +206,7 @@ class EditCharacterActivity : AppCompatActivity() {
             newItemRow.layoutParams.height = 0
         }
 
+            // NEW ATTACK
         val newAttackButton = findViewById<ImageButton>(R.id.newAttack_imageButton)
         newAttackButton.setOnClickListener {
             newAttackRow.visibility = View.VISIBLE
@@ -228,83 +236,48 @@ class EditCharacterActivity : AppCompatActivity() {
                 newAttackRow.visibility = View.GONE
                 newAttackRow.layoutParams.height = 0
 
-                val a1n_textView = findViewById<TextView>(R.id.attack1_name_editText)
-                val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_editText)
-                val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_editText)
-                var i : Int = 0
-                var temp = ""
-                while (i < currentPlayer._attacks.size) {
-                    if (currentPlayer._attacks[i] != null) {
-                        if (currentPlayer._attacks[i] is Physical) {
-                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
-                            a1n_textView.text = tempPhysical._name
-                            temp = "+${tempPhysical._bonus}"
-                            a1b_textView.text = temp
-                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                            a1dt_textView.text = temp
 
-                            i++
+
+                val name_TVA = Array<TextView>(3, {m -> TextView(this)})
+                name_TVA[0] = findViewById<TextView>(R.id.attack1_name_editText)
+                name_TVA[1] = findViewById<TextView>(R.id.attack2_name_editText)
+                name_TVA[2] = findViewById<TextView>(R.id.attack3_name_editText)
+
+                val bonus_TVA = Array<TextView>(3, {m -> TextView(this)})
+                bonus_TVA[0] = findViewById<TextView>(R.id.attack1_bonus_editText)
+                bonus_TVA[1] = findViewById<TextView>(R.id.attack2_bonus_editText)
+                bonus_TVA[2] = findViewById<TextView>(R.id.attack3_bonus_editText)
+
+                val type_TVA = Array<TextView>(3, {m -> TextView(this)})
+                type_TVA[0] = findViewById<TextView>(R.id.attack1_damageType_editText)
+                type_TVA[1] = findViewById<TextView>(R.id.attack2_damageType_editText)
+                type_TVA[2] = findViewById<TextView>(R.id.attack3_damageType_editText)
+
+                var i: Int = 0
+                for (h in 0..2 ) {
+                    while (i < currentPlayer._attacks.size) {
+                        var temp = ""
+                        if (currentPlayer._attacks[i] != null) {
+                            if (currentPlayer._attacks[i] is Physical) {
+                                val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
+
+                                name_TVA[h].text = tempPhysical._name
+
+                                temp = "+${tempPhysical._bonus}"
+                                bonus_TVA[h].text = temp
+
+                                temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                                temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                                type_TVA[h].text = temp
+
+                                i++
+                                break
+                            } else {
+                                i++
+                            }
+                        } else {
                             break
                         }
-                        else {
-                            i++
-                        }
-                    }
-                    else {
-                        break
-                    }
-                }
-
-                val a2n_textView = findViewById<TextView>(R.id.attack2_name_editText)
-                val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_editText)
-                val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_editText)
-                while (i < currentPlayer._attacks.size) {
-                    if (currentPlayer._attacks[i] != null) {
-                        if (currentPlayer._attacks[i] is Physical) {
-                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
-                            a2n_textView.text = tempPhysical._name
-                            temp = "+${tempPhysical._bonus}"
-                            a2b_textView.text = temp
-                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                            a2dt_textView.text = temp
-
-                            i++
-                            break
-                        }
-                        else {
-                            i++
-                        }
-                    }
-                    else {
-                        break
-                    }
-                }
-
-                val a3n_textView = findViewById<TextView>(R.id.attack3_name_editText)
-                val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_editText)
-                val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_editText)
-                while (i < currentPlayer._attacks.size) {
-                    if (currentPlayer._attacks[i] != null) {
-                        if (currentPlayer._attacks[i] is Physical) {
-                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
-                            a3n_textView.text = tempPhysical._name
-                            temp = "+${tempPhysical._bonus}"
-                            a3b_textView.text = temp
-                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                            a3dt_textView.text = temp
-
-                            i++
-                            break
-                        }
-                        else {
-                            i++
-                        }
-                    }
-                    else {
-                        break
                     }
                 }
             }
@@ -320,6 +293,7 @@ class EditCharacterActivity : AppCompatActivity() {
             newAttackRow.layoutParams.height = 0
         }
 
+            // NEW WEAPON
         val newWeaponButton = findViewById<ImageButton>(R.id.newWeapon_imageButton)
         newWeaponButton.setOnClickListener {
             newWeaponRow.visibility = View.VISIBLE
@@ -364,6 +338,113 @@ class EditCharacterActivity : AppCompatActivity() {
         cancelWeapon.setOnClickListener {
             newWeaponRow.visibility = View.GONE
             newWeaponRow.layoutParams.height = 0
+        }
+
+            // NEW SPELL
+        val newSpellButton = findViewById<ImageButton>(R.id.newSpell_imageButton)
+        newSpellButton.setOnClickListener {
+            newSpellRow.visibility = View.VISIBLE
+            newSpellRow.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 425f, resources.displayMetrics).toInt()
+        }
+
+        val createSpell = findViewById<Button>(R.id.dialog_create_button_spell)
+        createSpell.setOnClickListener {
+            if (canContinue_spell()) {
+                val tempSpell = Magical()
+                tempSpell._name = findViewById<EditText>(R.id.dialog_name_editText_spell).text.toString()
+                tempSpell._special = findViewById<EditText>(R.id.dialog_special_editText_spell).text.toString()
+                tempSpell._level = findViewById<EditText>(R.id.dialog_level_editText_spell).text.toString().toInt()
+                tempSpell._time_in_actions = findViewById<EditText>(R.id.dialog_time_editText_spell).text.toString().toInt()
+                tempSpell._range = findViewById<EditText>(R.id.dialog_range_editText_spell).text.toString().toInt()
+                tempSpell._duration = findViewById<EditText>(R.id.dialog_duration_editText_spell).text.toString()
+
+                currentPlayer.add_attack(tempSpell)
+
+                Toast.makeText(this, "Spell Added Successfully.",
+                    Toast.LENGTH_SHORT).show()
+
+                newSpellRow.visibility = View.GONE
+                newSpellRow.layoutParams.height = 0
+
+
+
+                val spellSectionsArray = Array<ConstraintLayout>(10, { m -> ConstraintLayout(this) })
+                spellSectionsArray[0] = findViewById<ConstraintLayout>(R.id.Row16)
+                spellSectionsArray[1] = findViewById<ConstraintLayout>(R.id.Row17)
+                spellSectionsArray[2] = findViewById<ConstraintLayout>(R.id.Row18)
+                spellSectionsArray[3] = findViewById<ConstraintLayout>(R.id.Row19)
+                spellSectionsArray[4] = findViewById<ConstraintLayout>(R.id.Row20)
+                spellSectionsArray[5] = findViewById<ConstraintLayout>(R.id.Row21)
+                spellSectionsArray[6] = findViewById<ConstraintLayout>(R.id.Row22)
+                spellSectionsArray[7] = findViewById<ConstraintLayout>(R.id.Row23)
+                spellSectionsArray[8] = findViewById<ConstraintLayout>(R.id.Row24)
+                spellSectionsArray[9] = findViewById<ConstraintLayout>(R.id.Row25)
+
+                val radioGroupsArray = Array<RadioGroup>(10, {i -> RadioGroup(this) })
+                radioGroupsArray[0] = findViewById<RadioGroup>(R.id.cantrips_radioGroup)
+                radioGroupsArray[1] = findViewById<RadioGroup>(R.id.spell1_radioGroup)
+                radioGroupsArray[2] = findViewById<RadioGroup>(R.id.spell2_radioGroup)
+                radioGroupsArray[3] = findViewById<RadioGroup>(R.id.spell3_radioGroup)
+                radioGroupsArray[4] = findViewById<RadioGroup>(R.id.spell4_radioGroup)
+                radioGroupsArray[5] = findViewById<RadioGroup>(R.id.spell5_radioGroup)
+                radioGroupsArray[6] = findViewById<RadioGroup>(R.id.spell6_radioGroup)
+                radioGroupsArray[7] = findViewById<RadioGroup>(R.id.spell7_radioGroup)
+                radioGroupsArray[8] = findViewById<RadioGroup>(R.id.spell8_radioGroup)
+                radioGroupsArray[9] = findViewById<RadioGroup>(R.id.spell9_radioGroup)
+
+                val slotsEditTextsArray = Array<EditText>(10, { i -> EditText(this) })
+                slotsEditTextsArray[1] = findViewById<EditText>(R.id.spell1_total_editText)
+                slotsEditTextsArray[2] = findViewById<EditText>(R.id.spell2_total_editText)
+                slotsEditTextsArray[3] = findViewById<EditText>(R.id.spell3_total_editText)
+                slotsEditTextsArray[4] = findViewById<EditText>(R.id.spell4_total_editText)
+                slotsEditTextsArray[5] = findViewById<EditText>(R.id.spell5_total_editText)
+                slotsEditTextsArray[6] = findViewById<EditText>(R.id.spell6_total_editText)
+                slotsEditTextsArray[7] = findViewById<EditText>(R.id.spell7_total_editText)
+                slotsEditTextsArray[8] = findViewById<EditText>(R.id.spell8_total_editText)
+                slotsEditTextsArray[9] = findViewById<EditText>(R.id.spell9_total_editText)
+
+                val usedslotsEditTextsArray = Array<EditText>(10, { i -> EditText(this)})
+                usedslotsEditTextsArray[1] = findViewById<EditText>(R.id.spell1_expended_editText)
+                usedslotsEditTextsArray[2] = findViewById<EditText>(R.id.spell2_expended_editText)
+                usedslotsEditTextsArray[3] = findViewById<EditText>(R.id.spell3_expended_editText)
+                usedslotsEditTextsArray[4] = findViewById<EditText>(R.id.spell4_expended_editText)
+                usedslotsEditTextsArray[5] = findViewById<EditText>(R.id.spell5_expended_editText)
+                usedslotsEditTextsArray[6] = findViewById<EditText>(R.id.spell6_expended_editText)
+                usedslotsEditTextsArray[7] = findViewById<EditText>(R.id.spell7_expended_editText)
+                usedslotsEditTextsArray[8] = findViewById<EditText>(R.id.spell8_expended_editText)
+                usedslotsEditTextsArray[9] = findViewById<EditText>(R.id.spell9_expended_editText)
+
+                for (h in radioGroupsArray.indices) {
+                    for (k in currentPlayer._attacks.indices) {
+                        if (currentPlayer._attacks[k] != null) {
+                            if (currentPlayer._attacks[k] is Magical) {
+                                val spell: Magical = currentPlayer._attacks[k] as Magical
+
+                                if (spell._level == h) {
+                                    val radio = RadioButton(this)
+                                    radio.id = View.generateViewId()
+                                    radio.text = spell._name
+                                    radioGroupsArray[h].addView(radio)
+                                }
+                            }
+                        }
+                    }
+
+                    slotsEditTextsArray[h].text = Editable.Factory.getInstance().newEditable(currentPlayer._spell_slots[h].toString())
+                    usedslotsEditTextsArray[h].text = Editable.Factory.getInstance().newEditable(currentPlayer._used_spell_slots[h].toString())
+                }
+
+            }
+            else {
+                Toast.makeText(this, "Spell Not Added: One or more values missing.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val cancelSpell = findViewById<Button>(R.id.dialog_cancel_button_spell)
+        cancelSpell.setOnClickListener {
+            newSpellRow.visibility = View.GONE
+            newSpellRow.layoutParams.height = 0
         }
     }
 
@@ -592,6 +673,30 @@ class EditCharacterActivity : AppCompatActivity() {
 
         return doCont
     }
+    private fun canContinue_spell(): Boolean {
+        var doCont = true
+
+        if (findViewById<EditText>(R.id.dialog_name_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_special_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_level_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_time_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_range_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_duration_editText_spell).text.toString() == "") {
+            doCont = false
+        }
+
+        return doCont
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -736,7 +841,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                     Character.Skill.ACROBATICS,
                     _player._level,
-                    "",
+                    " ",
                     Character.Base_Stats_Enum.DEXTERITY
                 )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(_player._statistics.Dexterity)
@@ -749,7 +854,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.ANIMAL_HANDLING,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.WISDOM
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -764,7 +869,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.ARCANA,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.INTELLIGENCE
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -779,7 +884,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.ATHLETICS,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.STRENGTH
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -794,7 +899,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.DECEPTION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.CHARISMA
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -809,7 +914,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.HISTORY,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.INTELLIGENCE
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -824,7 +929,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.INSIGHT,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.WISDOM
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -839,7 +944,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.INTIMIDATION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.CHARISMA
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -854,7 +959,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.INVESTIGATION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.INTELLIGENCE
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -869,7 +974,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.MEDICINE,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.WISDOM
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -884,7 +989,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.NATURE,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.INTELLIGENCE
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -899,7 +1004,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.PERCEPTION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.WISDOM
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -914,7 +1019,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.PERFORMANCE,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.CHARISMA
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -929,7 +1034,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.PERSUASION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.CHARISMA
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -944,7 +1049,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.RELIGION,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.INTELLIGENCE
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -959,7 +1064,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.SLEIGHT_OF_HAND,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.DEXTERITY
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -974,7 +1079,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.STEALTH,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.DEXTERITY
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -989,7 +1094,7 @@ class EditCharacterActivity : AppCompatActivity() {
             val prof = Character.Proficient_In (
                 Character.Skill.SURVIVAL,
                 _player._level,
-                "",
+                " ",
                 Character.Base_Stats_Enum.WISDOM
             )
             prof.bonus += Character.Base_Stats_Struct.calculate_modifier(
@@ -1018,7 +1123,7 @@ class EditCharacterActivity : AppCompatActivity() {
         val platinum = findViewById<EditText>(R.id.platinum_editText)
         _player._money.platinum = platinum.text.toString().toInt()
         
-        //
+        // TODO: MOVE TO SET INFORMATION
 
         val ability = findViewById<TextView>(R.id.spell_ability_editText_actual)
         val dc = findViewById<TextView>(R.id.spell_dc_editText_actual)

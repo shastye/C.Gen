@@ -10,11 +10,9 @@ import Utility.Utility.TAG
 import Utility.Utility.checkForEnumValueInArray
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
-import android.widget.ImageButton
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -453,87 +451,50 @@ class ViewCharacterActivity : AppCompatActivity() {
         init_textView.text = _player._initiative.toString()
 
         // ATTACK INFORMATION
-        val a1n_textView = findViewById<TextView>(R.id.attack1_name_editText)
-        val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_editText)
-        val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_editText)
-        var i : Int = 0
-        while (i < _player._attacks.size) {
-            if (_player._attacks[i] != null) {
-                if (_player._attacks[i] is Physical) {
-                    val tempPhysical: Physical = _player._attacks[i] as Physical
-                    a1n_textView.text = tempPhysical._name
-                    temp = "+${tempPhysical._bonus}"
-                    a1b_textView.text = temp
-                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                    a1dt_textView.text = temp
+        val name_TVA = Array<TextView>(3, {m -> TextView(this)})
+        name_TVA[0] = findViewById<TextView>(R.id.attack1_name_textView)
+        name_TVA[1] = findViewById<TextView>(R.id.attack2_name_textView)
+        name_TVA[2] = findViewById<TextView>(R.id.attack3_name_textView)
 
-                    i++
+        val bonus_TVA = Array<TextView>(3, {m -> TextView(this)})
+        bonus_TVA[0] = findViewById<TextView>(R.id.attack1_bonus_textView)
+        bonus_TVA[1] = findViewById<TextView>(R.id.attack2_bonus_textView)
+        bonus_TVA[2] = findViewById<TextView>(R.id.attack3_bonus_textView)
+
+        val type_TVA = Array<TextView>(3, {m -> TextView(this)})
+        type_TVA[0] = findViewById<TextView>(R.id.attack1_damageType_textView)
+        type_TVA[1] = findViewById<TextView>(R.id.attack2_damageType_textView)
+        type_TVA[2] = findViewById<TextView>(R.id.attack3_damageType_textView)
+
+        var i: Int = 0
+        for (h in 0..2 ) {
+            while (i < _player._attacks.size) {
+                if (_player._attacks[i] != null) {
+                    if (_player._attacks[i] is Physical) {
+                        val tempPhysical: Physical = _player._attacks[i] as Physical
+
+                        name_TVA[h].text = tempPhysical._name
+
+                        temp = "+${tempPhysical._bonus}"
+                        bonus_TVA[h].text = temp
+
+                        temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                        temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                        type_TVA[h].text = temp
+
+                        i++
+                        break
+                    } else {
+                        i++
+                    }
+                } else {
                     break
                 }
-                else {
-                    i++
-                }
-            }
-            else {
-                break
-            }
-        }
-
-        val a2n_textView = findViewById<TextView>(R.id.attack2_name_editText)
-        val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_editText)
-        val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_editText)
-        while (i < _player._attacks.size) {
-            if (_player._attacks[i] != null) {
-                if (_player._attacks[i] is Physical) {
-                    val tempPhysical: Physical = _player._attacks[i] as Physical
-                    a2n_textView.text = tempPhysical._name
-                    temp = "+${tempPhysical._bonus}"
-                    a2b_textView.text = temp
-                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                    a2dt_textView.text = temp
-
-                    i++
-                    break
-                }
-                else {
-                    i++
-                }
-            }
-            else {
-                break
-            }
-        }
-
-        val a3n_textView = findViewById<TextView>(R.id.attack3_name_editText)
-        val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_editText)
-        val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_editText)
-        while (i < _player._attacks.size) {
-            if (_player._attacks[i] != null) {
-                if (_player._attacks[i] is Physical) {
-                    val tempPhysical: Physical = _player._attacks[i] as Physical
-                    a3n_textView.text = tempPhysical._name
-                    temp = "+${tempPhysical._bonus}"
-                    a3b_textView.text = temp
-                    temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
-                    temp += _player._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
-                    a3dt_textView.text = temp
-
-                    i++
-                    break
-                }
-                else {
-                    i++
-                }
-            }
-            else {
-                break
             }
         }
 
         // WEAPONS INFORMATION
-        val weapons_textView = findViewById<TextView>(R.id.otherAttacks_editText)
+        val weapons_textView = findViewById<TextView>(R.id.otherAttacks_textView)
         temp = ""
         for (k in _player._weapons.indices) {
             if (_player._weapons[k] != null) {
@@ -698,309 +659,76 @@ class ViewCharacterActivity : AppCompatActivity() {
                 }
             }
 
-            // SET CANTRIPS
-            val cantrips = findViewById<ConstraintLayout>(R.id.Row16)
-            if (totalSpells[0] > 0) {
-                val cantrips_rg = findViewById<RadioGroup>(R.id.cantrips_radioGroup)
+            val spellSectionsArray = Array<ConstraintLayout>(10, { m -> ConstraintLayout(this) })
+            spellSectionsArray[0] = findViewById<ConstraintLayout>(R.id.Row16)
+            spellSectionsArray[1] = findViewById<ConstraintLayout>(R.id.Row17)
+            spellSectionsArray[2] = findViewById<ConstraintLayout>(R.id.Row18)
+            spellSectionsArray[3] = findViewById<ConstraintLayout>(R.id.Row19)
+            spellSectionsArray[4] = findViewById<ConstraintLayout>(R.id.Row20)
+            spellSectionsArray[5] = findViewById<ConstraintLayout>(R.id.Row21)
+            spellSectionsArray[6] = findViewById<ConstraintLayout>(R.id.Row22)
+            spellSectionsArray[7] = findViewById<ConstraintLayout>(R.id.Row23)
+            spellSectionsArray[8] = findViewById<ConstraintLayout>(R.id.Row24)
+            spellSectionsArray[9] = findViewById<ConstraintLayout>(R.id.Row25)
 
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
+            val radioGroupsArray = Array<RadioGroup>(10, { m -> RadioGroup(this) })
+            radioGroupsArray[0] = findViewById<RadioGroup>(R.id.cantrips_radioGroup)
+            radioGroupsArray[1] = findViewById<RadioGroup>(R.id.spell1_radioGroup)
+            radioGroupsArray[2] = findViewById<RadioGroup>(R.id.spell2_radioGroup)
+            radioGroupsArray[3] = findViewById<RadioGroup>(R.id.spell3_radioGroup)
+            radioGroupsArray[4] = findViewById<RadioGroup>(R.id.spell4_radioGroup)
+            radioGroupsArray[5] = findViewById<RadioGroup>(R.id.spell5_radioGroup)
+            radioGroupsArray[6] = findViewById<RadioGroup>(R.id.spell6_radioGroup)
+            radioGroupsArray[7] = findViewById<RadioGroup>(R.id.spell7_radioGroup)
+            radioGroupsArray[8] = findViewById<RadioGroup>(R.id.spell8_radioGroup)
+            radioGroupsArray[9] = findViewById<RadioGroup>(R.id.spell9_radioGroup)
 
-                            if (spell._level == 0) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                cantrips_rg.addView(radio)
+            val slotsTextViewsArray = Array<TextView>(10, { m -> TextView(this) })
+            slotsTextViewsArray[1] = findViewById<TextView>(R.id.spell1_total_textView)
+            slotsTextViewsArray[2] = findViewById<TextView>(R.id.spell2_total_textView)
+            slotsTextViewsArray[3] = findViewById<TextView>(R.id.spell3_total_textView)
+            slotsTextViewsArray[4] = findViewById<TextView>(R.id.spell4_total_textView)
+            slotsTextViewsArray[5] = findViewById<TextView>(R.id.spell5_total_textView)
+            slotsTextViewsArray[6] = findViewById<TextView>(R.id.spell6_total_textView)
+            slotsTextViewsArray[7] = findViewById<TextView>(R.id.spell7_total_textView)
+            slotsTextViewsArray[8] = findViewById<TextView>(R.id.spell8_total_textView)
+            slotsTextViewsArray[9] = findViewById<TextView>(R.id.spell9_total_textView)
+
+            val usedslotsTextViewsArray = Array<TextView>(10, { m -> TextView(this) })
+            usedslotsTextViewsArray[1] = findViewById<TextView>(R.id.spell1_expended_textView)
+            usedslotsTextViewsArray[2] = findViewById<TextView>(R.id.spell2_expended_textView)
+            usedslotsTextViewsArray[3] = findViewById<TextView>(R.id.spell3_expended_textView)
+            usedslotsTextViewsArray[4] = findViewById<TextView>(R.id.spell4_expended_textView)
+            usedslotsTextViewsArray[5] = findViewById<TextView>(R.id.spell5_expended_textView)
+            usedslotsTextViewsArray[6] = findViewById<TextView>(R.id.spell6_expended_textView)
+            usedslotsTextViewsArray[7] = findViewById<TextView>(R.id.spell7_expended_textView)
+            usedslotsTextViewsArray[8] = findViewById<TextView>(R.id.spell8_expended_textView)
+            usedslotsTextViewsArray[9] = findViewById<TextView>(R.id.spell9_expended_textView)
+
+            for (h in radioGroupsArray.indices) {
+                if (totalSpells[h] > 0) {
+                    for (k in currentPlayer._attacks.indices) {
+                        if (currentPlayer._attacks[k] != null) {
+                            if (currentPlayer._attacks[k] is Magical) {
+                                val spell: Magical = currentPlayer._attacks[k] as Magical
+
+                                if (spell._level == h) {
+                                    val radio = RadioButton(this)
+                                    radio.id = View.generateViewId()
+                                    radio.text = spell._name
+                                    radioGroupsArray[h].addView(radio)
+                                }
                             }
                         }
                     }
+
+                    slotsTextViewsArray[h].text = currentPlayer._spell_slots[h].toString()
+                    usedslotsTextViewsArray[h].text = currentPlayer._used_spell_slots[h].toString()
                 }
-            }
-            else {
-                cantrips.visibility = View.INVISIBLE
-                cantrips.maxHeight = 0
-            }
-
-            // SET LEVEL 1 SPELLS
-            val spells1 = findViewById<ConstraintLayout>(R.id.Row17) // 1 = 17
-            if (totalSpells[1] > 0) {
-                val spells1_rg = findViewById<RadioGroup>(R.id.spell1_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 1) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                radio.isClickable = false
-                                spells1_rg.addView(radio)
-                            }
-                        }
-                    }
+                else {
+                    spellSectionsArray[h].visibility = View.INVISIBLE
+                    spellSectionsArray[h].maxHeight = 0
                 }
-
-                val l1_slots = findViewById<TextView>(R.id.spell1_total_textView)
-                l1_slots.text = _player._spell_slots[1].toString()
-
-                val l1_used_slots = findViewById<TextView>(R.id.spell1_expended_textView)
-                l1_used_slots.text = _player._used_spell_slots[1].toString()
-            }
-            else {
-                spells1.visibility = View.INVISIBLE
-                spells1.maxHeight = 0
-            }
-
-            // SET LEVEL 2 SPELLS
-            val spells2 = findViewById<ConstraintLayout>(R.id.Row18)
-            if (totalSpells[2] > 0) {
-                val spells2_rg = findViewById<RadioGroup>(R.id.spell2_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 2) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells2_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l2_slots = findViewById<TextView>(R.id.spell2_total_textView)
-                l2_slots.text = _player._spell_slots[2].toString()
-
-                val l2_used_slots = findViewById<TextView>(R.id.spell2_expended_textView)
-                l2_used_slots.text = _player._used_spell_slots[2].toString()
-            }
-            else {
-                spells2.visibility = View.INVISIBLE
-                spells2.maxHeight = 0
-            }
-
-            // SET LEVEL 3 SPELLS
-            val spells3 = findViewById<ConstraintLayout>(R.id.Row19)
-            if (totalSpells[3] > 0) {
-                val spells3_rg = findViewById<RadioGroup>(R.id.spell3_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 3) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells3_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l3_slots = findViewById<TextView>(R.id.spell3_total_textView)
-                l3_slots.text = _player._spell_slots[3].toString()
-
-                val l3_used_slots = findViewById<TextView>(R.id.spell3_expended_textView)
-                l3_used_slots.text = _player._used_spell_slots[3].toString()
-            }
-            else {
-                spells3.visibility = View.INVISIBLE
-                spells3.maxHeight = 0
-            }
-
-            // SET LEVEL 4 SPELLS
-            val spells4 = findViewById<ConstraintLayout>(R.id.Row20)
-            if (totalSpells[4] > 0) {
-                val spells4_rg = findViewById<RadioGroup>(R.id.spell4_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 4) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells4_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l4_slots = findViewById<TextView>(R.id.spell4_total_textView)
-                l4_slots.text = _player._spell_slots[4].toString()
-
-                val l4_used_slots = findViewById<TextView>(R.id.spell4_expended_textView)
-                l4_used_slots.text = _player._used_spell_slots[4].toString()
-            }
-            else {
-                spells4.visibility = View.INVISIBLE
-                spells4.maxHeight = 0
-            }
-
-            // SET LEVEL 5 SPELLS
-            val spells5 = findViewById<ConstraintLayout>(R.id.Row21)
-            if (totalSpells[5] > 0) {
-                val spells5_rg = findViewById<RadioGroup>(R.id.spell5_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 5) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells5_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l5_slots = findViewById<TextView>(R.id.spell5_total_textView)
-                l5_slots.text = _player._spell_slots[5].toString()
-
-                val l5_used_slots = findViewById<TextView>(R.id.spell5_expended_textView)
-                l5_used_slots.text = _player._used_spell_slots[5].toString()
-            }
-            else {
-                spells5.visibility = View.INVISIBLE
-                spells5.maxHeight = 0
-            }
-
-            // SET LEVEL 6 SPELLS
-            val spells6 = findViewById<ConstraintLayout>(R.id.Row22)
-            if (totalSpells[6] > 0) {
-                val spells6_rg = findViewById<RadioGroup>(R.id.spell6_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 6) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells6_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l6_slots = findViewById<TextView>(R.id.spell6_total_textView)
-                l6_slots.text = _player._spell_slots[6].toString()
-
-                val l6_used_slots = findViewById<TextView>(R.id.spell6_expended_textView)
-                l6_used_slots.text = _player._used_spell_slots[6].toString()
-            }
-            else {
-                spells6.visibility = View.INVISIBLE
-                spells6.maxHeight = 0
-            }
-
-            // SET LEVEL 7 SPELLS
-            val spells7 = findViewById<ConstraintLayout>(R.id.Row23)
-            if (totalSpells[7] > 0) {
-                val spells7_rg = findViewById<RadioGroup>(R.id.spell7_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 7) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells7_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l7_slots = findViewById<TextView>(R.id.spell7_total_textView)
-                l7_slots.text = _player._spell_slots[7].toString()
-
-                val l7_used_slots = findViewById<TextView>(R.id.spell7_expended_textView)
-                l7_used_slots.text = _player._used_spell_slots[7].toString()
-            }
-            else {
-                spells7.visibility = View.INVISIBLE
-                spells7.maxHeight = 0
-            }
-
-            // SET LEVEL 8 SPELLS
-            val spells8 = findViewById<ConstraintLayout>(R.id.Row24)
-            if (totalSpells[8] > 0) {
-                val spells8_rg = findViewById<RadioGroup>(R.id.spell8_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 8) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells8_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l8_slots = findViewById<TextView>(R.id.spell8_total_textView)
-                l8_slots.text = _player._spell_slots[8].toString()
-
-                val l8_used_slots = findViewById<TextView>(R.id.spell8_expended_textView)
-                l8_used_slots.text = _player._used_spell_slots[8].toString()
-            }
-            else {
-                spells8.visibility = View.INVISIBLE
-                spells8.maxHeight = 0
-            }
-
-            // SET LEVEL 9 SPELLS
-            val spells9 = findViewById<ConstraintLayout>(R.id.Row25)
-            if (totalSpells[9] > 0) {
-                val spells9_rg = findViewById<RadioGroup>(R.id.spell9_radioGroup)
-
-                for (k in _player._attacks.indices) {
-                    if (_player._attacks[k] != null) {
-                        if (_player._attacks[k] is Magical) {
-                            val spell: Magical = _player._attacks[k] as Magical
-
-                            if (spell._level == 9) {
-                                val radio = RadioButton(this)
-                                radio.id = View.generateViewId()
-                                radio.text = spell._name
-                                spells9_rg.addView(radio)
-                            }
-                        }
-                    }
-                }
-
-                val l9_slots = findViewById<TextView>(R.id.spell9_total_textView)
-                l9_slots.text = _player._spell_slots[9].toString()
-
-                val l9_used_slots = findViewById<TextView>(R.id.spell9_expended_textView)
-                l9_used_slots.text = _player._used_spell_slots[9].toString()
-            }
-            else {
-                spells9.visibility = View.INVISIBLE
-                spells9.maxHeight = 0
             }
         }
     }
