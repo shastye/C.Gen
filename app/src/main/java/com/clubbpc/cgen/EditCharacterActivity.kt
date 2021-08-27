@@ -6,12 +6,14 @@ import CharacterPackage.Monster
 import CharacterPackage.Player
 import Utility.Die
 import Utility.Utility.TAG
+
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.util.TypedValue
 import android.view.View
 import android.widget.*
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -360,8 +362,8 @@ class EditCharacterActivity : AppCompatActivity() {
 
         val cancelWeapon = findViewById<Button>(R.id.dialog_cancel_button_weapon)
         cancelWeapon.setOnClickListener {
-            newAttackRow.visibility = View.GONE
-            newAttackRow.layoutParams.height = 0
+            newWeaponRow.visibility = View.GONE
+            newWeaponRow.layoutParams.height = 0
         }
     }
 
@@ -372,7 +374,6 @@ class EditCharacterActivity : AppCompatActivity() {
         charName = intent.getStringExtra("CHARACTER NAME").toString()
         charType = intent.getStringExtra("CHARACTER TYPE").toString()
         gameMode = intent.getStringExtra("CHARACTER GAME").toString()
-
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////         Retrieve from enums          //////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -384,11 +385,10 @@ class EditCharacterActivity : AppCompatActivity() {
         race_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Player.Race.values())
 
         val alignment_spinner = findViewById<Spinner>(R.id.alignment_spinner_actual)
-        alignment_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Alignment.values())
+        alignment_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Alignment.values())
 
         val prof_skill_spinner = findViewById<Spinner>(R.id.dialog_skill_spinner_prof)
-        var tempArray = Array<Character.Skill?>(45,{i -> null})
+        val tempArray = Array<Character.Skill?>(45,{i -> null})
         var i = 0
         for (prof in Character.Skill.values()) {
             if (prof != Character.Skill.ACROBATICS
@@ -413,33 +413,26 @@ class EditCharacterActivity : AppCompatActivity() {
                 tempArray[i] = prof
                 i++
             }
-            prof_skill_spinner.adapter =
-                ArrayAdapter(this, android.R.layout.simple_spinner_item, tempArray)
+            prof_skill_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tempArray)
         }
 
         val prof_stat_spinner = findViewById<Spinner>(R.id.dialog_stat_spinner_prof)
-        prof_stat_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Base_Stats_Enum.values())
+        prof_stat_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Base_Stats_Enum.values())
 
         val attack_die_spinner = findViewById<Spinner>(R.id.dialog_die_spinner_attack)
-        attack_die_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+        attack_die_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
 
         val attack_weapon_spinner = findViewById<Spinner>(R.id.dialog_weapon_spinner_attack)
-        attack_weapon_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
+        attack_weapon_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
 
         val attack_hitDie_spinner = findViewById<Spinner>(R.id.dialog_hitDie_spinner_attack)
-        attack_hitDie_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+        attack_hitDie_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
 
         val weapon_die_spinner = findViewById<Spinner>(R.id.dialog_die_spinner_weapon)
-        weapon_die_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+        weapon_die_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
 
         val weapon_weapon_spinner = findViewById<Spinner>(R.id.dialog_weapon_spinner_weapon)
-        weapon_weapon_spinner.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
+        weapon_weapon_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////         Retrieve from database (FROM NEW CHARACTER DIALOG)         ////////////////
