@@ -1,5 +1,18 @@
 package Utility;
 
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.clubbpc.cgen.CharacterGridActivity;
+import com.clubbpc.cgen.EditCharacterActivity;
+import com.clubbpc.cgen.IntroActivity;
+import com.clubbpc.cgen.ViewCharacterActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
 import com.google.protobuf.Any;
 
 import java.util.HashMap;
@@ -11,9 +24,91 @@ import AttackPackage.Attack;
 import AttackPackage.Magical;
 import AttackPackage.Physical;
 import CharacterPackage.Character;
+import CharacterPackage.Monster;
 import CharacterPackage.Player;
 
 public class Utility {
+    public static class MENU {
+        public static void SignOut(AppCompatActivity _activity) {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent myIntent = new Intent(_activity, IntroActivity.class);
+            _activity.startActivity(myIntent);
+            _activity.finish();
+        }
+        public static void GoBack(AppCompatActivity _activity) {
+            Intent myIntent = new Intent(_activity, CharacterGridActivity.class);
+            _activity.startActivity(myIntent);
+            _activity.finish();
+        }
+        public static void SaveAndGoBack(AppCompatActivity _activity, String gameMode, String charType, Character character) {
+            Save(gameMode, charType, character);
+            GoBack(_activity);
+        }
+        public static void CancelAndView(AppCompatActivity _activity,String gameMode, String charType, Character character) {
+            Intent myIntent = new Intent(_activity, ViewCharacterActivity.class);
+            myIntent.putExtra("CHARACTER NAME", character.get_name());
+            myIntent.putExtra("CHARACTER TYPE", character.get_char_type().toString());
+            myIntent.putExtra("CHARACTER GAME", character.get_game_mode().toString());
+            _activity.startActivity(myIntent);
+            _activity.finish();
+        }
+        public static void SaveAndView(AppCompatActivity _activity,String gameMode, String charType, Character character) {
+            Save(gameMode, charType, character);
+
+            Intent myIntent = new Intent(_activity, ViewCharacterActivity.class);
+            myIntent.putExtra("CHARACTER NAME", character.get_name());
+            myIntent.putExtra("CHARACTER TYPE", character.get_char_type().toString());
+            myIntent.putExtra("CHARACTER GAME", character.get_game_mode().toString());
+            _activity.startActivity(myIntent);
+            _activity.finish();
+        }
+        public static void Edit(AppCompatActivity _activity, String gameMode, String charType, Character character) {
+            Intent myIntent = new Intent(_activity, EditCharacterActivity.class);
+            myIntent.putExtra("CHARACTER NAME", character.get_name());
+            myIntent.putExtra("CHARACTER TYPE", character.get_char_type().toString());
+            myIntent.putExtra("CHARACTER GAME", character.get_game_mode().toString());
+            myIntent.putExtra("INFO FROM", "VIEW CHARACTER");
+            _activity.startActivity(myIntent);
+            _activity.finish();
+        }
+
+        private static void Save(String gameMode, String charType, Character character) {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            CollectionReference tempUsers = db.collection(TAG.USERS_COLLECTION);
+            DocumentReference tempUserDoc = tempUsers.document(Objects.requireNonNull(Objects.requireNonNull(auth.getCurrentUser()).getEmail()));
+
+            CollectionReference tempDNDplayers = tempUserDoc.collection(TAG.DND_PLAYERSHEETS_DOCUMENT);
+            CollectionReference tempPFplayers = tempUserDoc.collection(TAG.PATHFINDER_PLAYERSHEETS_DOCUMENT);
+            CollectionReference tempDNDmonsters = tempUserDoc.collection(TAG.DND_MONSTERSHEETS_DOCUMENT);
+            CollectionReference tempPFmonsters = tempUserDoc.collection(TAG.PATHFINDER_MONSTERSHEETS_DOCUMENT);
+
+            if (gameMode.equals("DND")) {
+                if (charType.equals("PLAYER")) {
+                    Player currentPlayer = (Player) character;
+                    tempDNDplayers.document(currentPlayer.get_name()).set(currentPlayer.get_hashMap());
+                }
+                else {
+                    Monster currentMonster = (Monster) character;
+                    tempDNDmonsters.document(currentMonster.get_name()).set(currentMonster.get_hashMap());
+                }
+            }
+            else if (gameMode.equals("PATHFINDER")) {
+                if (charType.equals("PLAYER")) {
+                    Player currentPlayer = (Player) character;
+                    tempDNDplayers.document(currentPlayer.get_name()).set(currentPlayer.get_hashMap());
+                }
+                else {
+                    Monster currentMonster = (Monster) character;
+                    tempDNDmonsters.document(currentMonster.get_name()).set(currentMonster.get_hashMap());
+                }
+            }
+        }
+    }
+
     public static final class TAG {
         // from User Class
         public static final String EMAIL = "email";

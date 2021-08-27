@@ -30,15 +30,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/back_imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/characterName_toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/characterName_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/characterName_toolbar"
-        app:srcCompat="@android:drawable/ic_media_previous" />
-
     <ScrollView
         android:id="@+id/characterStats_scrollView"
         style="@android:style/Widget.Holo.ScrollView"

@@ -81,20 +81,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />
 
-    <ImageButton
-        android:id="@+id/signOut_button"
-        android:layout_width="49dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_corner"
-        android:contentDescription="@string/add_character"
-        android:keepScreenOn="true"
-        android:scaleType="center"
-        android:src="?attr/actionModeCloseDrawable"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/character_gridView"
-        app:tint="@color/white" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

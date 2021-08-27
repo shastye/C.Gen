@@ -10,7 +10,8 @@ import Utility.Utility.TAG
 import Utility.Utility.checkForEnumValueInArray
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -43,15 +44,30 @@ class ViewCharacterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_character)
+    }
 
-        // TODO: CREATE EDIT BUTTON TO TAKE TO NEW CHARACTER ACTIVITY WITH INFORMATION FILLED IN
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.view_menu, menu)
+        return true
+    }
 
-        val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
-        backButton.setOnClickListener {
-            val myIntent = Intent(this, CharacterGridActivity::class.java)
-            startActivity(myIntent)
-            finish()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var toReturn = false
+
+        when (item.itemId) {
+            R.id.action_goBack_item -> {
+                Utility.MENU.GoBack(this)
+                toReturn = true
+            }
+            R.id.action_edit_item -> {
+                Utility.MENU.Edit(this, gameMode, charType, currentPlayer)
+                toReturn = true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
+
+        return toReturn
     }
 
     override fun onStart() {
@@ -100,29 +116,6 @@ class ViewCharacterActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    // TODO: DELETE AT END
-    override fun onDestroy() {
-        super.onDestroy()
-
-        if (gameMode == "DND") {
-            if (charType == "PLAYER") {
-                tempDNDplayers.document(currentPlayer._name).set(currentPlayer._hashMap)
-            }
-            else {
-
-                tempDNDmonsters.document(currentMonster._name).set(currentMonster._hashMap)
-            }
-        }
-        else if (gameMode == "PATHFINDER") {
-            if (charType == "PLAYER") {
-                tempPFplayers.document(currentPlayer._name).set(currentPlayer._hashMap)
-            }
-            else {
-                tempPFmonsters.document(currentMonster._name).set(currentMonster._hashMap)
-            }
-        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

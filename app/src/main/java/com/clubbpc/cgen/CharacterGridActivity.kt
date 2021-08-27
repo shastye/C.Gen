@@ -2,6 +2,7 @@ package com.clubbpc.cgen
 
 import CharacterPackage.Monster
 import CharacterPackage.Player
+import Utility.Utility
 import Utility.Utility.TAG
 import Utility.Utility.convertToHashMapStringString
 
@@ -9,9 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -47,6 +46,26 @@ class CharacterGridActivity : AppCompatActivity() {
     private var OGgameType: Int = 0
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.grid_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var toReturn = false
+
+        when (item.itemId) {
+            R.id.action_signOut_item -> {
+                Utility.MENU.SignOut(this)
+                toReturn = true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
+        return toReturn
+    }
 
     override fun onStart() {
         super.onStart()
@@ -176,17 +195,6 @@ class CharacterGridActivity : AppCompatActivity() {
 
             //alert dialog
             NewCharacterDialog().show(supportFragmentManager, "New Character Dialog")
-        }
-
-        // TODO: MAKE SIGN OUT AS A MENU ITEM NOT A BUTTON ON WINDOW
-        val signOut_button: ImageButton = findViewById(R.id.signOut_button)
-        signOut_button.setOnClickListener {
-            auth.signOut()
-
-            val myIntent = Intent(this, IntroActivity::class.java)
-
-            startActivity(myIntent)
-            finish()
         }
     }
 

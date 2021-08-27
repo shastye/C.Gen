@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_signOut_item"
+        android:title="@string/action_sign_out" />
+    <item
+        android:id="@+id/action_goBack_item"
+        android:title="Go Back" />
+    <item
+        android:id="@+id/action_saveBack_item"
+        android:title="Save and Go Back" />
+    <item
+        android:id="@+id/action_saveView_item"
+        android:title="Save and View" />
+    <item
+        android:id="@+id/action_edit_item"
+        android:title="Edit" />
+
+</menu>
