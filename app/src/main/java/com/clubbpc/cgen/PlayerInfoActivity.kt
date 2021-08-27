@@ -23,12 +23,6 @@ class PlayerInfoActivity : AppCompatActivity() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    override fun onStart() {
-        super.onStart()
-
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_info)

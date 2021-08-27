@@ -1652,7 +1652,7 @@
                     app:srcCompat="@drawable/generic_square_no_banner" />
 
                 <TextView
-                    android:id="@+id/other_proficiencies_textView"
+                    android:id="@+id/other_proficiencies_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
@@ -1681,11 +1681,167 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    ROW 13.1   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row13.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row13">
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="280dp"
+                    android:background="@color/parchment"
+                    android:clipToPadding="true"
+                    app:layout_constraintBottom_toBottomOf="@id/Row13.1"
+                    app:layout_constraintEnd_toEndOf="@id/Row13.1"
+                    app:layout_constraintStart_toStartOf="@id/Row13.1"
+                    app:layout_constraintTop_toTopOf="@id/Row13.1">
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:background="@color/accent_red">
+
+                        <TextView
+                            android:id="@+id/dialog_newCharacter_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="New Proficiency"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                        <TextView
+                            android:id="@+id/dialog_information_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Information"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_skill_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Skill: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <Spinner
+                            android:id="@+id/dialog_skill_spinner_prof"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_playerLevel_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Character Level: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_playerLevel_editText_prof"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        tools:layout_editor_absoluteY="42dp">
+
+                        <TextView
+                            android:id="@+id/dialog_special_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Special: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_special_editText_prof"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Note"
+                            android:inputType="textMultiLine" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_stat_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ability: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <Spinner
+                            android:id="@+id/dialog_stat_spinner_prof"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/dialog_cancel_button_prof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/cancel"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+                    app:layout_constraintEnd_toStartOf="@+id/dialog_create_button_prof" />
+
+                <Button
+                    android:id="@+id/dialog_create_button_prof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical|end"
+                    android:text="@string/create"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/tableLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/equipment_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Row13"
+                android:layout_below="@id/Row13.1"
                 android:layout_marginTop="0dp"
                 android:background="@color/accent_red"
                 app:cardBackgroundColor="@color/dark_red"
@@ -1815,7 +1971,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/gold_editText" />
 
                 <TextView
-                    android:id="@+id/equipment_textView"
+                    android:id="@+id/equipment_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
@@ -1845,11 +2001,306 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    ROW 13.6   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row13.6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row13.5">
+
+                <TableLayout
+                    android:id="@+id/tableLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="500dp"
+                    android:background="@color/parchment"
+                    android:clipToPadding="true"
+                    app:layout_constraintBottom_toBottomOf="@id/Row13.6"
+                    app:layout_constraintEnd_toEndOf="@id/Row13.6"
+                    app:layout_constraintStart_toStartOf="@id/Row13.6"
+                    app:layout_constraintTop_toTopOf="@id/Row13.6">
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:background="@color/accent_red">
+
+                        <TextView
+                            android:id="@+id/dialog_newItem_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="New Item"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                        <TextView
+                            android:id="@+id/dialog_information_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Information"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_item_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Item: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_item_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="Item Name"  />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_placeholder1_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_copper_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <TextView
+                            android:id="@+id/dialog_copper_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="cp"
+                            android:textAlignment="textStart"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_placeholder2_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_silver_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <TextView
+                            android:id="@+id/dialog_silver_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sp"
+                            android:textAlignment="textStart"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_money_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Money: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_electrum_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <TextView
+                            android:id="@+id/dialog_electrum_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ep"
+                            android:textAlignment="textStart"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_placeholder3_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_gold_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <TextView
+                            android:id="@+id/dialog_gold_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="gp"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_placeholder4_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_platinum_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <TextView
+                            android:id="@+id/dialog_platinum_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pp"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        tools:layout_editor_absoluteY="42dp">
+
+                        <TextView
+                            android:id="@+id/dialog_weight_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weight: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_weight_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="0"
+                            android:inputType="number" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_attributes_textView_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Attributes: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_attributes_editText_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="Note"
+                            android:inputType="textMultiLine"  />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/dialog_cancel_button_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/cancel"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"
+                    app:layout_constraintEnd_toStartOf="@+id/dialog_create_button_item" />
+
+                <Button
+                    android:id="@+id/dialog_create_button_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical|end"
+                    android:text="@string/create"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"
+                    app:layout_constraintEnd_toEndOf="@+id/tableLayout2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/physical_attacks_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Row13.5"
+                android:layout_below="@id/Row13.6"
                 android:layout_marginTop="0dp"
                 android:background="@color/accent_red"
                 app:cardBackgroundColor="@color/dark_red"
@@ -1890,7 +2341,7 @@
                     app:srcCompat="@drawable/attack_square_no_banner" />
 
                 <TextView
-                    android:id="@+id/attack1_name_textView"
+                    android:id="@+id/attack1_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1899,13 +2350,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_textView"
-                    app:layout_constraintEnd_toStartOf="@+id/attack1_bonus_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_editText"
+                    app:layout_constraintEnd_toStartOf="@+id/attack1_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
                 <TextView
-                    android:id="@+id/attack1_bonus_textView"
+                    android:id="@+id/attack1_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1914,13 +2365,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_textView"
-                    app:layout_constraintEnd_toEndOf="@+id/attack1_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack1_name_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_editText"
+                    app:layout_constraintEnd_toEndOf="@+id/attack1_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack1_name_editText"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
                 <TextView
-                    android:id="@+id/attack1_damageType_textView"
+                    android:id="@+id/attack1_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1929,13 +2380,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_editText"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack1_bonus_textView"
+                    app:layout_constraintStart_toEndOf="@+id/attack1_bonus_editText"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView" />
 
                 <TextView
-                    android:id="@+id/attack2_name_textView"
+                    android:id="@+id/attack2_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1944,13 +2395,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_textView"
-                    app:layout_constraintEnd_toStartOf="@+id/attack2_bonus_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_editText"
+                    app:layout_constraintEnd_toStartOf="@+id/attack2_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_editText" />
 
                 <TextView
-                    android:id="@+id/attack2_bonus_textView"
+                    android:id="@+id/attack2_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1959,13 +2410,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_textView"
-                    app:layout_constraintEnd_toEndOf="@+id/attack2_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack2_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_textView" />
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_editText"
+                    app:layout_constraintEnd_toEndOf="@+id/attack2_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack2_name_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_editText" />
 
                 <TextView
-                    android:id="@+id/attack2_damageType_textView"
+                    android:id="@+id/attack2_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1974,13 +2425,13 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_editText"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack2_bonus_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_textView" />
+                    app:layout_constraintStart_toEndOf="@+id/attack2_bonus_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_name_textView"
+                    android:id="@+id/attack3_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1989,12 +2440,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/attack3_bonus_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/attack3_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_name_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_name_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_bonus_textView"
+                    android:id="@+id/attack3_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -2003,12 +2454,12 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@+id/attack3_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack3_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_textView" />
+                    app:layout_constraintEnd_toEndOf="@+id/attack3_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack3_name_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_damageType_textView"
+                    android:id="@+id/attack3_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -2018,11 +2469,11 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack3_bonus_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_textView" />
+                    app:layout_constraintStart_toEndOf="@+id/attack3_bonus_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_editText" />
 
                 <TextView
-                    android:id="@+id/otherAttacks_textView"
+                    android:id="@+id/otherAttacks_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="42dp"
@@ -2034,7 +2485,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack3_bonus_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/attack3_bonus_editText"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageButton
@@ -2067,12 +2518,345 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    ROW 14.5   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row14.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row14">
+
+                <TableLayout
+                    android:id="@+id/tableLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="375dp"
+                    android:background="@color/parchment"
+                    android:clipToPadding="true"
+                    app:layout_constraintBottom_toBottomOf="@id/Row14.5"
+                    app:layout_constraintEnd_toEndOf="@id/Row14.5"
+                    app:layout_constraintStart_toStartOf="@id/Row14.5"
+                    app:layout_constraintTop_toTopOf="@id/Row14.5">
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:background="@color/accent_red">
+
+                        <TextView
+                            android:id="@+id/dialog_newAttack_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="New Attack"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                        <TextView
+                            android:id="@+id/dialog_information_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Information"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_name_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_name_editText_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="Attack Name"  />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_special_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Special"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_special_editText_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="Note"
+                            android:inputType="textMultiLine"  />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_bonus_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bonus: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_bonus_editText_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_die_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Attack Die: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_numDie_editText_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <Spinner
+                            android:id="@+id/dialog_die_spinner_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_weapon_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weapon: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <Spinner
+                            android:id="@+id/dialog_weapon_spinner_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_hitDie_textView_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hit Die: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_numHitDie_editText_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <Spinner
+                            android:id="@+id/dialog_hitDie_spinner_attack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+
+                    </TableRow>
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/dialog_cancel_button_attack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/cancel"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout3"
+                    app:layout_constraintEnd_toStartOf="@+id/dialog_create_button_attack" />
+
+                <Button
+                    android:id="@+id/dialog_create_button_attack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical|end"
+                    android:text="@string/create"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout3"
+                    app:layout_constraintEnd_toEndOf="@+id/tableLayout3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    ROW 14.6   -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Row14.6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Row14.5">
+
+                <TableLayout
+                    android:id="@+id/tableLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="190dp"
+                    android:background="@color/parchment"
+                    android:clipToPadding="true"
+                    app:layout_constraintBottom_toBottomOf="@id/Row14.6"
+                    app:layout_constraintEnd_toEndOf="@id/Row14.6"
+                    app:layout_constraintStart_toStartOf="@id/Row14.6"
+                    app:layout_constraintTop_toTopOf="@id/Row14.6">
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:background="@color/accent_red">
+
+                        <TextView
+                            android:id="@+id/dialog_newWeapon_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="New Weapon"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+
+                        <TextView
+                            android:id="@+id/dialog_information_textView_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Information"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="90dp"
+                            tools:layout_editor_absoluteY="21dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_weapon_textView_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weapon: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <Spinner
+                            android:id="@+id/dialog_weapon_spinner_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="0dp"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:id="@+id/dialog_die_textView_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hit Die: "
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/dialog_numDie_editText_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:hint="@string/int_character_level"
+                            android:inputType="number"  />
+
+                        <Spinner
+                            android:id="@+id/dialog_die_spinner_weapon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp" />
+
+                    </TableRow>
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/dialog_cancel_button_weapon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/cancel"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout4"
+                    app:layout_constraintEnd_toStartOf="@+id/dialog_create_button_weapon" />
+
+                <Button
+                    android:id="@+id/dialog_create_button_weapon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_horizontal|center_vertical|end"
+                    android:text="@string/create"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/tableLayout4"
+                    app:layout_constraintEnd_toEndOf="@+id/tableLayout4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 <!--    USED FOR HIDING IF NOT A SPELLCASTING CLASS   -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/spells_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Row14">
+                android:layout_below="@id/Row14.6">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/spells_header"
