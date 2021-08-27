@@ -10,7 +10,6 @@ import Utility.Utility.TAG
 import Utility.Utility.checkForEnumValueInArray
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.RadioButton
@@ -50,7 +49,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         // TODO: CREATE EDIT BUTTON TO TAKE TO NEW CHARACTER ACTIVITY WITH INFORMATION FILLED IN
 
         val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
-        backButton.setOnClickListener() {
+        backButton.setOnClickListener {
             val myIntent = Intent(this, CharacterGridActivity::class.java)
             startActivity(myIntent)
             finish()
@@ -250,7 +249,7 @@ class ViewCharacterActivity : AppCompatActivity() {
         // SAVING THROWS INFORMATION
         val stStr_radio = findViewById<RadioButton>(R.id.save_throw_str)
         if (checkForEnumValueInArray(Character.Base_Stats_Enum.STRENGTH, _player._saving_throws)) {
-            stStr_radio.isChecked = true;
+            stStr_radio.isChecked = true
             temp = "  +${Utility.getModifierForArrayValue(Character.Base_Stats_Enum.STRENGTH, _player._saving_throws)}  Strength"
             stStr_radio.text = temp
         }
@@ -454,9 +453,9 @@ class ViewCharacterActivity : AppCompatActivity() {
         init_textView.text = _player._initiative.toString()
 
         // ATTACK INFORMATION
-        val a1n_textView = findViewById<TextView>(R.id.attack1_name_textView)
-        val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_textView)
-        val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_textView)
+        val a1n_textView = findViewById<TextView>(R.id.attack1_name_editText)
+        val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_editText)
+        val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_editText)
         var i : Int = 0
         while (i < _player._attacks.size) {
             if (_player._attacks[i] != null) {
@@ -477,13 +476,13 @@ class ViewCharacterActivity : AppCompatActivity() {
                 }
             }
             else {
-                break;
+                break
             }
         }
 
-        val a2n_textView = findViewById<TextView>(R.id.attack2_name_textView)
-        val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_textView)
-        val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_textView)
+        val a2n_textView = findViewById<TextView>(R.id.attack2_name_editText)
+        val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_editText)
+        val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_editText)
         while (i < _player._attacks.size) {
             if (_player._attacks[i] != null) {
                 if (_player._attacks[i] is Physical) {
@@ -503,13 +502,13 @@ class ViewCharacterActivity : AppCompatActivity() {
                 }
             }
             else {
-                break;
+                break
             }
         }
 
-        val a3n_textView = findViewById<TextView>(R.id.attack3_name_textView)
-        val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_textView)
-        val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_textView)
+        val a3n_textView = findViewById<TextView>(R.id.attack3_name_editText)
+        val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_editText)
+        val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_editText)
         while (i < _player._attacks.size) {
             if (_player._attacks[i] != null) {
                 if (_player._attacks[i] is Physical) {
@@ -529,18 +528,18 @@ class ViewCharacterActivity : AppCompatActivity() {
                 }
             }
             else {
-                break;
+                break
             }
         }
 
         // WEAPONS INFORMATION
-        val weapons_textView = findViewById<TextView>(R.id.otherAttacks_textView)
+        val weapons_textView = findViewById<TextView>(R.id.otherAttacks_editText)
         temp = ""
         for (k in _player._weapons.indices) {
             if (_player._weapons[k] != null) {
                 val weapon: Physical.Weapon_Struct = _player._weapons[k]
 
-                temp += "${weapon.weapon.toString()}  :  ${weapon.num_die}${weapon.die}\n\n"
+                temp += "${weapon.weapon}  :  ${weapon.num_die}${weapon.die}\n\n"
             }
         }
         weapons_textView.text = temp
@@ -738,7 +737,7 @@ class ViewCharacterActivity : AppCompatActivity() {
                                 val radio = RadioButton(this)
                                 radio.id = View.generateViewId()
                                 radio.text = spell._name
-                                radio.isClickable = false;
+                                radio.isClickable = false
                                 spells1_rg.addView(radio)
                             }
                         }

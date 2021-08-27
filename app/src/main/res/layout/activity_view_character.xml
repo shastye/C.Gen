@@ -1797,7 +1797,7 @@
                     app:srcCompat="@drawable/attack_square_no_banner" />
 
                 <TextView
-                    android:id="@+id/attack1_name_textView"
+                    android:id="@+id/attack1_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1807,13 +1807,13 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toStartOf="@+id/attack1_bonus_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/attack1_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_textView"  />
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_name_editText"  />
 
                 <TextView
-                    android:id="@+id/attack1_bonus_textView"
+                    android:id="@+id/attack1_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1823,13 +1823,13 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toEndOf="@+id/attack1_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack1_name_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/attack1_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack1_name_editText"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_textView" />
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_bonus_editText" />
 
                 <TextView
-                    android:id="@+id/attack1_damageType_textView"
+                    android:id="@+id/attack1_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="54dp"
@@ -1840,12 +1840,12 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack1_bonus_textView"
+                    app:layout_constraintStart_toEndOf="@+id/attack1_bonus_editText"
                     app:layout_constraintTop_toTopOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_textView" />
+                    app:layout_constraintBottom_toTopOf="@+id/attack2_damageType_editText" />
 
                 <TextView
-                    android:id="@+id/attack2_name_textView"
+                    android:id="@+id/attack2_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1855,13 +1855,13 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toStartOf="@+id/attack2_bonus_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/attack2_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_name_editText"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_name_editText" />
 
                 <TextView
-                    android:id="@+id/attack2_bonus_textView"
+                    android:id="@+id/attack2_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1871,13 +1871,13 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toEndOf="@+id/attack2_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack2_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_textView" />
+                    app:layout_constraintEnd_toEndOf="@+id/attack2_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack2_name_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_bonus_editText"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_bonus_editText" />
 
                 <TextView
-                    android:id="@+id/attack2_damageType_textView"
+                    android:id="@+id/attack2_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1888,12 +1888,12 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack2_bonus_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_textView"
-                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_textView" />
+                    app:layout_constraintStart_toEndOf="@+id/attack2_bonus_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack1_damageType_editText"
+                    app:layout_constraintBottom_toTopOf="@+id/attack3_damageType_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_name_textView"
+                    android:id="@+id/attack3_name_editText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1903,12 +1903,12 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toStartOf="@+id/attack3_bonus_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/attack3_bonus_editText"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_name_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_name_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_bonus_textView"
+                    android:id="@+id/attack3_bonus_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1918,12 +1918,12 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
-                    app:layout_constraintEnd_toEndOf="@+id/attack3_damageType_textView"
-                    app:layout_constraintStart_toEndOf="@+id/attack3_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_textView" />
+                    app:layout_constraintEnd_toEndOf="@+id/attack3_damageType_editText"
+                    app:layout_constraintStart_toEndOf="@+id/attack3_name_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_bonus_editText" />
 
                 <TextView
-                    android:id="@+id/attack3_damageType_textView"
+                    android:id="@+id/attack3_damageType_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="46dp"
@@ -1934,11 +1934,11 @@
                     android:textSize="16sp"
                     app:buttonTint="@color/accent_red"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintStart_toEndOf="@+id/attack3_bonus_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_textView" />
+                    app:layout_constraintStart_toEndOf="@+id/attack3_bonus_editText"
+                    app:layout_constraintTop_toBottomOf="@+id/attack2_damageType_editText" />
 
                 <TextView
-                    android:id="@+id/otherAttacks_textView"
+                    android:id="@+id/otherAttacks_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="42dp"
@@ -1951,7 +1951,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/physical_attacks_frame_imageView"
                     app:layout_constraintStart_toStartOf="@+id/physical_attacks_frame_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/attack3_bonus_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/attack3_bonus_editText"
                     app:layout_constraintVertical_bias="0.0" />
 
 

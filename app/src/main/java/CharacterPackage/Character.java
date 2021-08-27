@@ -161,13 +161,13 @@ public class Character {
 
         public Proficient_In() {
             proficiency = Skill.ATHLETICS;
-            bonus = 1;
+            bonus = 0;
             special = "";
             stat_used = Base_Stats_Enum.CHARISMA;
         }
         public Proficient_In(Skill _TYPE) {
             proficiency = _TYPE;
-            bonus = 1;
+            bonus = 0;
             special = "";
             stat_used = Base_Stats_Enum.CONSTITUTION;
         }

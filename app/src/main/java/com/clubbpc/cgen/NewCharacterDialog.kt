@@ -65,7 +65,8 @@ class NewCharacterDialog : DialogFragment() {
         dialog!!.window?.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val race_spinner = this.view?.findViewById<Spinner>(R.id.dialog_characterRace_spinner)
-        race_spinner?.setAdapter( ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Player.Race.values()) )
+        race_spinner?.adapter =
+            ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, Player.Race.values())
 
 
         tempUserDoc.get()

@@ -1,20 +1,20 @@
 package com.clubbpc.cgen
 
+import AttackPackage.Physical
 import CharacterPackage.Character
 import CharacterPackage.Monster
 import CharacterPackage.Player
-
+import Utility.Die
 import Utility.Utility.TAG
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.TypedValue
 import android.view.View
 import android.widget.*
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -46,23 +46,400 @@ class EditCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_character)
 
+        // HIDE NEW ITEMS
+        val newProfRow = findViewById<ConstraintLayout>(R.id.Row13_1)
+        newProfRow.visibility = View.GONE
+        newProfRow.layoutParams.height = 0
+
+        val newItemRow = findViewById<ConstraintLayout>(R.id.Row13_6)
+        newItemRow.visibility = View.GONE
+        newItemRow.layoutParams.height = 0
+
+        val newAttackRow = findViewById<ConstraintLayout>(R.id.Row14_5)
+        newAttackRow.visibility = View.GONE
+        newAttackRow.layoutParams.height = 0
+
+        val newWeaponRow = findViewById<ConstraintLayout>(R.id.Row14_6)
+        newWeaponRow.visibility = View.GONE
+        newWeaponRow.layoutParams.height = 0
+
+        // DEAL WITH BUTTONS
+        val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
+        backButton.setOnClickListener {
+            val myIntent = Intent(this, CharacterGridActivity::class.java)
+            startActivity(myIntent)
+            finish()
+        }
+
+        val newProfButton = findViewById<ImageButton>(R.id.newProficiency_imageButton)
+        newProfButton.setOnClickListener {
+            newProfRow.visibility = View.VISIBLE
+            newProfRow.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280f, resources.displayMetrics).toInt()
+        }
+
+        val createProf = findViewById<Button>(R.id.dialog_create_button_prof)
+        createProf.setOnClickListener {
+            if (canContinue_prof()) {
+                currentPlayer.add_proficiency(
+                    Character.Proficient_In(
+                        Character.Skill.valueOf(findViewById<Spinner>(R.id.dialog_skill_spinner_prof).selectedItem.toString()),
+                        findViewById<EditText>(R.id.dialog_playerLevel_editText_prof).text.toString().toInt(),
+                        findViewById<EditText>(R.id.dialog_special_editText_prof).text.toString(),
+                        Character.Base_Stats_Enum.valueOf(findViewById<Spinner>(R.id.dialog_stat_spinner_prof).selectedItem.toString())
+                    )
+                )
+
+                Toast.makeText(this, "Proficiency Added Successfully.",
+                    Toast.LENGTH_SHORT).show()
+
+                newProfRow.visibility = View.GONE
+                newProfRow.layoutParams.height = 0
+
+
+                val otherProf_textView = findViewById<TextView>(R.id.other_proficiencies_editText)
+                var temp = ""
+                for (i in currentPlayer._proficiencies.indices) {
+                    if (currentPlayer._proficiencies[i] != null) {
+                        val prof: Character.Proficient_In = currentPlayer._proficiencies[i]
+
+                        if (prof.proficiency != Character.Skill.ACROBATICS
+                            && prof.proficiency != Character.Skill.ANIMAL_HANDLING
+                            && prof.proficiency != Character.Skill.ARCANA
+                            && prof.proficiency != Character.Skill.ATHLETICS
+                            && prof.proficiency != Character.Skill.DECEPTION
+                            && prof.proficiency != Character.Skill.HISTORY
+                            && prof.proficiency != Character.Skill.INSIGHT
+                            && prof.proficiency != Character.Skill.INTIMIDATION
+                            && prof.proficiency != Character.Skill.INVESTIGATION
+                            && prof.proficiency != Character.Skill.MEDICINE
+                            && prof.proficiency != Character.Skill.NATURE
+                            && prof.proficiency != Character.Skill.PERCEPTION
+                            && prof.proficiency != Character.Skill.PERFORMANCE
+                            && prof.proficiency != Character.Skill.PERSUASION
+                            && prof.proficiency != Character.Skill.RELIGION
+                            && prof.proficiency != Character.Skill.SLEIGHT_OF_HAND
+                            && prof.proficiency != Character.Skill.STEALTH
+                            && prof.proficiency != Character.Skill.SURVIVAL
+                        ) {
+                            temp += "+${prof.bonus}  ${prof.proficiency}\n\n"
+                        }
+                    }
+                }
+                otherProf_textView.text = temp
+            }
+            else {
+                Toast.makeText(this, "Proficiency Not Added: One or more values missing.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val cancelProf = findViewById<Button>(R.id.dialog_cancel_button_prof)
+        cancelProf.setOnClickListener {
+            newProfRow.visibility = View.GONE
+            newProfRow.layoutParams.height = 0
+        }
+
+        val newItemButton = findViewById<ImageButton>(R.id.newEquipment_imageButton)
+        newItemButton.setOnClickListener {
+            newItemRow.visibility = View.VISIBLE
+            newItemRow.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 500f, resources.displayMetrics).toInt()
+        }
+
+        val createItem = findViewById<Button>(R.id.dialog_create_button_item)
+        createItem.setOnClickListener {
+            if (canContinue_item()) {
+                val tempItem = Character.Item()
+                tempItem.item = findViewById<EditText>(R.id.dialog_item_editText_item).text.toString()
+                tempItem.cost = Character.Money (
+                    findViewById<EditText>(R.id.dialog_copper_editText_item).text.toString().toInt(),
+                    findViewById<EditText>(R.id.dialog_silver_editText_item).text.toString().toInt(),
+                    findViewById<EditText>(R.id.dialog_electrum_editText_item).text.toString().toInt(),
+                    findViewById<EditText>(R.id.dialog_gold_editText_item).text.toString().toInt(),
+                    findViewById<EditText>(R.id.dialog_platinum_editText_item).text.toString().toInt(),
+                )
+                tempItem.weight = findViewById<EditText>(R.id.dialog_weight_editText_item).text.toString().toInt()
+                tempItem.attributes =findViewById<EditText>(R.id.dialog_attributes_editText_item).text.toString()
+
+                currentPlayer.add_item(tempItem)
+
+                Toast.makeText(this, "Item Added Successfully.",
+                    Toast.LENGTH_SHORT).show()
+
+                newItemRow.visibility = View.GONE
+                newItemRow.layoutParams.height = 0
+
+                val equip_textView = findViewById<TextView>(R.id.equipment_editText)
+                var temp = ""
+                for (p in currentPlayer._items.indices) {
+                    if (currentPlayer._items[p] != null) {
+                        val item: Character.Item = currentPlayer._items[p]
+
+                        temp += item.item
+
+                        if (item.attributes != "") {
+                            temp += " (${item.attributes})"
+                        }
+
+                        temp += "\n\n"
+                    }
+                }
+                equip_textView.text = temp
+            }
+            else {
+                Toast.makeText(this, "Item Not Added: One or more values missing.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val cancelItem = findViewById<Button>(R.id.dialog_cancel_button_item)
+        cancelItem.setOnClickListener {
+            newItemRow.visibility = View.GONE
+            newItemRow.layoutParams.height = 0
+        }
+
+        val newAttackButton = findViewById<ImageButton>(R.id.newAttack_imageButton)
+        newAttackButton.setOnClickListener {
+            newAttackRow.visibility = View.VISIBLE
+            newAttackRow.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 375f, resources.displayMetrics).toInt()
+        }
+
+        val createAttack = findViewById<Button>(R.id.dialog_create_button_attack)
+        createAttack.setOnClickListener {
+            if (canContinue_attack()) {
+                val tempAttack = Physical()
+                tempAttack._name = findViewById<EditText>(R.id.dialog_name_editText_attack).text.toString()
+                tempAttack._special = findViewById<EditText>(R.id.dialog_special_editText_attack).text.toString()
+                tempAttack._bonus = findViewById<EditText>(R.id.dialog_bonus_editText_attack).text.toString().toInt()
+                tempAttack._num_dice = findViewById<EditText>(R.id.dialog_numDie_editText_attack).text.toString().toInt()
+                tempAttack._die = Die.valueOf(findViewById<Spinner>(R.id.dialog_die_spinner_attack).selectedItem.toString())
+                tempAttack._weapon_info = Physical.Weapon_Struct(
+                    Physical.Weapon_Enum.valueOf(findViewById<Spinner>(R.id.dialog_weapon_spinner_attack).selectedItem.toString()),
+                    findViewById<EditText>(R.id.dialog_numHitDie_editText_attack).text.toString().toInt(),
+                    Utility.Die.valueOf(findViewById<Spinner>(R.id.dialog_hitDie_spinner_attack).selectedItem.toString()),
+                )
+
+                currentPlayer.add_attack(tempAttack)
+
+                Toast.makeText(this, "Attack Added Successfully.",
+                    Toast.LENGTH_SHORT).show()
+
+                newAttackRow.visibility = View.GONE
+                newAttackRow.layoutParams.height = 0
+
+                val a1n_textView = findViewById<TextView>(R.id.attack1_name_editText)
+                val a1b_textView = findViewById<TextView>(R.id.attack1_bonus_editText)
+                val a1dt_textView = findViewById<TextView>(R.id.attack1_damageType_editText)
+                var i : Int = 0
+                var temp = ""
+                while (i < currentPlayer._attacks.size) {
+                    if (currentPlayer._attacks[i] != null) {
+                        if (currentPlayer._attacks[i] is Physical) {
+                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
+                            a1n_textView.text = tempPhysical._name
+                            temp = "+${tempPhysical._bonus}"
+                            a1b_textView.text = temp
+                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                            a1dt_textView.text = temp
+
+                            i++
+                            break
+                        }
+                        else {
+                            i++
+                        }
+                    }
+                    else {
+                        break
+                    }
+                }
+
+                val a2n_textView = findViewById<TextView>(R.id.attack2_name_editText)
+                val a2b_textView = findViewById<TextView>(R.id.attack2_bonus_editText)
+                val a2dt_textView = findViewById<TextView>(R.id.attack2_damageType_editText)
+                while (i < currentPlayer._attacks.size) {
+                    if (currentPlayer._attacks[i] != null) {
+                        if (currentPlayer._attacks[i] is Physical) {
+                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
+                            a2n_textView.text = tempPhysical._name
+                            temp = "+${tempPhysical._bonus}"
+                            a2b_textView.text = temp
+                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                            a2dt_textView.text = temp
+
+                            i++
+                            break
+                        }
+                        else {
+                            i++
+                        }
+                    }
+                    else {
+                        break
+                    }
+                }
+
+                val a3n_textView = findViewById<TextView>(R.id.attack3_name_editText)
+                val a3b_textView = findViewById<TextView>(R.id.attack3_bonus_editText)
+                val a3dt_textView = findViewById<TextView>(R.id.attack3_damageType_editText)
+                while (i < currentPlayer._attacks.size) {
+                    if (currentPlayer._attacks[i] != null) {
+                        if (currentPlayer._attacks[i] is Physical) {
+                            val tempPhysical: Physical = currentPlayer._attacks[i] as Physical
+                            a3n_textView.text = tempPhysical._name
+                            temp = "+${tempPhysical._bonus}"
+                            a3b_textView.text = temp
+                            temp = "${tempPhysical._num_dice}${tempPhysical._die}  /  "
+                            temp += currentPlayer._attacks[i]._special   // TODO: CHANGE TO DAMAGE TYPE
+                            a3dt_textView.text = temp
+
+                            i++
+                            break
+                        }
+                        else {
+                            i++
+                        }
+                    }
+                    else {
+                        break
+                    }
+                }
+            }
+            else {
+                Toast.makeText(this, "Attack Not Added: One or more values missing.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val cancelAttack = findViewById<Button>(R.id.dialog_cancel_button_attack)
+        cancelAttack.setOnClickListener {
+            newAttackRow.visibility = View.GONE
+            newAttackRow.layoutParams.height = 0
+        }
+
+        val newWeaponButton = findViewById<ImageButton>(R.id.newWeapon_imageButton)
+        newWeaponButton.setOnClickListener {
+            newWeaponRow.visibility = View.VISIBLE
+            newWeaponRow.layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 190f, resources.displayMetrics).toInt()
+        }
+
+        val createWeapon = findViewById<Button>(R.id.dialog_create_button_weapon)
+        createWeapon.setOnClickListener {
+            if (canContinue_weapon()) {
+                val tempWeapon = Physical.Weapon_Struct(
+                    Physical.Weapon_Enum.valueOf(findViewById<Spinner>(R.id.dialog_weapon_spinner_weapon).selectedItem.toString()),
+                    findViewById<EditText>(R.id.dialog_numDie_editText_weapon).text.toString().toInt(),
+                    Utility.Die.valueOf(findViewById<Spinner>(R.id.dialog_die_spinner_weapon).selectedItem.toString()),
+                )
+
+                currentPlayer.add_weapon(tempWeapon)
+
+                Toast.makeText(this, "Weapon Added Successfully.",
+                    Toast.LENGTH_SHORT).show()
+
+                newWeaponRow.visibility = View.GONE
+                newWeaponRow.layoutParams.height = 0
+
+                val weapons_textView = findViewById<TextView>(R.id.otherAttacks_editText)
+                var temp = ""
+                for (k in currentPlayer._weapons.indices) {
+                    if (currentPlayer._weapons[k] != null) {
+                        val weapon: Physical.Weapon_Struct = currentPlayer._weapons[k]
+
+                        temp += "${weapon.weapon}  :  ${weapon.num_die}${weapon.die}\n\n"
+                    }
+                }
+                weapons_textView.text = temp
+            }
+            else {
+                Toast.makeText(this, "Weapon Not Added: One or more values missing.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val cancelWeapon = findViewById<Button>(R.id.dialog_cancel_button_weapon)
+        cancelWeapon.setOnClickListener {
+            newAttackRow.visibility = View.GONE
+            newAttackRow.layoutParams.height = 0
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        previousActivity = intent.getStringExtra("INFO FROM").toString()
         charName = intent.getStringExtra("CHARACTER NAME").toString()
         charType = intent.getStringExtra("CHARACTER TYPE").toString()
         gameMode = intent.getStringExtra("CHARACTER GAME").toString()
-        previousActivity = intent.getStringExtra("INFO FROM").toString()
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////         Retrieve from enums          //////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         val class_spinner = findViewById<Spinner>(R.id.class_spinner_actual)
-        class_spinner.setAdapter( ArrayAdapter(this, android.R.layout.simple_spinner_item, Player.Classes.values()) )
+        class_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Player.Classes.values())
 
         val race_spinner = findViewById<Spinner>(R.id.race_spinner_actual)
-        race_spinner.setAdapter( ArrayAdapter(this, android.R.layout.simple_spinner_item, Player.Race.values()) )
+        race_spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Player.Race.values())
 
         val alignment_spinner = findViewById<Spinner>(R.id.alignment_spinner_actual)
-        alignment_spinner.setAdapter( ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Alignment.values()) )
+        alignment_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Alignment.values())
+
+        val prof_skill_spinner = findViewById<Spinner>(R.id.dialog_skill_spinner_prof)
+        var tempArray = Array<Character.Skill?>(45,{i -> null})
+        var i = 0
+        for (prof in Character.Skill.values()) {
+            if (prof != Character.Skill.ACROBATICS
+                && prof != Character.Skill.ANIMAL_HANDLING
+                && prof != Character.Skill.ARCANA
+                && prof != Character.Skill.ATHLETICS
+                && prof != Character.Skill.DECEPTION
+                && prof != Character.Skill.HISTORY
+                && prof != Character.Skill.INSIGHT
+                && prof != Character.Skill.INTIMIDATION
+                && prof != Character.Skill.INVESTIGATION
+                && prof != Character.Skill.MEDICINE
+                && prof != Character.Skill.NATURE
+                && prof != Character.Skill.PERCEPTION
+                && prof != Character.Skill.PERFORMANCE
+                && prof != Character.Skill.PERSUASION
+                && prof != Character.Skill.RELIGION
+                && prof != Character.Skill.SLEIGHT_OF_HAND
+                && prof != Character.Skill.STEALTH
+                && prof != Character.Skill.SURVIVAL
+            ) {
+                tempArray[i] = prof
+                i++
+            }
+            prof_skill_spinner.adapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, tempArray)
+        }
+
+        val prof_stat_spinner = findViewById<Spinner>(R.id.dialog_stat_spinner_prof)
+        prof_stat_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Character.Base_Stats_Enum.values())
+
+        val attack_die_spinner = findViewById<Spinner>(R.id.dialog_die_spinner_attack)
+        attack_die_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+
+        val attack_weapon_spinner = findViewById<Spinner>(R.id.dialog_weapon_spinner_attack)
+        attack_weapon_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
+
+        val attack_hitDie_spinner = findViewById<Spinner>(R.id.dialog_hitDie_spinner_attack)
+        attack_hitDie_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+
+        val weapon_die_spinner = findViewById<Spinner>(R.id.dialog_die_spinner_weapon)
+        weapon_die_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Utility.Die.values())
+
+        val weapon_weapon_spinner = findViewById<Spinner>(R.id.dialog_weapon_spinner_weapon)
+        weapon_weapon_spinner.adapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_item, Physical.Weapon_Enum.values())
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////         Retrieve from database (FROM NEW CHARACTER DIALOG)         ////////////////
@@ -122,17 +499,6 @@ class EditCharacterActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val backButton: ImageButton = findViewById<ImageButton>(R.id.back_imageButton)
-        backButton.setOnClickListener() {
-            val myIntent = Intent(this, CharacterGridActivity::class.java)
-            startActivity(myIntent)
-            finish()
-        }
-    }
-
     // TODO: DELETE THIS; MOVE TO A SAVE BUTTON THEN OPEN VIEW CHARACTER
     override fun onDestroy() {
         super.onDestroy()
@@ -157,6 +523,81 @@ class EditCharacterActivity : AppCompatActivity() {
                 tempPFmonsters.document(currentMonster._name).set(currentMonster._hashMap)
             }
         }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private fun canContinue_prof(): Boolean {
+        var doCont = true
+
+        if (findViewById<EditText>(R.id.dialog_playerLevel_editText_prof).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_special_editText_prof).text.toString() == "") {
+            doCont = false
+        }
+
+        return doCont
+    }
+    private fun canContinue_item(): Boolean {
+        var doCont = true
+
+        if (findViewById<EditText>(R.id.dialog_item_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_copper_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_silver_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_electrum_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_gold_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_platinum_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_weight_editText_item).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_attributes_editText_item).text.toString() == "") {
+            doCont = false
+        }
+
+        return doCont
+    }
+    private fun canContinue_attack(): Boolean {
+        var doCont = true
+
+        if (findViewById<EditText>(R.id.dialog_name_editText_attack).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_special_editText_attack).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_bonus_editText_attack).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_numDie_editText_attack).text.toString() == "") {
+            doCont = false
+        }
+        if (findViewById<EditText>(R.id.dialog_numHitDie_editText_attack).text.toString() == "") {
+            doCont = false
+        }
+
+        return doCont
+    }
+    private fun canContinue_weapon(): Boolean {
+        var doCont = true
+
+        if (findViewById<EditText>(R.id.dialog_numDie_editText_weapon).text.toString() == "") {
+            doCont = false
+        }
+
+        return doCont
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
